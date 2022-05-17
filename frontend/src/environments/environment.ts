@@ -3,5 +3,5 @@ export const environment = {
   appAuthor: 'IGJ',
   appName : 'COMANDO',
   itemsPorPagina:20,
-  host : 'https://comando-app.herokuapp.com/api/'
+  host: 'https://comando-app.herokuapp.com/api/'
 };

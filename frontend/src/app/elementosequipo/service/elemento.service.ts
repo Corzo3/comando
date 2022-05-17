@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import {Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { ElementoEquipo } from '../models/elementoequipo';
@@ -27,8 +28,19 @@ export class ElementoService {
     return elementosEquipo;
   }
 
+  getId(url:string): string {
+    let posicionFinal: number = url.lastIndexOf('/');
+    let numId: string = url.slice(posicionFinal + 1, url.length);
+    return numId;
+
+  }
+
   mapearElemento(elementoApi: any): ElementoequipoImpl {
-    return new ElementoequipoImpl(elementoApi.nombre, elementoApi.peso);
+     let elemento = new ElementoequipoImpl();
+     elemento.id = this.getId(elementoApi._links.elemento.href)
+     elemento.nombre = elementoApi.nombre;
+     elemento.peso = elementoApi.peso;
+     return elemento;
   }
 
   create(elemento: ElementoEquipo): Observable<any> {
@@ -44,6 +56,49 @@ export class ElementoService {
       })
     );
   }
+
+  delete(id: string): Observable<ElementoEquipo> {
+    return this.http
+      .delete<ElementoEquipo>(`${this.urlEndPoint}/${id}`)
+      .pipe(
+        catchError((e) => {
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  update(elemento: ElementoEquipo): Observable<any> {
+    return this.http
+      .put<any>(`${this.urlEndPoint}/${elemento.id}`, elemento)
+      .pipe(
+        catchError((e) => {
+          if (e.status === 400) {
+            return throwError(e);
+          }
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
+          return throwError(e);
+        })
+      );
+  }
+
+  getElemento(id: string): Observable<ElementoEquipo> {
+    return this.http.get<ElementoEquipo>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError((e) => {
+        if (e.status !== 401 && e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
+  }
+
+
+
 
   getElementosPagina(pagina: number): Observable<any> {
     return this.auxService.getItemsPorPagina(this.urlEndPoint, pagina);

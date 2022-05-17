@@ -9,7 +9,8 @@ import { ElementoequipoImpl } from '../models/elementoequipo-impl';
 })
 export class ElementoitemComponent implements OnInit {
 
-  @Input() elemento: ElementoEquipo = new ElementoequipoImpl("", 0);
+  @Input()
+  elemento!: ElementoEquipo;
   constructor() { }
 
   ngOnInit(): void {

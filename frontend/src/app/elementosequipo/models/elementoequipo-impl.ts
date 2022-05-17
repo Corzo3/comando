@@ -5,5 +5,5 @@ export class ElementoequipoImpl implements ElementoEquipo{
   nombre: string = '';
   peso: number = 0;
 
-  constructor(nombre:string, peso: number){}
+  constructor(){}
 }

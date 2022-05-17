@@ -7,9 +7,10 @@ import { ElementoitemComponent } from './elementoitem/elementoitem.component';
 import { AuxiliarService } from '../service/auxiliar.service';
 
 
+
 @NgModule({
   declarations: [ElementosequipoComponent, ElementoitemComponent],
-  imports: [CommonModule, ElementosequipoRoutingModule, FormsModule],
+  imports: [CommonModule, ElementosequipoRoutingModule, FormsModule,],
   providers: [AuxiliarService],
 })
 export class ElementosequipoModule {}
