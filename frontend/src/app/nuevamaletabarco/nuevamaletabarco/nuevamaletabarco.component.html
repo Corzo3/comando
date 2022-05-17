@@ -1,0 +1,26 @@
+<div class="p-2 tipo-m">Nueva Maleta de Barco</div>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <img class="maleta-nueva img-fluid ocultar" src="assets/maletaB.png" alt="Maleta de Barco" />
+                    <div class="row">
+                        <div class="col-12 progress">
+                            <div class="progress-value">%</div>
+                            <!-- En esta barra, una vez implementado todo, se irá recogiendo el peso total de los elementos cargados -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <app-barcoform></app-barcoform>
+            </div>
+            <!--  Este es el listado de material que se puede cargar en las diferentes maletas. Entre parentesis, marcado como (kg), irá en un futuro el peso
+          de cada elemento de tal manera que se vaya sumando a un contador (barra de progreso) hasta llegar al peso límite permitido para cada tipo de maleta -->
+            <div class="col-3">
+                <app-listadomaterial></app-listadomaterial>
+            </div>
+        </div>
+    </div>
+</div>

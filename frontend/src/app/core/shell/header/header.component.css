@@ -1,0 +1,230 @@
+h1 {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-family: 'Franklin Gothic Medium';
+  font-size: 5.5em;
+  margin-top: 1%;
+}
+
+form.form-inline{
+display:flex;
+margin-left: 4%;
+}
+
+.form-control {
+  background-color: white;
+  width: 12em;
+}
+
+
+button.btn.btn-primary.mb-2 {
+  background-color: rgb(5, 71, 46);
+  border: rgb(5, 71, 46);
+  margin-left: .2%;
+  ;
+}
+
+button.navbar-toggler{
+background-color: rgb(5, 71, 46);
+border: grey;
+}
+
+.menu{
+  color: white;
+}
+
+#subtitulo {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.icono-comando {
+  width: 1em;
+}
+
+.nombre-pagina{
+  text-align: center;
+  font-size: 2.5em;
+}
+.imagen-maleta{
+  margin-top: .5%;
+  width: 6em;
+}
+
+.navbar {
+  background-color: rgb(5, 71, 46);
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0%;
+  margin: 0%;
+}
+
+.navegacion {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.lista-enlace {
+  overflow: hidden;
+  font-size: 1.5em;
+  color: white;
+}
+
+.lista-enlace:hover {
+  background-color: rgb(29, 29, 27);
+  height: max-content;
+}
+
+.enlace {
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #fff;
+}
+
+.dropdown-content {
+  z-index: 2;
+  background-color: grey;
+  max-height: 0;
+  transition: .5s;
+}
+
+.dropdown:hover {
+  background-color: rgb(29, 29, 27);
+  height: 1em;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(58, 58, 57);
+}
+
+#nuevaMaleta {
+  font-size: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  background-color: gray;
+  padding: 0.5em 0.5em;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-boton {
+  justify-content: center;
+  background-color: rgb(5, 71, 46);
+  color: #fff;
+  padding: 10px 0px;
+  border: 2px solid #fff;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2em;
+  display: none;
+}
+
+.petate {
+  margin-top: 5%;
+}
+
+.mochila {
+  margin-top: 5%;
+}
+
+.container.cabina {
+  margin-top: 18%;
+}
+
+button.btn.btn-primary {
+  background-color: rgb(5, 71, 46);
+  border-color: rgb(58, 58, 57)
+}
+
+button.btn.btn-secondary {
+  background-color: rgb(5, 71, 46);
+  border-color: rgb(58, 58, 57)
+}
+
+.list-group-item {
+  font-size: medium;
+}
+
+@media (max-width:600px) {
+  nav {
+      flex-direction: column;
+  }
+  .nav-boton {
+      display: inline-block;
+  }
+  .desaparece {
+      display: none;
+  }
+}
+
+@media (min-width:768px) {
+  .lista-enlace {
+      flex: 1;
+      position: relative;
+      overflow: visible;
+  }
+  .lista-enlace .dropdown-content {
+      position: absolute;
+      width: 100%;
+  }
+  .dropdown-content {
+      display: none;
+  }
+  .lista-enlace:target .dropdown-content {
+      display: block;
+  }
+  .navegacion {
+      flex-direction: row;
+  }
+}
+
+
+/* Responsive Styles */
+
+@media screen and (max-width: 767px) {
+    .card-container>*:not(.circle-link),
+    .terminal {
+        width: 100%;
+    }
+    .card:not(.highlight-card) {
+        height: 16px;
+        margin: 8px 0;
+    }
+    .card.highlight-card span {
+        margin-left: 72px;
+    }
+    svg#rocket-smoke {
+        right: 120px;
+        transform: rotate(-5deg);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+        display: none;
+        visibility: hidden;
+    }
+}

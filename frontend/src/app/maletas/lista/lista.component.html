@@ -1,0 +1,15 @@
+<button (click)="cargarLista()" class="boton">Ver</button>
+<div class="container-fluid">
+  <div class="list-items col-3" *ngIf="creada == true; else noCreada">
+    <div class="item" *ngFor="let elemento of elementos">
+      <label>{{ elemento.nombre }}, ({{ elemento.peso }} Kg)</label>
+      <span class="cantidad"> xx</span>
+    </div>
+  </div>
+</div>
+<ng-template #noCreada>
+  <label for="noCreada">La maleta no tiene contenido</label>
+</ng-template>
+
+
+

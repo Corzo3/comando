@@ -1,0 +1,15 @@
+.pie {
+  color: black;
+  background-color: rgb(120, 134, 107);
+}
+footer.container-fluid.pie-pagina{
+  text-align: left;
+  background-color: rgb(120, 134, 107);
+  left: 0%;
+  bottom: 0%;
+}
+
+.pie-pagina{
+  bottom: 100%;
+  left: 100%;
+}

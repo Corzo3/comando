@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <button class="boton-primario" (click)="cargarLista()">Cargar Listado</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h1>Listado de Elementos</h1>
+    </div>
+
+    <div class="col-3">
+      <div class="list-items" *ngIf="listaCargada == true">
+        <div class="seleccionado" *ngFor="let elemento of elementos">
+          <app-elementoitem [elemento]="elemento"></app-elementoitem>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

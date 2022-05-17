@@ -1,0 +1,41 @@
+.list-items {
+  display: inline-block;
+  width: 29em;
+  height: 32em;
+  background-color: #a5abb1;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  overflow-y: scroll;
+
+}
+
+h1{
+  font-weight: 400;
+  color: black;
+  margin-top: 3%;
+  margin-left: 4%;
+  font-size: xx-large;
+}
+
+.seleccionado{
+  width: 100%;
+  height: 3em;
+  font-size: large;
+}
+
+.container-fluid{
+  margin-left: 22%;
+}
+
+.boton-primario {
+  border-radius: 5px;
+  background-color: rgb(5, 71, 46);
+  display: inline;
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: large;
+  width: 10rem;
+  height: 2.5rem;
+  margin-top: 3%;
+  margin-left: 10%;
+}

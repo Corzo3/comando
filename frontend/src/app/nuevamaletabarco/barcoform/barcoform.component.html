@@ -1,0 +1,28 @@
+<form #barcoForm = "ngForm" class="col-12">
+  <div class="row form-row py-2">
+      <div class="col-10">
+          <label for="fechaRecogida" class="nombre-campo"> Fecha de Recogida: <img class="informacion" src="assets/informacion.png" alt="Información" title="La fecha de recogida será aproximadamente un mes antes de la fecha de despliegue de su Unidad" (click)="mostrarAyuda()"></label>
+          <input name="fechaRecogida" type="date" class="form-control" [(ngModel)]="maletaBarco.fechaRecogida" required name="fecha"  #fechRec = "ngModel" [ngClass]="{'is-invalid' : fechRec.invalid  && (fechRec.dirty || fechRec.touched), 'is-valid' : !fechRec.invalid}"/>
+          <label for="peso" class="nombre-campo">Peso</label>
+          <input name="peso" type="number" class="form-control" placeholder="de su maleta vacía" min="0" [(ngModel)]="maletaBarco['peso']" step="any" required #pes="ngModel" [ngClass]="{'is-invalid': pes.invalid && (pes.dirty || pes.touched), 'is-valid' : !pes.invalid}">
+          <div class="row">
+              <div class="col-6">
+                  <button type="reset" class="btn btn-primary boton-primario resetear" (click)="borrarMensaje()">
+Resetear
+</button>
+              </div>
+              <div class="col-6">
+                  <button type="submit" class="btn btn-primary boton-primario enviar" (click)="avisarCreada()">
+Enviar
+</button>
+              </div>
+              <br/>
+              <p *ngIf="creada" class="nombre-campo mensaje">{{mensaje}}</p>
+          </div>
+          <div class="botonera">
+              <button id="aceptar" type="submit" class="boton-primario">Aceptar</button>
+              <button id="cancelar" class="boton-primario">Eliminar</button>
+          </div>
+      </div>
+  </div>
+</form>
