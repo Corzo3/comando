@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import equipo from 'src/assets/equipo.json';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
+import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
 @Component({
   selector: 'app-maletab',
   templateUrl: './maletab.component.html',
   styleUrls: ['./maletab.component.css'],
 })
 export class MaletabComponent implements OnInit {
+  @Input()
+  maleta!: MaletaBarco;
   elementos: ElementoEquipo[] = [];
   constructor() {}
 

@@ -6,18 +6,17 @@ import { MaletasComponent } from './maletas/maletas.component';
 import { MaletabComponent } from './maletab/maletab.component';
 import { MaletacComponent } from './maletac/maletac.component';
 import { ListaComponent } from './lista/lista.component';
-
+import { AuxiliarService } from '../service/auxiliar.service';
 
 @NgModule({
   declarations: [
     MaletasComponent,
     MaletabComponent,
     MaletacComponent,
-    ListaComponent
+    ListaComponent,
   ],
-  imports: [
-    CommonModule,
-    MaletasRoutingModule
-  ]
+  imports: [CommonModule, MaletasRoutingModule],
+
+  providers: [AuxiliarService],
 })
-export class MaletasModule { }
+export class MaletasModule {}

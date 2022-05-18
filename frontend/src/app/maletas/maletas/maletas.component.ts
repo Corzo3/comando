@@ -3,6 +3,8 @@ import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
 import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
 import { MaletaCabina } from 'src/app/nuevamaleta/models/maleta-cabina';
 import { MaletaCabinaImpl } from 'src/app/nuevamaleta/models/maleta-cabina-impl';
+import { AuxiliarService } from 'src/app/service/auxiliar.service';
+import { MaletaService } from '../service/maleta.service';
 
 
 @Component({
@@ -12,11 +14,13 @@ import { MaletaCabinaImpl } from 'src/app/nuevamaleta/models/maleta-cabina-impl'
 })
 export class MaletasComponent implements OnInit {
   maletasBarco: MaletaBarco[] = [];
-  maletasCAbina: MaletaCabina[] = [];
+  maletasCabina: MaletaCabina[] = [];
   maletaBarco = new MaletaBarcoImpl();
   maletaCabina = new MaletaCabinaImpl();
 
-  constructor() {}
+  constructor(private maletaService : MaletaService, private auxService : AuxiliarService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.maletaService.getMaletas().subscribe((response) => this.maletasBarco = this.maletaService.extraerMaletasBarco(response));
+  }
 }
