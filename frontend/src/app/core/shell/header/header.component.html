@@ -7,44 +7,43 @@
     </h3>
     <div class="container-fluid">
         <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
-            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Administrador" formControlName = "administrador"/>
-            <input type="password" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername2" placeholder="Contraseña" formControlName = "password"/>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Administrador" formControlName="administrador" />
+            <input type="password" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername2" placeholder="Contraseña" formControlName="password" />
             <button type="submit" class="btn btn-primary mb-2">Aceptar</button>
         </form>
     </div>
-        <nav class="navbar navbar-expand-lg ">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class= "menu">Menú</span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navegacion col-12">
-            <li class="lista-enlace">
-                <a routerLink="" class="enlace ">Inicio</a>
-            </li>
-            <li class="dropdown lista-enlace">
-                <a class="enlace">Maletas Barco</a>
-                <div class="dropdown-content">
-                    <a class="" routerLink="nuevamaletabarco">Nueva</a>
-                    <a class="" routerLink="">Ver todas</a>
-                </div>
-            </li>
-            <li class="dropdown lista-enlace">
-              <a class="enlace">Maletas Cabina</a>
-              <div class="dropdown-content">
-                  <a class="" routerLink="nuevamaletacabina">Nueva</a>
-                  <a class="" routerLink="">Ver todas</a>
-              </div>
-          </li>
-          <li class="dropdown lista-enlace">
-            <a class="enlace">Elementos Equipo</a>
-            <div class="dropdown-content">
-                <a class="" routerLink="">Nuevo</a>
-                <a class="" routerLink="elementosequipo">Ver Listado</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navegacion col-12">
+                    <li class="lista-enlace">
+                        <a routerLink="" class="enlace ">Inicio</a>
+                    </li>
+                    <li class="dropdown lista-enlace">
+                        <a class="enlace">Maletas Barco</a>
+                        <div class="dropdown-content">
+                            <a class="" routerLink="nuevamaletabarco">Nueva Maleta de Barco</a>
+                            <a class="" routerLink="maletas">Ver todas</a>
+                        </div>
+                    </li>
+                    <li class="dropdown lista-enlace">
+                        <a class="enlace">Maletas Cabina</a>
+                        <div class="dropdown-content">
+                            <a class="" routerLink="nuevamaletacabina">Nueva Maleta de Cabina</a>
+                            <a class="" routerLink="maletas">Ver todas</a>
+                        </div>
+                    </li>
+                    <li class="dropdown lista-enlace">
+                        <a class="enlace">Elementos Equipo</a>
+                        <div class="dropdown-content">
+                            <a class="" routerLink="elementosequipo">Ver Listado</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </li>
-        </ul>
         </div>
-      </div>
     </nav>
 </header>

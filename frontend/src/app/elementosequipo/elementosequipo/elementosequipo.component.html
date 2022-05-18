@@ -1,26 +1,54 @@
 <div class="container-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-       <!--  <div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <button class="btn btn-primary boton-formulario" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Nuevo Elemento
+        </button>
+                <div class="collapse" id="collapseExample">
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4 position-relative ">
+                            <label for="validationTooltip01" class="form-label campo-nombre">Nombre</label>
+                            <input type="text" class="form-control campo-nombre" id="validationTooltip01" value="" required>
+                            <div class="valid-tooltip">
+                                nombre valido
+                            </div>
+                        </div>
+                        <div class="col-md-4 position-relative">
+                            <label for="validationTooltip02" class="form-label campo-peso">Peso</label>
+                            <input type="number" class="form-control campo-peso" id="validationTooltip02" value="" required min="0">
+                            <div class="valid-tooltip">
+                                peso valido
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary boton-formulario enviar" type="submit">Enviar</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary boton-formulario enviar" type="reset">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!--  <div>
           <button class="boton-primario" (click)="getTodosElementos()">Cargar Listado</button>
         </div> -->
-      </div>
-    </div>
-    <div class="col">
-      <h1>Listado de Elementos</h1>
-    </div>
+            </div>
 
-    <div class="col-3 list-items">
-<!--       <div class="list-items" *ngIf="listaCargada == true"> -->
-        <div class="seleccionado" *ngFor="let elemento of elementos">
-          <app-elementoitem *ngIf="elemento" [elemento]="elemento"></app-elementoitem>
+            <div class="col-6">
+                <h1>Listado de Elementos</h1>
+                <div class="list-items">
+                    <!--       <div class="list-items" *ngIf="listaCargada == true"> -->
+                    <div class="seleccionado" *ngFor="let elemento of elementos">
+                        <app-elementoitem *ngIf="elemento" [elemento]="elemento"></app-elementoitem>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 <!-- </div> -->
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 <!-- <h1>LISTADO DE ELEMENTOS</h1>
 <pre>{{elementosCargados | json}}</pre>
 </div> -->
