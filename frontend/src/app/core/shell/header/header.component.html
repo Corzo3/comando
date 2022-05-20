@@ -15,31 +15,50 @@
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class= "menu">Menú</span>
-        </button>
+        <span class="menu">Menú</span>
+      </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navegacion col-12">
-                    <li class="lista-enlace">
-                        <a routerLink="" class="enlace ">Inicio</a>
-                    </li>
-                    <li class="dropdown lista-enlace">
-                        <a class="enlace">Maletas Barco</a>
-                        <div class="dropdown-content">
-                            <a class="" routerLink="nuevamaletabarco">Nueva Maleta de Barco</a>
-                            <a class="" routerLink="maletas">Ver todas</a>
+                    <li class="col-3">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary enlacenav" href="#" id="dropdownMenuLink" aria-expanded="false">
+            Inicio
+          </a>
                         </div>
                     </li>
-                    <li class="dropdown lista-enlace">
-                        <a class="enlace">Maletas Cabina</a>
-                        <div class="dropdown-content">
-                            <a class="" routerLink="nuevamaletacabina">Nueva Maleta de Cabina</a>
-                            <a class="" routerLink="maletas">Ver todas</a>
+                    <li class="col-3">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle enlacenav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Maletas Barco
+              </a>
+
+                            <ul class="dropdown-menu dropdownMenuLink" aria-labelledby="dropdownMenuLink">
+                                <li><a class="desplegable" routerLink="nuevamaletabarco">Nueva Maleta</a></li>
+                                <li> <a class="desplegable" routerLink="maletas">Ver todas</a></li>
+                            </ul>
                         </div>
                     </li>
-                    <li class="dropdown lista-enlace">
-                        <a class="enlace">Elementos Equipo</a>
-                        <div class="dropdown-content">
-                            <a class="" routerLink="elementosequipo">Ver Listado</a>
+                    <li class="col-3">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle enlacenav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Maletas Cabina
+              </a>
+
+                            <ul class="dropdown-menu dropdownMenuLink" aria-labelledby="dropdownMenuLink">
+                                <li><a class="desplegable" routerLink="nuevamaletacabina">Nueva Maleta</a></li>
+                                <li> <a class="desplegable" routerLink="maletas">Ver todas</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="col-3">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle enlacenav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                Equipo
+              </a>
+
+                            <ul class="dropdown-menu dropdownMenuLink" aria-labelledby="dropdownMenuLink">
+                                <li><a class="desplegable" routerLink="elementosequipo">Ver Listado</a></li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
