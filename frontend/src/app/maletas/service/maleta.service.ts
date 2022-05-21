@@ -6,7 +6,6 @@ import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
 import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
 import { MaletaCabina } from 'src/app/nuevamaleta/models/maleta-cabina';
 import { MaletaImpl } from 'src/app/nuevamaleta/models/maletaImpl';
-import { Maletacabina } from 'src/app/nuevamaletacabina/models/maletacabina';
 import { MaletaCabinaImpl } from 'src/app/nuevamaleta/models/maleta-cabina-impl';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
@@ -36,7 +35,7 @@ export class MaletaService {
     return maletas;
   }
 
-  extraerMaletasCabina(respuestaApi: any): Maletacabina[] {
+  extraerMaletasCabina(respuestaApi: any): MaletaCabina[] {
     const maletas: MaletaCabina[] = [];
     respuestaApi._embedded.maletasbarco.forEach((m: any) => {
       maletas.push(this.mapearMaletaC(m));
@@ -103,9 +102,9 @@ export class MaletaService {
       );
   }
 
-  deleteMaletaC(id: string): Observable<Maletacabina> {
+  deleteMaletaC(id: string): Observable<MaletaCabina> {
     return this.http
-      .delete<Maletacabina>(`${this.urlEndPoint}/${id}`)
+      .delete<MaletaCabina>(`${this.urlEndPoint}/${id}`)
       .pipe(
         catchError((e) => {
           if (e.error.mensaje) {
