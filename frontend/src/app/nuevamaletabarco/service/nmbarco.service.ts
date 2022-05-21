@@ -16,10 +16,10 @@ export class NmbarcoService {
   private urlEndPoint: string = `${this.host}maletasbarco`;
 
   private elementos: ElementoEquipo[] = [];
-  /* private elementosSubjects: BehaviorSubject<ElementoEquipo[]> =
-    new BehaviorSubject(this.elementos); */
-  /* public elementosMaleta: Observable<ElementoEquipo[]> =
-    this.elementosSubjects.asObservable(); */
+   private elementosSubjects: BehaviorSubject<ElementoEquipo[]> =
+    new BehaviorSubject(this.elementos);
+   public elementosMaleta: Observable<ElementoEquipo[]> =
+    this.elementosSubjects.asObservable();
   constructor(private http: HttpClient, private auxService : AuxiliarService) { }
 
   getId(url: string): string {

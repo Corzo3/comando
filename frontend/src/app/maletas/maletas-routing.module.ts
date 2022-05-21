@@ -9,20 +9,6 @@ const routes: Routes = [
   {
     path: '',
     component: MaletasComponent,
-    children: [
-      {
-        path: 'maletab',
-        component: MaletabComponent,
-      },
-      {
-        path: 'maletac',
-        component: MaletacComponent,
-      },
-      {
-        path: 'lista',
-        component: ListaComponent,
-      },
-    ],
   },
 ];
 

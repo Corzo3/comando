@@ -78,17 +78,16 @@ div.p-2.tipo-m {
 }
 
 .enviar {
-  width: 10em;
+  width: 6em;
   margin-left: 10%;
 }
 
 .resetear {
-  width: 10em;
+  width: 6em;
 }
 
 div.botonera {
-  margin-top: 15%;
-  margin-left: 10%;
+  margin-top: 25%;
   display: inline-flex;
 }
 

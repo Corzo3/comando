@@ -21,8 +21,8 @@ export class MaletaBarcoService {
   public elementosMaleta: Observable<ElementoEquipo[]> =
     this.elementosSubjects.asObservable();
 
-  constructor() {}
-  // constructor(private http: HttpClient) {}
+  // constructor() {}
+   constructor(private http: HttpClient) {}
 
   getId(url: string): string {
     let posicionFinal: number = url.lastIndexOf('/');
@@ -30,9 +30,9 @@ export class MaletaBarcoService {
     return numId;
   }
 
- /*  getMaletasBarco(): Observable<any> {
+   getMaletasBarco(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
-  } */
+  }
 
   mapearMaletaBarco(maletaBarcoApi: any): MaletaBarco {
     let maletaBarco: MaletaBarco = new MaletaBarcoImpl();
@@ -42,7 +42,7 @@ export class MaletaBarcoService {
     return maletaBarco;
   }
 
-   /* create(maletaBarco: MaletaBarco): Observable<any> {
+    create(maletaBarco: MaletaBarco): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaBarco).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -54,9 +54,9 @@ export class MaletaBarcoService {
         return throwError(e);
       })
     );
-  } */
+  }
 
-  /* delete(id: string): Observable<Maleta> {
+   delete(id: string): Observable<Maleta> {
     return this.http.delete<Maleta>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -68,9 +68,9 @@ export class MaletaBarcoService {
         return throwError(e);
       })
     );
-  } */
+  }
 
- /*  update(maleta: Maleta): Observable<any> {
+   update(maleta: Maleta): Observable<any> {
     return this.http
       .put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta)
       .pipe(
@@ -84,9 +84,8 @@ export class MaletaBarcoService {
           return throwError(e);
         })
       );
-  }  */
-
- /*  getMaletaBarco(id: string): Observable<MaletaBarco> {
+  }
+  getMaletaBarco(id: string): Observable<MaletaBarco> {
     return this.http.get<MaletaBarco>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status !== 401 && e.error.mensaje) {
@@ -95,5 +94,5 @@ export class MaletaBarcoService {
         return throwError(e);
       })
     );
-  } */
+  }
 }
