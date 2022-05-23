@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
-import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
-import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
-import { MaletaBarcoService } from 'src/app/nuevamaleta/service/maleta-barco-service';
+import { Maletabarco } from 'src/app/maletas/models/maletabarco';
+import { Maletabarcoimpl } from 'src/app/maletas/models/maletabarcoimpl';
 
 @Component({
   selector: 'app-nuevamaletabarco',
@@ -11,18 +10,17 @@ import { MaletaBarcoService } from 'src/app/nuevamaleta/service/maleta-barco-ser
   styleUrls: ['./nuevamaletabarco.component.css'],
 })
 export class NuevamaletabarcoComponent implements OnInit {
-  maleta: MaletaBarco = new MaletaBarcoImpl();
+  maleta: Maletabarco = new Maletabarcoimpl();
   elementos: ElementoEquipo[] = [];
 
   constructor(
-    private maletaBarcoService: MaletaBarcoService,
+    // private maletaBarcoService: MaletaBarcoService,
     private router: Router,
     private activateRoute: ActivatedRoute
   ) {}
 
-  /*  ngOnInit(): void {
-  } */
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  /* ngOnInit(): void {
     if (this.cargarMaletaBarco() != 'N') {
       let id: string = this.cargarMaletaBarco();
       this.maletaBarcoService.getMaletaBarco(id).subscribe((response) => {
@@ -30,8 +28,8 @@ export class NuevamaletabarcoComponent implements OnInit {
         this.actualizarFechaRecogida();
       });
     }
-  }
-  actualizarFechaRecogida(): string {
+  } */
+  /* actualizarFechaRecogida(): string {
     let fechaMaleta = this.maleta.fechaRecogida;
     let fechaActualizada =
       fechaMaleta.slice(6, 10) +
@@ -58,5 +56,5 @@ export class NuevamaletabarcoComponent implements OnInit {
     this.maletaBarcoService.update(this.maleta).subscribe((response) => {
       this.router.navigate(['/maletasbarco']);
     });
-  }
+  } */
 }

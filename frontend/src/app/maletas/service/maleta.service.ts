@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
-import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
-import { MaletaCabina } from 'src/app/nuevamaleta/models/maleta-cabina';
-import { MaletaCabinaImpl } from 'src/app/nuevamaleta/models/maleta-cabina-impl';
+import { Maletabarco } from '../models/maletabarco';
+import { Maletabarcoimpl } from '../models/maletabarcoimpl';
+import { Maletacabina } from '../models/maletacabina';
+import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 
@@ -27,23 +27,23 @@ export class MaletaService {
     return this.http.get<any>(this.urlEndPoint);
   }
 
-   extraerMaletasBarco(respuestaApi: any): MaletaBarco[] {
-    const maletas: MaletaBarco[] = [];
+   extraerMaletasBarco(respuestaApi: any): Maletabarco[] {
+    const maletas: Maletabarco[] = [];
     respuestaApi._embedded.maletasbarco.forEach((m: any) => {
       maletas.push(this.mapearMaletaB(m));
     });
     return maletas;
   }
 
-  mapearMaletaB(maletaApi: any): MaletaBarcoImpl {
-    let maleta = new MaletaBarcoImpl();
+  mapearMaletaB(maletaApi: any): Maletabarcoimpl {
+    let maleta = new Maletabarcoimpl();
     maleta.id = this.getId(maletaApi._links.maletabarco.href);
     maleta.peso = maletaApi.pesoEnVacio;
     maleta.fechaRecogida = maletaApi.fechaRecogida;
     return maleta;
   }
 
-  createMaletaB(maletaB: MaletaBarco): Observable<any> {
+  createMaletaB(maletaB: Maletabarco): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaB).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -57,9 +57,9 @@ export class MaletaService {
     );
   }
 
-  deleteMaletaB(id: string): Observable<MaletaBarco> {
+  deleteMaletaB(id: string): Observable<Maletabarco> {
     return this.http
-      .delete<MaletaBarco>(`${this.urlEndPoint}/${id}`)
+      .delete<Maletabarco>(`${this.urlEndPoint}/${id}`)
       .pipe(
         catchError((e) => {
           if (e.error.mensaje) {
@@ -70,7 +70,7 @@ export class MaletaService {
       );
   }
 
-  updateMaletaB(maleta: MaletaBarco): Observable<any> {
+  updateMaletaB(maleta: Maletabarco): Observable<any> {
     return this.http
       .put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta)
       .pipe(
@@ -87,8 +87,8 @@ export class MaletaService {
   }
 
 
-  extraerMaletasCabina(respuestaApi: any): MaletaCabina[] {
-    const maletas: MaletaCabina[] = [];
+  extraerMaletasCabina(respuestaApi: any): Maletacabina[] {
+    const maletas: Maletacabina[] = [];
     respuestaApi._embedded.maletasbarco.forEach((m: any) => {
       maletas.push(this.mapearMaletaC(m));
     });
@@ -96,8 +96,8 @@ export class MaletaService {
   }
 
 
-  mapearMaletaC(maletaApi: any): MaletaCabinaImpl {
-    let maleta = new MaletaCabinaImpl();
+  mapearMaletaC(maletaApi: any): Maletacabinaimpl {
+    let maleta = new Maletacabinaimpl();
     maleta.id = this.getId(maletaApi._links.maletacabina.href);
     maleta.peso = maletaApi.pesoEnVacio;
     maleta.altura = maletaApi.altura;
@@ -108,7 +108,7 @@ export class MaletaService {
 
 
 
-  createMaletaC(maletaC: MaletaCabina): Observable<any> {
+  createMaletaC(maletaC: Maletacabina): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaC).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -123,9 +123,9 @@ export class MaletaService {
   }
 
 
-  deleteMaletaC(id: string): Observable<MaletaCabina> {
+  deleteMaletaC(id: string): Observable<Maletacabina> {
     return this.http
-      .delete<MaletaCabina>(`${this.urlEndPoint}/${id}`)
+      .delete<Maletacabina>(`${this.urlEndPoint}/${id}`)
       .pipe(
         catchError((e) => {
           if (e.error.mensaje) {
@@ -138,7 +138,7 @@ export class MaletaService {
 
 
 
-  updateMaletaC(maleta: MaletaCabina): Observable<any> {
+  updateMaletaC(maleta: Maletacabina): Observable<any> {
     return this.http
       .put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta)
       .pipe(

@@ -1,6 +1,5 @@
 import { Maleta } from "./maleta";
 
-export interface MaletaBarco extends Maleta {
-  id: string;
+export interface Maletabarco extends Maleta{
   fechaRecogida: string;
 }

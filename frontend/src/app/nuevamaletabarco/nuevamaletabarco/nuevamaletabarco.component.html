@@ -2,14 +2,11 @@
 <div class="container-fluid">
     <div class="container">
         <div class="row">
-            <div class="col-8">
-                <app-barcoform></app-barcoform>
+            <div class="col-12">
+                <app-barcoform [elementosSeleccionados] = "elementos"></app-barcoform>
             </div>
             <!--  Este es el listado de material que se puede cargar en las diferentes maletas. Entre parentesis, marcado como (kg), irá en un futuro el peso
           de cada elemento de tal manera que se vaya sumando a un contador (barra de progreso) hasta llegar al peso límite permitido para cada tipo de maleta -->
-            <div class="col-4">
-                <app-listadomaterial></app-listadomaterial>
-            </div>
         </div>
     </div>
 </div>

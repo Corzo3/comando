@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import equipo from 'src/assets/equipo.json';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
-import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
-import { Maleta } from 'src/app/nuevamaleta/models/maleta';
+import { Maletabarco } from '../models/maletabarco';
+import { Maleta } from '../models/maleta';
 @Component({
   selector: 'app-maletab',
   templateUrl: './maletab.component.html',
@@ -10,7 +10,7 @@ import { Maleta } from 'src/app/nuevamaleta/models/maleta';
 })
 export class MaletabComponent implements OnInit {
   @Input()
-  maleta!: MaletaBarco;
+  maleta!: Maletabarco;
   elementos: ElementoEquipo[] = [];
   @Output() maletaSeleccionada = new EventEmitter<Maleta>();
   constructor() {}

@@ -47,8 +47,10 @@
   </div> -->
 <!-- </div> -->
 
-<div *ngFor="let maleta of maletasCargadas">
-  <app-maletab [maleta]="maleta"></app-maletab>
-</div>
-
+<!--  <div *ngFor="let maleta of maletasCargadas">
+  <app-maletab *ngIf="maleta" [maleta]="maleta">Maletas</app-maletab>
+</div> -->
+<p>Maletas de barco:</p>
 <pre>{{maletasCargadas | json}}</pre>
+<p>Maletas de cabina:</p>
+<pre>{{maletasCargadas1 | json}}</pre>

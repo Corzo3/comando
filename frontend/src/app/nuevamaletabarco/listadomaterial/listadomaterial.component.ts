@@ -1,10 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import equipo from 'src/assets/equipo.json';
-import { MaletaBarcoService } from 'src/app/nuevamaleta/service/maleta-barco-service';
-import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
-import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
-import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
+
 
 @Component({
   selector: 'app-listadomaterial',
@@ -17,7 +14,7 @@ export class ListadomaterialComponent implements OnInit {
   elementosNuevos: ElementoEquipo[] = [];
   listaCargada: boolean = false;
   constructor(
-    private maletaBarcoService: MaletaBarcoService,
+
   ) {}
 
   ngOnInit(): void {

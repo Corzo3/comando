@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-import { MaletaBarco } from 'src/app/nuevamaleta/models/maleta-barco';
-import { MaletaBarcoImpl } from 'src/app/nuevamaleta/models/maleta-barco-impl';
-import { MaletaCabina } from 'src/app/nuevamaleta/models/maleta-cabina';
-import { MaletaCabinaImpl } from 'src/app/nuevamaleta/models/maleta-cabina-impl';
+import { Maletabarco } from '../models/maletabarco';
+import { Maletabarcoimpl } from '../models/maletabarcoimpl';
+import { Maletacabina } from '../models/maletacabina';
+import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
-import { MaletaService } from '../service/maleta.service';
+import {MaletaService } from '../service/maleta.service';
 
 
 @Component({
@@ -16,12 +16,14 @@ import { MaletaService } from '../service/maleta.service';
 })
 export class MaletasComponent implements OnInit {
 
-  private urlApiMaletas = 'https://comando-app.herokuapp.com/api/maletas'
+  private urlApiMaletasBarco = 'https://comando-app.herokuapp.com/api/maletasbarco'
+  private urlApiMaletasCabina = 'https://comando-app.herokuapp.com/api/maletascabina'
   public maletasCargadas : any = null;
-  maletasBarco: MaletaBarco[] = [];
-  maletasCabina: MaletaCabina[] = [];
-  maletaBarco = new MaletaBarcoImpl();
-  maletaCabina = new MaletaCabinaImpl();
+  public maletasCargadas1: any = null;
+  maletasBarco: Maletabarco[] = [];
+  maletasCabina: Maletacabina[] = [];
+  maletaBarco = new Maletabarcoimpl();
+  maletaCabina = new Maletacabinaimpl();
   //constructor(private maletaService : MaletaService, private auxService : AuxiliarService) {}
   constructor(private httpClient: HttpClient) {}
 
@@ -29,7 +31,8 @@ export class MaletasComponent implements OnInit {
     this.maletaService.getMaletas().subscribe((response) => this.maletasBarco = this.maletaService.extraerMaletasBarco(response));
   } */
    ngOnInit(): void {
-    this.httpClient.get(this.urlApiMaletas).subscribe(apiResult => (this.maletasCargadas = apiResult));
+    this.httpClient.get(this.urlApiMaletasBarco).subscribe(apiResult => (this.maletasCargadas = apiResult));
+    this.httpClient.get(this.urlApiMaletasCabina).subscribe(apiResult=> (this.maletasCargadas1 = apiResult));
   }
 
 }

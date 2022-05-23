@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <img
         class="maleta-nueva img-fluid ocultar"
         src="assets/maletaB.png"
@@ -14,14 +14,14 @@
         *ngIf="formulario == 2"
       />
     </div>
-    <div class="col-6">
+    <div class="col-4">
       <label for="seleccione" class="nombre-campo">Seleccione tipo</label>
       <select [(ngModel)]="formulario" class="form-control">
         <option value="1">Barco</option>
         <option value="2">Cabina</option>
       </select>
       <form #barcoForm="ngForm">
-        <div class=" form-row py-2">
+        <div class="form-row py-2">
           <label for="peso" class="nombre-campo">Peso</label>
           <input
             name="peso"
@@ -131,7 +131,7 @@
             <button
               type="submit"
               class="btn btn-primary boton-primario enviar"
-              (click)="avisarCreada()"
+              (click)="guardarMaletaBarco()"
             >
               Enviar
             </button>
@@ -139,7 +139,7 @@
           <br />
           <p *ngIf="creada" class="nombre-campo mensaje">{{ mensaje }}</p>
         </div>
-        <div class="botonera">
+        <div class="botonera col-4">
           <button id="aceptar" type="submit" class="boton-primario">
             Aceptar
           </button>
@@ -147,5 +147,43 @@
         </div>
       </form>
     </div>
+
+    <div class="col-4">
+      <span
+        ><button class="boton-primario cargar" (click)="cargarLista()">
+          Cargar
+        </button></span
+      >
+      <div class="list-items">
+        <div class="item" *ngFor="let elemento of elementos">
+          <input
+            type="checkbox"
+            name="{{ elemento.nombre }}"
+            [value]="elemento.nombre"
+            (change)="getNombreElemento($event, elemento)"
+          />
+          <label for="">{{ elemento.nombre }} ({{ elemento.peso }} kg)</label>
+          <span>
+            <input
+              type="number"
+              min="0"
+              class="cantidad"
+              placeholder="cant."
+            />
+          </span>
+        </div>
+      </div>
+      <div class="list-items seleccionados" *ngIf="listaCargada == true">
+        <div
+          class="seleccionado"
+          *ngFor="let elemento of elementosSeleccionados"
+        >
+          <label for="">{{ elemento.nombre }}</label>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
+
+ <div>{{maletasBarco | json}}</div>

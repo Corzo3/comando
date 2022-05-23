@@ -1,7 +1,6 @@
 import { Maleta } from "./maleta";
 
-export interface MaletaCabina extends Maleta {
-  id: string;
+export interface Maletacabina extends Maleta {
   altura: number;
   anchura: number;
   profundidad: number;
