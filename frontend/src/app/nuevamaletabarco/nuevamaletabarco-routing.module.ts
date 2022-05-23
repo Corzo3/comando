@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarcoformComponent } from './barcoform/barcoform.component';
-import { ListadomaterialComponent } from './listadomaterial/listadomaterial.component';
 import { NuevamaletabarcoComponent } from './nuevamaletabarco/nuevamaletabarco.component';
 
 const routes: Routes = [
@@ -12,10 +11,6 @@ children: [
   {
     path: 'barcoform',
     component: BarcoformComponent
-  },
-  {
-    path: 'listadomaterial',
-    component: ListadomaterialComponent
   },
 ]
 
