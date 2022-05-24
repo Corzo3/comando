@@ -11,21 +11,18 @@ import { MainComponent } from './core/shell/main/main.component';
 import { FooterComponent } from './core/shell/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotFoundComponent,
-    ShellComponent,
-    HeaderComponent,
-    MainComponent,
-    FooterComponent,
+    AppComponent
+
 
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule, ReactiveFormsModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, CommonModule, FormsModule, BrowserAnimationsModule, ReactiveFormsModule, CoreModule],
   providers: [],
   bootstrap: [
     AppComponent
