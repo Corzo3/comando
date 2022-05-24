@@ -29,7 +29,7 @@
             class="form-control"
             placeholder="de su maleta vacía"
             min="0"
-            [(ngModel)]="maletaBarco['peso']"
+            [(ngModel)]="maletaBarco.peso"
             step="any"
             required
             #pes="ngModel"
@@ -131,7 +131,7 @@
             <button
               type="submit"
               class="btn btn-primary boton-primario enviar"
-              (click)="guardarMaletaBarco()"
+              (click)="create()"
             >
               Enviar
             </button>

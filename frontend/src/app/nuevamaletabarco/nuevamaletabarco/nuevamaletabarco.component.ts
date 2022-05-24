@@ -10,7 +10,7 @@ import { Maletabarcoimpl } from 'src/app/maletas/models/maletabarcoimpl';
   styleUrls: ['./nuevamaletabarco.component.css'],
 })
 export class NuevamaletabarcoComponent implements OnInit {
-  maleta: Maletabarco = new Maletabarcoimpl();
+  maleta: Maletabarco = new Maletabarcoimpl(0,'');
   elementos: ElementoEquipo[] = [];
 
   constructor(

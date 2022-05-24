@@ -22,7 +22,7 @@ export class MaletasComponent implements OnInit {
   public maletasCargadas1: any = null;
   maletasBarco: Maletabarco[] = [];
   maletasCabina: Maletacabina[] = [];
-  maletaBarco = new Maletabarcoimpl();
+  maletaBarco = new Maletabarcoimpl(0,'');
   maletaCabina = new Maletacabinaimpl();
   //constructor(private maletaService : MaletaService, private auxService : AuxiliarService) {}
   constructor(private httpClient: HttpClient) {}

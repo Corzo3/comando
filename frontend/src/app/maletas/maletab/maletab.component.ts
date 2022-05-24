@@ -11,10 +11,9 @@ import { Maleta } from '../models/maleta';
 export class MaletabComponent implements OnInit {
   @Input()
   maleta!: Maletabarco;
-  elementos: ElementoEquipo[] = [];
   @Output() maletaSeleccionada = new EventEmitter<Maleta>();
+  elementos: ElementoEquipo[] = [];
   constructor() {}
-
 
   ngOnInit(): void {}
   mostrarContenido() {
@@ -24,7 +23,7 @@ export class MaletabComponent implements OnInit {
     this.elementos = equipo;
   }
 
-  seleccionarMaleta(maleta:Maleta):void{
+  seleccionarMaleta(maleta: Maleta): void {
     this.maletaSeleccionada.emit(maleta);
   }
 }

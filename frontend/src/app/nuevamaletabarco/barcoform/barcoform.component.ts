@@ -6,6 +6,7 @@ import { Maletacabinaimpl } from 'src/app/maletas/models/maletacabinaimpl';
 import { Maletacabina } from 'src/app/maletas/models/maletacabina';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import equipo from 'src/assets/equipo.json';
+import { MaletaService } from 'src/app/maletas/service/maleta.service';
 @Component({
   selector: 'app-barcoform',
   templateUrl: './barcoform.component.html',
@@ -13,10 +14,10 @@ import equipo from 'src/assets/equipo.json';
 })
 export class BarcoformComponent implements OnInit {
 
-  constructor( ) {}
+  constructor(private maletaService : MaletaService ) {}
   public maletasBarco: Maletabarco[] = [];
-  maletaBarco: Maletabarco = new Maletabarcoimpl;
-  maletaCabina: Maletacabina = new Maletacabinaimpl;
+  maletaBarco: Maletabarcoimpl = new Maletabarcoimpl(0,'');
+  maletaCabina: Maletacabina = new Maletacabinaimpl();
   creada = false;
   mensaje = '';
   formulario: number = 0;
@@ -63,6 +64,10 @@ export class BarcoformComponent implements OnInit {
     }
 
     console.log(this.elementosSeleccionados);
+  }
+
+  create(): void {
+    this.maletaService.postMaletaBarco(this.maletaBarco)
   }
 
 }
