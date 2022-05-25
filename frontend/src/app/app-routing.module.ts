@@ -13,13 +13,6 @@ const routes: Routes = [
       import('./maletas/maletas.module').then((m) => m.MaletasModule),
   },
   {
-    path: 'nuevamaletabarco',
-    loadChildren: () =>
-      import('./nuevamaletabarco/nuevamaletabarco.module').then(
-        (m) => m.NuevamaletabarcoModule
-      ),
-  },
-  {
     path: 'elementosequipo',
     loadChildren: () =>
       import('./elementosequipo/elementosequipo.module').then(

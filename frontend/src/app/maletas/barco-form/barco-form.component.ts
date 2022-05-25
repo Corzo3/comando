@@ -1,18 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Maletabarco } from 'src/app/maletas/models/maletabarco';
-import { Maletabarcoimpl } from 'src/app/maletas/models/maletabarcoimpl';
-import { Maletacabinaimpl } from 'src/app/maletas/models/maletacabinaimpl';
-import { Maletacabina } from 'src/app/maletas/models/maletacabina';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
+import { Maletabarco } from '../models/maletabarco';
+import { Maletabarcoimpl } from '../models/maletabarcoimpl';
+import { Maletacabina } from '../models/maletacabina';
+import { Maletacabinaimpl } from '../models/maletacabinaimpl';
+import { MaletaService } from '../service/maleta.service';
 import equipo from 'src/assets/equipo.json';
-import { MaletaService } from 'src/app/maletas/service/maleta.service';
 @Component({
-  selector: 'app-barcoform',
-  templateUrl: './barcoform.component.html',
-  styleUrls: ['./barcoform.component.css'],
+  selector: 'app-barco-form',
+  templateUrl: './barco-form.component.html',
+  styleUrls: ['./barco-form.component.css']
 })
-export class BarcoformComponent implements OnInit {
+export class BarcoFormComponent implements OnInit {
 
   constructor(private maletaService : MaletaService ) {}
   public maletasBarco: Maletabarco[] = [];

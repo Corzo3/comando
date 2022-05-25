@@ -37,12 +37,12 @@ export class MaletaService {
   mapearMaletaB(maletaApi: any): Maletabarcoimpl {
     let maleta = new Maletabarcoimpl(0, '');
     maleta.id = this.getId(maletaApi._links.maletabarco.href);
-    maleta.peso = maletaApi.pesoEnVacio;
+    maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.fechaRecogida = maletaApi.fechaRecogida;
     return maleta;
   }
 
-  /* createMaletaB(maletaB: Maletabarco): Observable<any> {
+  createMaletaB(maletaB: Maletabarco): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaB).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -92,14 +92,14 @@ export class MaletaService {
   mapearMaletaC(maletaApi: any): Maletacabinaimpl {
     let maleta = new Maletacabinaimpl();
     maleta.id = this.getId(maletaApi._links.maletacabina.href);
-    maleta.peso = maletaApi.pesoEnVacio;
+    maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.altura = maletaApi.altura;
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
     return maleta;
-  } */
+  }
 
-  /* createMaletaC(maletaC: Maletacabina): Observable<any> {
+  createMaletaC(maletaC: Maletacabina): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaC).pipe(
       catchError((e) => {
         if (e.status === 400) {
@@ -147,7 +147,7 @@ export class MaletaService {
         return throwError(e);
       })
     );
-  } */
+  }
 
   postMaletaBarco(maleta: Maletabarcoimpl) {
     this.http.post(this.urlEndPoint, maleta).subscribe();

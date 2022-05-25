@@ -50,7 +50,37 @@
 <!--  <div *ngFor="let maleta of maletasCargadas">
   <app-maletab *ngIf="maleta" [maleta]="maleta">Maletas</app-maletab>
 </div> -->
-<p>Maletas de barco:</p>
+<!-- <p>Maletas de barco:</p>
 <pre>{{maletasCargadas | json}}</pre>
 <p>Maletas de cabina:</p>
-<pre>{{maletasCargadas1 | json}}</pre>
+<pre>{{maletasCargadas1 | json}}</pre> -->
+
+
+
+<section class="maletas">
+  <div class="container-fluid">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col">
+            <h1>Maletas</h1>
+          </div>
+          <div class="col">
+            <button type="button" class="mt-5 btn btn-success btn-md" (click)='registrarMaletaBarco()'>Nueva Maleta</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseViajes">
+            <div *ngFor="let viaje of maletasBarco">
+              <app-maletasbarco [maletaBarco]="maletaBarcoVerDatos" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+            </div>
+          </div>
+          <ng-template #elseViajes>
+            <h4 class="card-title"><b>NO HAY MALETAS DISPONIBLES</b></h4>
+          </ng-template>
+
+        </div>
+
+      </div>
+
+    </div>
+</section>
