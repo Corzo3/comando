@@ -1,18 +1,39 @@
 <div class="p-2 m-1 card">
+    <div class="row">
+        <div class="col-4">
+            <h3 class="card-title">
+                <img class="petate" src="assets/maletaB.png" alt="Maleta Barco"> <b> Maleta de Barco {{maletaBarco.id}}</b>
+            </h3>
+            <p class="card-text">
+                Fecha de Recogida: <b>{{maletaBarco.fechaRecogida |date: 'dd/MM/YYYY'}}</b>
+            </p>
+            <p class="card-text">
+                Peso: <b>{{maletaBarco.pesoEnVacio}}</b>
+            </p>
+        </div>
+        <div class="col-4">
 
-    <div class="card-body">
-        <h3 class="card-title">
-            <img class="petate" src="assets/maletaB.png" alt="Maleta Barco"> <b> Maleta de Barco {{maletaBarco.id}}</b></h3>
-        <p class="card-text">
-            Fecha de Recogida: <b>{{maletaBarco.fechaRecogida}}</b>
-        </p>
-        <p class="card-text">
-            Peso: <b>{{maletaBarco.pesoEnVacio}}</b>
-        </p>
-        <p class="card-text">
-            Elementos: <b>{{maletaBarco.elementos}}</b>
-        </p>
-
-        <a class="p-1 m-1 btn btn-warning" (click)='seleccionarMaletaBarco(maletaBarco)'>Acceder</a>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Contenido</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{maletaBarco.elementos |json}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Ver contenido
+  </button>
+        </div>
     </div>
 </div>

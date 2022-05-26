@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-8">
                     <h1>Maletas de Barco</h1>
                     <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
                         <div *ngFor="let maleta of maletasBarco">
@@ -30,10 +30,10 @@
                     </ng-template>
                 </div>
             </div>
-
+            <hr>
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-8">
                     <h1>Maletas de Cabina</h1>
                     <div class="col-sm-12" *ngIf="maletasCabina.length > 0">
                         <div *ngFor="let maleta of maletasCabina">
