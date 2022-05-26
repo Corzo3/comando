@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Maletabarco } from '../models/maletabarco';
 import { Maletabarcoimpl } from '../models/maletabarcoimpl';
+import { Maletacabina } from '../models/maletacabina';
+import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 
 @Component({
   selector: 'app-maletasbarco',
@@ -10,6 +12,7 @@ import { Maletabarcoimpl } from '../models/maletabarcoimpl';
 export class MaletasbarcoComponent implements OnInit {
   @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
   @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
+
   constructor() {}
 
   ngOnInit(): void {}

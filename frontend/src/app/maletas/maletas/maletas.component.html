@@ -1,55 +1,3 @@
-<!-- <div class="container fluid">
-  <div class="col-6"></div>
-  <div class="row">
-    <h3 class="petate">Maleta de Barco</h3>
-    <div class="" ngIf="maleta" *ngFor="let maleta of maletasBarco">
-      <app-maletab [maleta]="maletaBarco"></app-maletab>
-    </div>
-    <div class="col-6">
-      <app-lista></app-lista>
-    </div>
-  </div> -->
-  <!-- <div class="row">
-      <div class="col-6">
-          <h3 class="petate">Maleta de Barco nº {{maletaBarco.id}} ({{maletaBarco.peso}} Kg)</h3>
-          <app-maletab></app-maletab>
-      </div>
-      <div class="col-6">
-          <app-lista class="listado"></app-lista>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col-6">
-          <h3 class="petate">Maleta de Barco nº {{maletaBarco.id}} ({{maletaBarco.peso}} Kg)</h3>
-          <app-maletab></app-maletab>
-      </div>
-      <div class="col-6">
-          <app-lista></app-lista>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col-6">
-          <h3 class="petate">Maleta de Barco nº {{maletaBarco.id}} ({{maletaBarco.peso}} Kg)</h3>
-          <app-maletab></app-maletab>
-      </div>
-      <div class="col-6">
-          <app-lista></app-lista>
-      </div>
-  </div> -->
-  <!-- <div class="row">
-      <div class="col-6">
-          <h3 class="petate">Maleta de Cabina {{maletaCabina.id}} ({{maletaCabina.peso}} Kg)</h3>
-          <app-maletac></app-maletac>
-      </div>
-      <div class="col-6">
-          <app-lista></app-lista>
-      </div>
-  </div> -->
-<!-- </div> -->
-
-<!--  <div *ngFor="let maleta of maletasCargadas">
-  <app-maletab *ngIf="maleta" [maleta]="maleta">Maletas</app-maletab>
-</div> -->
 <!-- <p>Maletas de barco:</p>
 <pre>{{maletasCargadas | json}}</pre>
 <p>Maletas de cabina:</p>
@@ -58,29 +6,43 @@
 
 
 <section class="maletas">
-  <div class="container-fluid">
-      <div class="col-md-12">
-        <div class="row">
-          <div class="col">
-            <h1>Maletas</h1>
-          </div>
-          <div class="col">
-            <button type="button" class="mt-5 btn btn-success btn-md" (click)='registrarMaletaBarco()'>Nueva Maleta</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseViajes">
-            <div *ngFor="let viaje of maletasBarco">
-              <app-maletasbarco [maletaBarco]="maletaBarcoVerDatos" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class="col">
+                    <button type="button" class="mt-5 btn btn-success btn-md" (click)='registrarMaletaBarco()'>Nueva
+            Maleta</button>
+                </div>
             </div>
-          </div>
-          <ng-template #elseViajes>
-            <h4 class="card-title"><b>NO HAY MALETAS DISPONIBLES</b></h4>
-          </ng-template>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h1>Maletas de Barco</h1>
+                    <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
+                        <div *ngFor="let maleta of maletasBarco">
+                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+                        </div>
+                    </div>
+                    <ng-template #elseMaletas>
+                        <h4 class="card-title"><b>NO HAY MALETAS DISPONIBLES</b></h4>
+                    </ng-template>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h1>Maletas de Cabina</h1>
+                    <div class="col-sm-12" *ngIf="maletasCabina.length > 0">
+                        <div *ngFor="let maleta of maletasCabina">
+                            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)">
+                            </app-maletascabina>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
-
     </div>
 </section>

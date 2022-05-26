@@ -1,20 +1,5 @@
-div.col-3 {
-  padding: 0%;
-}
-
-.petate{
-margin-top: 10%;
-margin-left: 50%;
-}
-
-.div.col-md-6{
-  margin-left: 50%;
-}
-.container-fluid{
-  margin-right: 0%;
-}
-
-.btn{
-  background-color: rgb(5, 71, 46);
-  border: none;
+.btn {
+    background-color: rgb(5, 71, 46);
+    border: none;
+    margin-left: 30%;
 }

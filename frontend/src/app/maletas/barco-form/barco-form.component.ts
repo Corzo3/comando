@@ -16,7 +16,7 @@ export class BarcoFormComponent implements OnInit {
   constructor(private maletaService : MaletaService ) {}
   public maletasBarco: Maletabarco[] = [];
   maletaBarco: Maletabarcoimpl = new Maletabarcoimpl(0,'');
-  maletaCabina: Maletacabina = new Maletacabinaimpl();
+  maletaCabina: Maletacabina = new Maletacabinaimpl(0,0,0,0);
   creada = false;
   mensaje = '';
   formulario: number = 0;
@@ -67,6 +67,9 @@ export class BarcoFormComponent implements OnInit {
 
   create(): void {
     this.maletaService.postMaletaBarco(this.maletaBarco)
+  }
+  createC(): void {
+    this.maletaService.postMaletaCabina(this.maletaCabina)
   }
 
 }

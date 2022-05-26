@@ -9,6 +9,7 @@ import { BarcoFormComponent } from './barco-form/barco-form.component';
 import { MaletasbarcoComponent } from './maletasbarco/maletasbarco.component';
 import { MaletabarcoComponent } from './maletasbarco/maletabarco/maletabarco.component';
 import { ElementosequipoModule } from '../elementosequipo/elementosequipo.module';
+import { MaletascabinaComponent } from './maletascabina/maletascabina.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ElementosequipoModule } from '../elementosequipo/elementosequipo.module
     BarcoFormComponent,
     MaletasbarcoComponent,
     MaletabarcoComponent,
+    MaletascabinaComponent,
 
   ],
   imports: [CommonModule, MaletasRoutingModule, FormsModule, ElementosequipoModule],
