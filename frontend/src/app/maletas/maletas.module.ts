@@ -10,6 +10,7 @@ import { MaletasbarcoComponent } from './maletasbarco/maletasbarco.component';
 import { MaletabarcoComponent } from './maletasbarco/maletabarco/maletabarco.component';
 import { ElementosequipoModule } from '../elementosequipo/elementosequipo.module';
 import { MaletascabinaComponent } from './maletascabina/maletascabina.component';
+import { ElementoListaItemComponent } from './elemento-lista-item/elemento-lista-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MaletascabinaComponent } from './maletascabina/maletascabina.component'
     MaletasbarcoComponent,
     MaletabarcoComponent,
     MaletascabinaComponent,
+    ElementoListaItemComponent,
 
   ],
   imports: [CommonModule, MaletasRoutingModule, FormsModule, ElementosequipoModule],

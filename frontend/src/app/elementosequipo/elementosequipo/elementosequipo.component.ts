@@ -12,9 +12,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./elementosequipo.component.css'],
 })
 export class ElementosequipoComponent implements OnInit {
-/*   private urlApi = 'https://comando-app.herokuapp.com/api'
-  private urlApiElementos = 'https://comando-app.herokuapp.com/api/elementos' */
-  // public elementosCargados : any = null;
 
   elementos: ElementoEquipo[] = [];
   todosElementos: ElementoEquipo[] = [];
@@ -24,27 +21,21 @@ export class ElementosequipoComponent implements OnInit {
 
 
   constructor(
-    // private httpClient : HttpClient,
     private elementoService: ElementoService,
     private auxService: AuxiliarService
   ) {}
 
 
   ngOnInit(): void{
-    // this.getRespuestaApi();
+
      this.elementoService
       .getElementos()
       .subscribe(
         (response) =>
           (this.elementos = this.elementoService.extraerElementos(response))
       );
-      this.getTodosElementos();
+
   }
-
-
-/* private getRespuestaApi(){
-  this.httpClient.get(this.urlApiElementos).subscribe(apiResult => (this.elementosCargados = apiResult));
-} */
 
   getTodosElementos(): void {
     this.elementoService.getElementos().subscribe((r) => {

@@ -16,6 +16,7 @@ export class MaletaService {
   private urlEndPoint: string = `${this.host}maletasbarco`;
   private urlEndPoint1: string = `${this.host}maletascabina`;
 
+
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
   getId(url: string): string {

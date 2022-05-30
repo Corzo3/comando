@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { Maletabarco } from '../models/maletabarco';
 import { Maletabarcoimpl } from '../models/maletabarcoimpl';
 import { Maletacabina } from '../models/maletacabina';
 import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 import { MaletaService } from '../service/maleta.service';
-import equipo from 'src/assets/equipo.json';
+import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
+import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 @Component({
   selector: 'app-barco-form',
   templateUrl: './barco-form.component.html',
@@ -13,19 +14,28 @@ import equipo from 'src/assets/equipo.json';
 })
 export class BarcoFormComponent implements OnInit {
 
-  constructor(private maletaService : MaletaService ) {}
+  constructor(private maletaService : MaletaService, private elementoService: ElementoService ) {}
   public maletasBarco: Maletabarco[] = [];
   maletaBarco: Maletabarcoimpl = new Maletabarcoimpl(0,'');
   maletaCabina: Maletacabina = new Maletacabinaimpl(0,0,0,0);
   creada = false;
   mensaje = '';
   formulario: number = 0;
-  public elementos: ElementoEquipo[] = equipo;
+  public elementos: ElementoEquipo[] = [];
   @Input() elementosSeleccionados: ElementoEquipo[] = [];
-  // elementosNuevos: ElementoEquipo[] = [];
-  listaCargada: boolean = false;
+  @Input()
+  elemento: ElementoequipoImpl = new ElementoequipoImpl();
 
-  ngOnInit(): void {}
+  listaCargada: boolean = true;
+
+  ngOnInit(): void {
+    this.elementoService
+    .getElementos()
+    .subscribe(
+      (response) =>
+        (this.elementos = this.elementoService.extraerElementos(response))
+    );
+  }
   mostrarAyuda() {
     alert(
       'La fecha que debe introducir es aproximadamente un mes antes de la fecha prevista para desplegar'
@@ -62,7 +72,22 @@ export class BarcoFormComponent implements OnInit {
       );
     }
 
-    console.log(this.elementosSeleccionados);
+    // console.log(this.elementosSeleccionados);
+  }
+
+  getNombreElementoC(e: any, elemento: ElementoEquipo) {
+    if (e.target.checked) {
+      console.log(elemento.nombre + ' checked');
+      this.elementosSeleccionados.push(elemento);
+      this.elementosSeleccionados = this.maletaCabina.elementos
+    } else {
+      console.log(elemento.nombre + ' unchecked');
+      this.elementosSeleccionados = this.elementosSeleccionados.filter(
+        (m) => m != elemento
+      );
+    }
+
+    // console.log(this.elementosSeleccionados);
   }
 
   create(): void {

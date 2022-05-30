@@ -12,7 +12,7 @@ import { ElementoequipoImpl } from '../models/elementoequipo-impl';
 })
 export class ElementoService {
   private host: string = environment.host;
-  private urlEndPoint: string = `${this.host}elementos`;
+  private urlEndPoint: string = `${this.host}elementos?page=0&size=100`;
 
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
