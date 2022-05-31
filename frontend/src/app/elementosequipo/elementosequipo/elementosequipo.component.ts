@@ -18,6 +18,7 @@ export class ElementosequipoComponent implements OnInit {
   elementoVerDatos!: ElementoEquipo;
   numPaginas: number = 0;
   listaCargada: boolean = false;
+  elemento : ElementoEquipo = new ElementoequipoImpl();
 
 
   constructor(
@@ -53,6 +54,10 @@ export class ElementosequipoComponent implements OnInit {
   public cargarLista() {
     this.elementos = equipo;
     this.listaCargada = true;
+  }
+
+  create(): void {
+    this.elementoService.postElemento(this.elemento)
   }
 
 }

@@ -13,6 +13,7 @@ import { ElementoequipoImpl } from '../models/elementoequipo-impl';
 export class ElementoService {
   private host: string = environment.host;
   private urlEndPoint: string = `${this.host}elementos?page=0&size=100`;
+  private urlEndPoint1: string = `${this.host}elementos`
 
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
@@ -44,7 +45,7 @@ export class ElementoService {
   }
 
   create(elemento: ElementoEquipo): Observable<any> {
-    return this.http.post(`${this.urlEndPoint}`, elemento).pipe(
+    return this.http.post(`${this.urlEndPoint1}`, elemento).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(e);
@@ -59,7 +60,7 @@ export class ElementoService {
 
   delete(id: string): Observable<ElementoEquipo> {
     return this.http
-      .delete<ElementoEquipo>(`${this.urlEndPoint}/${id}`)
+      .delete<ElementoEquipo>(`${this.urlEndPoint1}/${id}`)
       .pipe(
         catchError((e) => {
           if (e.error.mensaje) {
@@ -72,7 +73,7 @@ export class ElementoService {
 
   update(elemento: ElementoEquipo): Observable<any> {
     return this.http
-      .put<any>(`${this.urlEndPoint}/${elemento.id}`, elemento)
+      .put<any>(`${this.urlEndPoint1}/${elemento.id}`, elemento)
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
@@ -97,8 +98,14 @@ export class ElementoService {
     );
   }
 
+  postElemento(elemento: ElementoequipoImpl){
+    this.http.post(this.urlEndPoint1,elemento).subscribe();
+    alert('Se ha creado un nuevo elemento de equipo')
+  }
+  createE(elemento: ElementoequipoImpl) {
+    return this.http.post(`${this.urlEndPoint1}`, elemento);
 
-
+  }
 
   getElementosPagina(pagina: number): Observable<any> {
     return this.auxService.getItemsPorPagina(this.urlEndPoint, pagina);
