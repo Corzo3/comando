@@ -7,6 +7,8 @@ import { Maletacabina } from '../models/maletacabina';
 import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
+import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
+import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 
 @Injectable({
   providedIn: 'root',
@@ -120,7 +122,7 @@ export class MaletaService {
   }
 
   deleteMaletaC(id: string): Observable<Maletacabina> {
-    return this.http.delete<Maletacabina>(`${this.urlEndPoint}/${id}`).pipe(
+    return this.http.delete<Maletacabina>(`${this.urlEndPoint1}/${id}`).pipe(
       catchError((e) => {
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
@@ -171,5 +173,28 @@ export class MaletaService {
 
   createC(maletaCabina: Maletacabinaimpl): Observable<any> {
     return this.http.post(`${this.urlEndPoint1}`, maletaCabina)
+  }
+
+  getElementosMaletaB(idMaleta: string) : Observable <any>{
+    return this.http.get<any>(`${this.host}maletasbarco/${idMaleta}/elementos?page=0&size=1000`)
+  }
+
+  extraerElementosMaleta(respuestaApi: any) : ElementoEquipo[]{
+    const elementos : ElementoEquipo [] = [];
+    respuestaApi._embedded.maletas.elementos.forEach((e: any) => {
+      elementos.push(this.mapearElemento(e));
+    });
+    return elementos;
+  }
+
+  mapearElemento(elementoApi:any) : ElementoEquipo{
+    let elemento : ElementoEquipo = new ElementoequipoImpl();
+    elemento.nombre = elementoApi.nombre;
+    elemento.peso = elementoApi.peso;
+    return elemento;
+  }
+
+  getElementosMaletaC(idMaleta: string) : Observable <any>{
+    return this.http.get<any>(`${this.host}maletascabina/${idMaleta}/elementos?page=0&size=1000`)
   }
 }

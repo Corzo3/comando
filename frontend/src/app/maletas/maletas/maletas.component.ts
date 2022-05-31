@@ -54,4 +54,19 @@ export class MaletasComponent implements OnInit {
     this.router.navigate([`maletas/barco-form`])
   }
 
+  onMaletaBarcoEliminar(maleta : Maletabarco){
+    this.maletaService.deleteMaletaB(maleta.id).subscribe(response => {
+      this.router.navigate(['maletas']);
+      this.maletasBarco = this.maletasBarco.filter(m => maleta !== m)
+      location.reload;
+    });
+  }
+  onMaletaCabinaEliminar(maleta : Maletacabina){
+    this.maletaService.deleteMaletaC(maleta.id).subscribe(response => {
+      this.router.navigate(['maletas']);
+      this.maletasCabina = this.maletasCabina.filter(m => maleta !== m)
+      location.reload;
+    });
+  }
+
 }

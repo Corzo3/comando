@@ -11,6 +11,8 @@ export class MaletascabinaComponent implements OnInit {
 
   @Input() maletaCabina: Maletacabina = new Maletacabinaimpl(0,0,0,0);
   @Output() maletaCabinaSeleccionada = new EventEmitter<Maletacabina>();
+  @Output() maletaCabinaEliminar = new EventEmitter<Maletacabina>();
+  @Output() maletaCabinaEditar = new EventEmitter<Maletacabina>();
 
   constructor() { }
 
@@ -19,6 +21,16 @@ export class MaletascabinaComponent implements OnInit {
 
   seleccionarMaletaCabina(maletaCabina: Maletacabina): void {
     this.maletaCabinaSeleccionada.emit(maletaCabina);
+  }
+
+  eliminar(): void{
+    if (confirm('¿Está seguro?')){
+      this.maletaCabinaEliminar.emit(this.maletaCabina);
+    }
+  }
+
+  editar(): void {
+    this.maletaCabinaEditar.emit(this.maletaCabina);
   }
 
 }

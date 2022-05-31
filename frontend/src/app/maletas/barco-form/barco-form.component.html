@@ -40,7 +40,6 @@
                 'is-valid': !pes.invalid
               }"
             />
-
             <label for="fechaRecogida" class="nombre-campo">
               Fecha de Recogida:
               <img
@@ -64,7 +63,7 @@
                 'is-valid': !fechRec.invalid
               }"
             />
-          </div>
+                                </div>
           <div *ngIf="formulario == 2">
             <label for="peso" class="nombre-campo">Peso</label>
             <input
@@ -192,7 +191,7 @@
           Cargar
         </button></span
       > -->
-      <div class="list-items" >
+      <div class="list-items">
         <div class="item" *ngFor="let elemento of elementos">
           <input
             type="checkbox"
@@ -211,7 +210,10 @@
           class="seleccionado"
           *ngFor="let elemento of elementosSeleccionados"
         >
-        <app-elemento-lista-item *ngIf="elemento" [elemento]="elemento"></app-elemento-lista-item>
+          <app-elemento-lista-item
+            *ngIf="elemento"
+            [elemento]="elemento"
+          ></app-elemento-lista-item>
         </div>
       </div>
     </div>

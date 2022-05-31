@@ -15,7 +15,7 @@
                     <h1>Maletas de Barco</h1>
                     <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
                         <div *ngFor="let maleta of maletasBarco">
-                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)"></app-maletasbarco>
                         </div>
                     </div>
                     <ng-template #elseMaletas>
@@ -30,7 +30,7 @@
                     <h1>Maletas de Cabina</h1>
                     <div class="col-sm-12" *ngIf="maletasCabina.length > 0">
                         <div *ngFor="let maleta of maletasCabina">
-                            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)">
+                            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)" (maletaCabinaEliminar)="onMaletaCabinaEliminar($event)">
                             </app-maletascabina>
                         </div>
                     </div>
