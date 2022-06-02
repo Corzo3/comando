@@ -17,6 +17,7 @@ export class ElementoService {
 
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
+  //trae todos los elementos cargados en la api
   getElementos(): Observable<any> {
     return this.http.get<any>(this.urlEndPoint);
   }
@@ -43,6 +44,8 @@ export class ElementoService {
      elemento.peso = elementoApi.peso;
      return elemento;
   }
+
+  // crea un nuevo elemento de equipo que se añade al listado
 
   create(elemento: ElementoEquipo): Observable<any> {
     return this.http.post(`${this.urlEndPoint1}`, elemento).pipe(

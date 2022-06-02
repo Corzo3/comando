@@ -58,16 +58,18 @@ export class MaletaService {
     return maleta;
   }
 
+  // cambiado todo lo que ponía deprecated por lo que proponía el IDE. meto e donde pone new Error ('test')
+
   createMaletaB(maletaB: Maletabarco): Observable<any> {
     return this.http.post(`${this.urlEndPoint}`, maletaB).pipe(
       catchError((e) => {
         if (e.status === 400) {
-          return throwError(e);
+          return throwError(() => new Error(e));
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error('test'));
       })
     );
   }
@@ -78,7 +80,7 @@ export class MaletaService {
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -87,12 +89,12 @@ export class MaletaService {
     return this.http.put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta).pipe(
       catchError((e) => {
         if (e.status === 400) {
-          return throwError(e);
+          return throwError(() => new Error(e));
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -111,12 +113,12 @@ export class MaletaService {
     return this.http.post(`${this.urlEndPoint1}`, maletaC).pipe(
       catchError((e) => {
         if (e.status === 400) {
-          return throwError(e);
+          return throwError(() => new Error(e));
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -127,21 +129,21 @@ export class MaletaService {
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
 
   updateMaletaC(maleta: Maletacabina): Observable<any> {
-    return this.http.put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta).pipe(
+    return this.http.put<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta).pipe(
       catchError((e) => {
         if (e.status === 400) {
-          return throwError(e);
+          return throwError(() => new Error(e))
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -152,7 +154,7 @@ export class MaletaService {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }

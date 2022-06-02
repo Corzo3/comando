@@ -9,14 +9,14 @@
                     <form #elementoForm="ngForm" class="row g-3 needs-validation">
                         <div class="col-md-4 position-relative ">
                             <label for="validationTooltip01" class="form-label campo-nombre">Nombre</label>
-                            <input name="nombre" type="text" class="form-control campo-nombre" id="validationTooltip01" value="" required [(ngModel)] = "elemento.nombre">
+                            <input name="nombre" type="text" class="form-control campo-nombre" id="validationTooltip01" value="" required [(ngModel)]="elemento.nombre">
                             <div class="valid-tooltip">
                                 nombre válido
                             </div>
                         </div>
                         <div class="col-md-4 position-relative">
                             <label for="validationTooltip02" class="form-label campo-peso">Peso</label>
-                            <input name="peso" type="number" class="form-control campo-peso" id="validationTooltip02" value="" required min="0" [(ngModel)] = "elemento.peso">
+                            <input name="peso" type="number" class="form-control campo-peso" id="validationTooltip02" value="" required min="0" [(ngModel)]="elemento.peso">
                             <div class="valid-tooltip">
                                 peso válido
                             </div>

@@ -36,23 +36,13 @@ export class BarcoFormComponent implements OnInit {
         (this.elementos = this.elementoService.extraerElementos(response))
     );
   }
+
+  //muestra el mensaje de ayuda al usuario para calcular la fecha que tiene que introducir
   mostrarAyuda() {
     alert(
       'La fecha que debe introducir es aproximadamente un mes antes de la fecha prevista para desplegar'
     );
   }
-
-  public avisarCreada() {
-    this.creada = true;
-    this.mensaje = 'Se ha creado una nueva maleta de barco ';
-  }
-
-  borrarMensaje() {
-    this.mensaje = '';
-    this.maletaBarco.elementos = [];
-    this.maletasBarco = [];
-  }
-
   public guardarMaletaBarco (){
     this.maletasBarco.push({...this.maletaBarco});
   }
@@ -60,11 +50,14 @@ export class BarcoFormComponent implements OnInit {
     this.listaCargada = true;
   }
 
+  // método para que al pulsar el checkbox se añada el elemento a la maleta de barco
+
   getNombreElemento(e: any, elemento: ElementoEquipo) {
     if (e.target.checked) {
       console.log(elemento.nombre + ' checked');
       this.elementosSeleccionados.push(elemento);
       this.elementosSeleccionados = this.maletaBarco.elementos
+      elemento.maleta = this.maletaBarco.id
     } else {
       console.log(elemento.nombre + ' unchecked');
       this.elementosSeleccionados = this.elementosSeleccionados.filter(
@@ -75,6 +68,7 @@ export class BarcoFormComponent implements OnInit {
     // console.log(this.elementosSeleccionados);
   }
 
+   // método para que al pulsar el checkbox se añada el elemento a la maleta de cabina
   getNombreElementoC(e: any, elemento: ElementoEquipo) {
     if (e.target.checked) {
       console.log(elemento.nombre + ' checked');
@@ -90,9 +84,12 @@ export class BarcoFormComponent implements OnInit {
     // console.log(this.elementosSeleccionados);
   }
 
+  // crea una nueva maleta de barco
   create(): void {
     this.maletaService.postMaletaBarco(this.maletaBarco)
   }
+
+  //crea una nueva maleta de cabina
   createC(): void {
     this.maletaService.postMaletaCabina(this.maletaCabina)
   }

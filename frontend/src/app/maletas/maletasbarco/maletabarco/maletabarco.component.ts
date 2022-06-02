@@ -16,6 +16,8 @@ export class MaletabarcoComponent implements OnInit {
   elementos: ElementoEquipo[] = [];
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEditar = new EventEmitter<Maletabarco>();
+  @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
+
 
   constructor(
     private maletaService: MaletaService,
@@ -33,6 +35,20 @@ export class MaletabarcoComponent implements OnInit {
   cargarMaletaBarco(): string {
     const idBarraNavegacion: string = this.activateRoute.snapshot.params['id'];
     return idBarraNavegacion;
+  }
+
+  seleccionarMaletaBarco(maletaBarco: Maletabarco): void {
+    this.maletaBarcoSeleccionada.emit(maletaBarco);
+  }
+
+  eliminar(): void{
+    if (confirm('¿Está seguro?')){
+      this.maletaBarcoEliminar.emit(this.maletaBarco);
+    }
+  }
+
+  editar(): void {
+    this.maletaBarcoEditar.emit(this.maletaBarco);
   }
 
 }
