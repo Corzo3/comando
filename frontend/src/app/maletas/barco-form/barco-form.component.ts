@@ -57,7 +57,6 @@ export class BarcoFormComponent implements OnInit {
       console.log(elemento.nombre + ' checked');
       this.elementosSeleccionados.push(elemento);
       this.elementosSeleccionados = this.maletaBarco.elementos
-      elemento.maleta = this.maletaBarco.id
     } else {
       console.log(elemento.nombre + ' unchecked');
       this.elementosSeleccionados = this.elementosSeleccionados.filter(

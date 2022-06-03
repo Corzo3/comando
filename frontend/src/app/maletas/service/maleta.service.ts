@@ -9,6 +9,7 @@ import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
+import { Maletaimpl } from '../models/maletaimpl';
 
 @Injectable({
   providedIn: 'root',
@@ -87,7 +88,7 @@ export class MaletaService {
   }
 
   updateMaletaB(maleta: Maletabarco): Observable<any> {
-    return this.http.put<any>(`${this.urlEndPoint}/${maleta.id}`, maleta).pipe(
+    return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(() => new Error(e));
@@ -139,7 +140,7 @@ export class MaletaService {
   }
 
   updateMaletaC(maleta: Maletacabina): Observable<any> {
-    return this.http.put<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta).pipe(
+    return this.http.patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta).pipe(
       catchError((e) => {
         if (e.status === 400) {
           return throwError(() => new Error(e))
@@ -202,5 +203,13 @@ export class MaletaService {
 
   getElementosMaletaC(idMaleta: string) : Observable <any>{
     return this.http.get<any>(`${this.host}maletascabina/${idMaleta}/elementos?page=0&size=1000`)
+  }
+
+  patchMaletaBarco(direccion : string){
+    this.http.patch(this.urlEndPoint, direccion).subscribe();
+  }
+
+  patchMaletaBarco2(maleta : Maletabarcoimpl){
+    return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta);
   }
 }

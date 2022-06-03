@@ -15,7 +15,7 @@
                     <h1>Maletas de Barco</h1>
                     <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
                         <div *ngFor="let maleta of maletasBarco">
-                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)"></app-maletasbarco>
+                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)" (maletaBarcoEditar)="onMaletaBarcoEditar($event)"></app-maletasbarco>
                         </div>
                     </div>
                     <ng-template #elseMaletas>

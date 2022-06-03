@@ -15,8 +15,8 @@ const routes: Routes = [
     component: BarcoFormComponent,
   },
   {
-    path: 'maletaBarco/:id',
-    component: MaletabarcoComponent,
+    path: 'barco-form/:id',
+    component: BarcoFormComponent,
   },
 ];
 

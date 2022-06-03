@@ -40,13 +40,13 @@ export class MaletasComponent implements OnInit {
 
   verDatos(maletaBarco: Maletabarco) : void {
     this.maletaBarcoVerDatos = maletaBarco;
-    this.router.navigate([`maletas/maletabarco/${maletaBarco.id}`]);
+    this.router.navigate([`maletasbarco/${maletaBarco.id}`]);
 
   }
 
   verDatosC(maletaCabina: Maletacabina) : void {
     this.maletaCabinaVerDatos = maletaCabina;
-    this.router.navigate([`maletas/maletabarco/${maletaCabina.id}`]);
+    this.router.navigate([`maletascabina/${maletaCabina.id}`]);
 
   }
 
@@ -67,6 +67,11 @@ export class MaletasComponent implements OnInit {
       this.maletasCabina = this.maletasCabina.filter(m => maleta !== m)
       location.reload;
     });
+  }
+
+  onMaletaBarcoEditar(maleta: Maletabarco){
+    let url = `maletas/barco-form/${maleta.id}`;
+    this.router.navigate([url])
   }
 
 }
