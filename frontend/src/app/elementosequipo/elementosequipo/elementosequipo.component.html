@@ -21,6 +21,11 @@
                                 peso válido
                             </div>
                         </div>
+                        <label class="form-label campo-peso">Seleccione la maleta</label><br>
+                        <select name="selectorFormulario" id="selectorMaleta" class="form-select" aria-label="Default select example" [(ngModel)]="elemento.maleta">
+          <option class="form-control campo-peso" *ngFor="let maleta of maletas " value={{maleta.urlMaleta}}>Maleta de Barco {{maleta.id}}</option>
+          <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
+      </select>
                         <div class="col-6">
                             <button class="btn btn-primary boton-formulario enviar" type="submit" (click)="create()">Crear elemento</button>
                         </div>

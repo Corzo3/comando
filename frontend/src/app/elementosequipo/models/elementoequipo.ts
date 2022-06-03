@@ -3,4 +3,5 @@ export interface ElementoEquipo {
   nombre: string;
   peso: number;
   maleta: string;
+  urlElemento: string;
 }

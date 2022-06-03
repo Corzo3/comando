@@ -4,4 +4,5 @@ export interface Maleta {
   id: string
   pesoEnVacio: number;
   elementos: ElementoEquipo[];
+  urlMaleta: string;
 }

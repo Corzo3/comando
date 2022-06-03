@@ -55,6 +55,7 @@ export class MaletaService {
     maleta.id = this.getId(maletaApi._links.maletabarco.href);
     maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.fechaRecogida = maletaApi.fechaRecogida;
+    maleta.urlMaleta = maletaApi._links.self.href;
     return maleta;
   }
 
@@ -106,6 +107,9 @@ export class MaletaService {
     maleta.altura = maletaApi.altura;
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
+    maleta.urlMaleta = maletaApi._links.self.href;
+    maleta.elementos = maletaApi._links.elementos.href;
+
     return maleta;
   }
 

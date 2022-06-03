@@ -5,4 +5,5 @@ export class Maletaimpl implements Maleta {
   id: string = '';
   pesoEnVacio: number = 0;
   elementos: ElementoEquipo[] = []
+  urlMaleta: string = '';
 }
