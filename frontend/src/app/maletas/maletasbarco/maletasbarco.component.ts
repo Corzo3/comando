@@ -39,4 +39,6 @@ export class MaletasbarcoComponent implements OnInit {
     this.maletaBarcoEditar.emit(this.maletaBarco);
   }
 
+
+
 }

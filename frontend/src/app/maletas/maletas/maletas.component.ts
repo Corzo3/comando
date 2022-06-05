@@ -19,8 +19,6 @@ import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 })
 export class MaletasComponent implements OnInit {
 
-  maletasCargadas : Maletabarco[] = [];
-  maletasCargadas1: Maletacabina[] = [];
   maletasBarco: Maletabarco[] = [];
   maletasCabina: Maletacabina[] = [];
   elementos : ElementoEquipo[] = [];
@@ -40,13 +38,13 @@ export class MaletasComponent implements OnInit {
 
   verDatos(maletaBarco: Maletabarco) : void {
     this.maletaBarcoVerDatos = maletaBarco;
-    this.router.navigate([`maletasbarco/${maletaBarco.id}`]);
+    // this.router.navigate([`maletasbarco/${maletaBarco.id}`]);
 
   }
 
   verDatosC(maletaCabina: Maletacabina) : void {
     this.maletaCabinaVerDatos = maletaCabina;
-    this.router.navigate([`maletascabina/${maletaCabina.id}`]);
+    // this.router.navigate([`maletascabina/${maletaCabina.id}`]);
 
   }
 
@@ -73,5 +71,9 @@ export class MaletasComponent implements OnInit {
     let url = `maletas/barco-form/${maleta.id}`;
     this.router.navigate([url])
   }
+
+
+
+
 
 }

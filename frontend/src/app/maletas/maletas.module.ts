@@ -11,6 +11,9 @@ import { MaletabarcoComponent } from './maletasbarco/maletabarco/maletabarco.com
 import { ElementosequipoModule } from '../elementosequipo/elementosequipo.module';
 import { MaletascabinaComponent } from './maletascabina/maletascabina.component';
 import { ElementoListaItemComponent } from './elemento-lista-item/elemento-lista-item.component';
+import { MaletacabinaComponent } from './maletascabina/maletacabina/maletacabina.component';
+
+
 
 @NgModule({
   declarations: [
@@ -21,10 +24,11 @@ import { ElementoListaItemComponent } from './elemento-lista-item/elemento-lista
     MaletabarcoComponent,
     MaletascabinaComponent,
     ElementoListaItemComponent,
-
+    MaletacabinaComponent,
   ],
   imports: [CommonModule, MaletasRoutingModule, FormsModule, ElementosequipoModule],
 
   providers: [AuxiliarService],
 })
 export class MaletasModule {}
+
