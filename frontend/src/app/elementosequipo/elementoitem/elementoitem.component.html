@@ -1,1 +1,15 @@
-<div for="">{{elemento.nombre | uppercase}} ({{elemento.peso}} kg)</div> <span> </span>
+<div class="container fluid" for=""> <div class="row"><label for="">{{elemento.nombre | uppercase}} ({{elemento.peso}} kg)</label> <div class="col" ><span class="maletas"><span *ngFor="let maleta of maletas"><!-- <select name="selectorFormulario" id="selectorMaleta" class="form-select" aria-label="Default select example" [(ngModel)]="elemento.maleta">
+  <option class="form-control campo-peso" *ngFor="let maleta of maletas " value={{maleta.urlMaleta}}>Maleta de Barco {{maleta.id}}</option>
+  <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
+</select> -->
+<label for="">B{{maleta.id}}</label>
+<input type="checkbox"  value ={{maleta.id}}>
+</span>
+<span *ngFor="let maleta of maletas1">
+<label for="">C{{maleta.id}}</label>
+<input type="checkbox"  value ={{maleta.id}}>
+</span>
+</span>
+</div>
+</div>
+</div>

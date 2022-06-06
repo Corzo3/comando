@@ -42,6 +42,7 @@ export class ElementoService {
      elemento.id = this.getId(elementoApi._links.elemento.href)
      elemento.nombre = elementoApi.nombre;
      elemento.peso = elementoApi.peso;
+     elemento.maleta = elementoApi._links.maleta.href;
      elemento.urlElemento = elementoApi._links.self.href
      return elemento;
   }

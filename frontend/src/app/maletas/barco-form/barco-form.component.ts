@@ -7,6 +7,7 @@ import { Maletacabinaimpl } from '../models/maletacabinaimpl';
 import { MaletaService } from '../service/maleta.service';
 import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
+import { Maleta } from '../models/maleta';
 @Component({
   selector: 'app-barco-form',
   templateUrl: './barco-form.component.html',
@@ -21,6 +22,9 @@ export class BarcoFormComponent implements OnInit {
   creada = false;
   mensaje = '';
   formulario: number = 0;
+  maletas : Maleta [] = [];
+  maletas1 : Maletacabina [] = [];
+
   public elementos: ElementoEquipo[] = [];
   @Input() elementosSeleccionados: ElementoEquipo[] = [];
   @Input()
@@ -35,6 +39,8 @@ export class BarcoFormComponent implements OnInit {
       (response) =>
         (this.elementos = this.elementoService.extraerElementos(response))
     );
+    this.maletaService.getMaletasB().subscribe((response) => this.maletas = this.maletaService.extraerMaletasBarco(response));
+    this.maletaService.getMaletasC().subscribe((response) => this.maletas1 = this.maletaService.extraerMaletasCabina(response));
   }
 
   //muestra el mensaje de ayuda al usuario para calcular la fecha que tiene que introducir
