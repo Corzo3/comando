@@ -24,4 +24,15 @@ export class ElementoitemComponent implements OnInit {
     this.maletaService.getMaletasC().subscribe((response) => this.maletas1 = this.maletaService.extraerMaletasCabina(response));
   }
 
+  getMaletaElemento(e: any, elemento : ElementoEquipo){
+    if(e.target.checked) {
+      elemento.maleta = e.target.value;
+      console.log(elemento.nombre + ' ' + elemento.maleta);
+    }else {
+      elemento.maleta = 'sin asignar'
+      console.log(elemento.nombre + ' ' + elemento.maleta);
+    }
+
+  }
+
 }
