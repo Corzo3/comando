@@ -1,0 +1,25 @@
+<form #barcoForm="ngForm">
+    <div class="form-row py-2">
+        <div class="">
+            <label for="peso" class="nombre-campo">Peso</label>
+            <input name="peso" type="number" class="form-control" placeholder="de su maleta vacía" min="0" [(ngModel)]="maletaBarco.pesoEnVacio" step="any" required #pes="ngModel" [ngClass]="{
+  'is-invalid': pes.invalid && (pes.dirty || pes.touched),
+  'is-valid': !pes.invalid
+}" />
+            <label for="fechaRecogida" class="nombre-campo">
+Fecha de Recogida:
+<img class="informacion" src="assets/informacion.png" alt="Información"
+  title="La fecha de recogida será aproximadamente un mes antes de la fecha de despliegue de su Unidad"
+  /></label>
+            <input name="fechaRecogida" type="date" class="form-control" [(ngModel)]="maletaBarco.fechaRecogida" required name="fecha" #fechRec="ngModel" [ngClass]="{
+  'is-invalid':
+    fechRec.invalid && (fechRec.dirty || fechRec.touched),
+  'is-valid': !fechRec.invalid
+}" />
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button type="reset" class="btn btn-primary boton-primario resetear">
+Resetear
+</button>
+            </div>

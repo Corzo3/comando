@@ -205,11 +205,7 @@ export class MaletaService {
     return this.http.get<any>(`${this.host}maletascabina/${idMaleta}/elementos?page=0&size=1000`)
   }
 
-  patchMaletaBarco(direccion : string){
-    this.http.patch(this.urlEndPoint, direccion).subscribe();
-  }
-
-  patchMaletaBarco2(maleta : Maletabarcoimpl){
+  patchMaletaBarco(maleta : Maletabarcoimpl){
     return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta);
   }
 }
