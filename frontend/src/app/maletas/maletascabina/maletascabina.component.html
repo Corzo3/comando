@@ -1,38 +1,32 @@
 <div class="container-fluid">
-  <div class="p-2 m-1 card">
-    <div class="row">
-      <div class="col-8">
-        <h3 class="card-title">
-          <img class="mochila" src="assets/mochila.png" alt="mochila" /><b>
+    <div class="p-2 m-1 card">
+        <div class="row">
+            <div class="col-8">
+                <h3 class="card-title">
+                    <img class="mochila" src="assets/mochila.png" alt="mochila" /><b>
             Maleta de Cabina {{ maletaCabina.id }}</b
           >
         </h3>
         <p class="card-text">
           Peso: <b>{{ maletaCabina.pesoEnVacio }}</b>
-        </p>
-        <p class="card-text">
-          Altura: <b>{{ maletaCabina.altura }}</b>
-        </p>
-        <p class="card-text">
-          Anchura: <b>{{ maletaCabina.anchura }}</b>
-        </p>
-        <p class="card-text">
-          Profundidad: <b>{{ maletaCabina.profundidad }}</b>
-        </p>
-      </div>
-      <div class="col-4">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#modalCabina"
-          (click)="maletaCabinaSeleccionada.emit(maletaCabina)"
-        >
+                    </p>
+                    <p class="card-text">
+                        Altura: <b>{{ maletaCabina.altura }}</b>
+                    </p>
+                    <p class="card-text">
+                        Anchura: <b>{{ maletaCabina.anchura }}</b>
+                    </p>
+                    <p class="card-text">
+                        Profundidad: <b>{{ maletaCabina.profundidad }}</b>
+                    </p>
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCabina" (click)="maletaCabinaSeleccionada.emit(maletaCabina)">
           Ver contenido
         </button>
-        <button class="btn btn-primary" (click)="eliminar()">Eliminar</button>
-        <button class="btn btn-primary" (click)="editar()">Editar</button>
-      </div>
+                <button class="btn btn-primary" (click)="eliminar()">Eliminar</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPutC" (click)="maletaCabinaSeleccionada.emit(maletaCabina)">Editar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

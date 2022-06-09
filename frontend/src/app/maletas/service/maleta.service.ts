@@ -109,7 +109,7 @@ export class MaletaService {
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
     maleta.urlMaleta = maletaApi._links.self.href;
-    maleta.elementos = maletaApi._links.elementos.href;
+
 
     return maleta;
   }
@@ -207,5 +207,9 @@ export class MaletaService {
 
   patchMaletaBarco(maleta : Maletabarcoimpl){
     return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta);
+  }
+
+  patchMaletaCabina(maleta : Maletacabinaimpl){
+    return this.http.patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta);
   }
 }

@@ -1,1 +1,28 @@
-<p>mcabinamodificar works!</p>
+<section id="datosMaletaCabina">
+    <div class="form-row py-2">
+        <div class="">
+            <label for="peso" class="nombre-campo">Peso</label>
+            <input name="peso" type="number" class="form-control" placeholder="de su maleta vacía" min="0" [(ngModel)]="maletaCabina.pesoEnVacio" step="any" required #pes="ngModel" [ngClass]="{
+'is-invalid': pes.invalid && (pes.dirty || pes.touched),
+'is-valid': !pes.invalid
+}" />
+            <label for="altura" class="nombre-campo">Altura(cm)</label>
+            <input name="altura" type="number" class="form-control" placeholder="alto" min="0" max="55" [(ngModel)]="maletaCabina.altura" required #alt="ngModel" [ngClass]="{
+'is-invalid': alt.invalid && (alt.dirty || alt.touched),
+'is-valid': !alt.invalid
+}" />
+
+            <label for="anchura" class="nombre-campo">Anchura(cm)</label>
+            <input name="anchura" type="number" class="form-control" placeholder="ancho" min="0" max="35" [(ngModel)]="maletaCabina.anchura" required #anch="ngModel" [ngClass]="{
+'is-invalid': anch.invalid && (anch.dirty || anch.touched),
+'is-valid': !anch.invalid
+}" />
+            <label for="profundidad" class="nombre-campo">Profundidad(cm)</label>
+            <input name="profundidad" type="number" class="form-control" placeholder="profundo" min="0" max="25" [(ngModel)]="maletaCabina.profundidad" required #prof="ngModel" [ngClass]="{
+'is-invalid': prof.invalid && (prof.dirty || prof.touched),
+'is-valid': !prof.invalid
+}" />
+        </div>
+    </div>
+    <button class="btn btn-success" data-bs-toggle="modal" (click)="modificarMaletaCabina(this.maletaCabina)">Modificar</button>
+</section>
