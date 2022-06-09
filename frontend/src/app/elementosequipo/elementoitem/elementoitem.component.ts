@@ -5,7 +5,8 @@ import { MaletaService } from 'src/app/maletas/service/maleta.service';
 import { ElementoEquipo } from '../models/elementoequipo';
 import { ElementoequipoImpl } from '../models/elementoequipo-impl';
 import { ElementoService } from '../service/elemento.service';
-
+import * as $ from 'jquery'
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-elementoitem',
   templateUrl: './elementoitem.component.html',
@@ -14,14 +15,18 @@ import { ElementoService } from '../service/elemento.service';
 export class ElementoitemComponent implements OnInit {
   maletas : Maleta [] = [];
   maletas1 : Maletacabina [] = [];
+  elementos : ElementoEquipo[]= [];
   @Input()
   elemento!: ElementoEquipo;
-  constructor( private elementoService: ElementoService,
+  constructor( private activateRoute: ActivatedRoute, private elementoService: ElementoService,
     private maletaService: MaletaService,) { }
 
   ngOnInit(): void {
     this.maletaService.getMaletasB().subscribe((response) => this.maletas = this.maletaService.extraerMaletasBarco(response));
     this.maletaService.getMaletasC().subscribe((response) => this.maletas1 = this.maletaService.extraerMaletasCabina(response));
+
+
+
   }
 
   getMaletaElemento(e: any, elemento : ElementoEquipo){
@@ -34,5 +39,4 @@ export class ElementoitemComponent implements OnInit {
     }
 
   }
-
 }

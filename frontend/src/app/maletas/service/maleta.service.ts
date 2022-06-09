@@ -19,7 +19,6 @@ export class MaletaService {
   private urlEndPoint: string = `${this.host}maletasbarco`;
   private urlEndPoint1: string = `${this.host}maletascabina`;
 
-
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
   getId(url: string): string {
@@ -88,28 +87,29 @@ export class MaletaService {
   }
 
   updateMaletaB(maleta: Maletabarco): Observable<any> {
-    return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
+    return this.http
+      .patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta)
+      .pipe(
+        catchError((e) => {
+          if (e.status === 400) {
+            return throwError(() => new Error(e));
+          }
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
           return throwError(() => new Error(e));
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(() => new Error(e));
-      })
-    );
+        })
+      );
   }
 
   mapearMaletaC(maletaApi: any): Maletacabinaimpl {
-    let maleta = new Maletacabinaimpl(0,0,0,0);
+    let maleta = new Maletacabinaimpl(0, 0, 0, 0);
     maleta.id = this.getId(maletaApi._links.maletacabina.href);
     maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.altura = maletaApi.altura;
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
     maleta.urlMaleta = maletaApi._links.self.href;
-
 
     return maleta;
   }
@@ -140,17 +140,19 @@ export class MaletaService {
   }
 
   updateMaletaC(maleta: Maletacabina): Observable<any> {
-    return this.http.patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta).pipe(
-      catchError((e) => {
-        if (e.status === 400) {
-          return throwError(() => new Error(e))
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(() => new Error(e));
-      })
-    );
+    return this.http
+      .patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta)
+      .pipe(
+        catchError((e) => {
+          if (e.status === 400) {
+            return throwError(() => new Error(e));
+          }
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
+          return throwError(() => new Error(e));
+        })
+      );
   }
 
   getMaleta(id: string): Observable<any> {
@@ -173,43 +175,73 @@ export class MaletaService {
     return this.http.post(`${this.urlEndPoint}`, maletaBarco);
   }
 
-  postMaletaCabina(maleta:Maletacabinaimpl){
+  postMaletaCabina(maleta: Maletacabinaimpl) {
     this.http.post(this.urlEndPoint1, maleta).subscribe();
-    alert('Se ha creado una nueva maleta de cabina')
+    alert('Se ha creado una nueva maleta de cabina');
   }
 
   createC(maletaCabina: Maletacabinaimpl): Observable<any> {
-    return this.http.post(`${this.urlEndPoint1}`, maletaCabina)
+    return this.http.post(`${this.urlEndPoint1}`, maletaCabina);
   }
 
-  getElementosMaletaB(idMaleta: string) : Observable <any>{
-    return this.http.get<any>(`${this.host}maletasbarco/${idMaleta}/elementos?page=0&size=1000`)
+  getElementosMaletaB(idMaleta: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.host}maletasbarco/${idMaleta}/elementos?page=0&size=1000`
+    );
   }
 
-  extraerElementosMaleta(respuestaApi: any) : ElementoEquipo[]{
-    const elementos : ElementoEquipo [] = [];
-    respuestaApi._embedded.maletas.elementos.forEach((e: any) => {
-      elementos.push(this.mapearElemento(e));
-    });
+  extraerElementosMaletaB(respuestaApi: any): any[] {
+    const elementos: ElementoEquipo[] = [];
+    if (respuestaApi._embedded.elementos) {
+      respuestaApi._embedded.elementos.forEach((e: any) => {
+        elementos.push(this.mapearElemento(e));
+      });
+    }
     return elementos;
   }
 
-  mapearElemento(elementoApi:any) : ElementoEquipo{
-    let elemento : ElementoEquipo = new ElementoequipoImpl();
+  mapearElemento(elementoApi: any): ElementoEquipo {
+    let elemento: ElementoEquipo = new ElementoequipoImpl();
     elemento.nombre = elementoApi.nombre;
     elemento.peso = elementoApi.peso;
     return elemento;
   }
 
-  getElementosMaletaC(idMaleta: string) : Observable <any>{
-    return this.http.get<any>(`${this.host}maletascabina/${idMaleta}/elementos?page=0&size=1000`)
+  getElementosMaletaC(idMaleta: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.host}maletascabina/${idMaleta}/elementos?page=0&size=1000`
+    );
   }
 
-  patchMaletaBarco(maleta : Maletabarcoimpl){
+  extraerElementosMaletaC(respuestaApi: any): any[] {
+    const elementos: ElementoEquipo[] = [];
+    if (respuestaApi._embedded.elementos) {
+      respuestaApi._embedded.elementos.forEach((e: any) => {
+        elementos.push(this.mapearElemento(e));
+      });
+    }
+    return elementos;
+  }
+
+  patchMaletaBarco(maleta: Maletabarcoimpl) {
     return this.http.patch<any>(`${this.urlEndPoint}/${maleta.id}`, maleta);
   }
 
-  patchMaletaCabina(maleta : Maletacabinaimpl){
+  patchMaletaCabina(maleta: Maletacabinaimpl) {
     return this.http.patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta);
+  }
+
+  getElementosMaletaBarco(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${id}/elementos`);
+  }
+  getElementosMaletaCabina(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint1}/${id}/elementos`);
+  }
+
+  getMaletaBarco(elemento : ElementoEquipo): Observable <any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${elemento.id}/maleta`);
+  }
+  getMaletaCabina(elemento : ElementoEquipo): Observable <any> {
+    return this.http.get<any>(`${this.urlEndPoint1}/${elemento.id}/maleta`);
   }
 }

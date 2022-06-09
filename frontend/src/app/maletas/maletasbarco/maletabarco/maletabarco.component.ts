@@ -12,10 +12,11 @@ import { MaletaService } from '../../service/maleta.service';
   styleUrls: ['./maletabarco.component.css'],
 })
 export class MaletabarcoComponent implements OnInit {
-  @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
+  elementos : ElementoEquipo[] = [];
+ @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
 
   constructor(
-    private activateRoute: ActivatedRoute,
+    private activateRoute: ActivatedRoute, private maletaService : MaletaService
   ) {}
 
   ngOnInit(): void {

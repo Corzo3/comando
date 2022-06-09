@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
+import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { Maletabarco } from '../models/maletabarco';
 import { Maletabarcoimpl } from '../models/maletabarcoimpl';
@@ -18,13 +20,26 @@ export class MaletasbarcoComponent implements OnInit {
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEditar = new EventEmitter<Maletabarco>();
   maletaBarcoVerDatos = new Maletabarcoimpl(0,'');
+  elementos : ElementoEquipo[] = [];
 
   constructor(
     private maletaService: MaletaService,
-    auxService: AuxiliarService, private router: Router
+    auxService: AuxiliarService, private router: Router,
+    private activateRoute: ActivatedRoute,
+    private elementoService: ElementoService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let id : string = this.cargarMaletaBarco();
+    this.maletaService.getMaleta(id).subscribe((response) => {
+      this.elementos = this.elementoService.extraerElementos(response);
+    })
+  }
+
+  cargarMaletaBarco():string{
+    const idBarraNavegacion : string = this.activateRoute.snapshot.params['id'];
+    return idBarraNavegacion;
+  }
 
   seleccionarMaletaBarco(maletaBarco: Maletabarco): void {
     this.maletaBarcoSeleccionada.emit(maletaBarco);

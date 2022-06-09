@@ -3,7 +3,7 @@
   <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
 </select> -->
 <label for="">B{{maleta.id}}</label>
-<input type="checkbox"  [value]="maleta.id" (change)="getMaletaElemento($event, elemento)">
+<input type="checkbox" name="maletas[]" [value]="maleta.id" (change)="getMaletaElemento($event, elemento)">
 </span>
 <span *ngFor="let maleta of maletas1">
 <label for="">C{{maleta.id}}</label>

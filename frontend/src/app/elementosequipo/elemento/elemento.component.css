@@ -1,15 +1,3 @@
-.btn {
-    background-color: rgb(5, 71, 46);
-    color: white;
-    border: none;
-    margin-top: 10%;
-    margin-left: 2%;
-}
-
-.petate {
-    width: 2em;
-}
-
 .list-items {
   display: inline-block;
   width: 45em;
