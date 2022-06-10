@@ -19,8 +19,6 @@ export class MaletasbarcoComponent implements OnInit {
   @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEditar = new EventEmitter<Maletabarco>();
-  maletaBarcoVerDatos = new Maletabarcoimpl(0,'');
-  elementos : ElementoEquipo[] = [];
 
   constructor(
     private maletaService: MaletaService,
@@ -30,10 +28,7 @@ export class MaletasbarcoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let id : string = this.cargarMaletaBarco();
-    this.maletaService.getMaleta(id).subscribe((response) => {
-      this.elementos = this.elementoService.extraerElementos(response);
-    })
+
   }
 
   cargarMaletaBarco():string{

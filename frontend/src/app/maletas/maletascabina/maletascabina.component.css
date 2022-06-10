@@ -19,3 +19,7 @@ div.p-2.m-1.card {
 .mochila {
     width: 3em;
 }
+
+.contenido:hover{
+  background-color: rgb(8, 80, 8);
+}

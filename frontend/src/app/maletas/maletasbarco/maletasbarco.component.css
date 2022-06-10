@@ -19,3 +19,6 @@ div.p-2.m-1.card {
 .petate {
     width: 2em;
 }
+.contenido:hover{
+  background-color: rgb(8, 80, 8);
+}

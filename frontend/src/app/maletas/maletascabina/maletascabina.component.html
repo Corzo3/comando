@@ -21,11 +21,12 @@
                     </p>
             </div>
             <div class="col-4">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCabina" (click)="maletaCabinaSeleccionada.emit(maletaCabina)">
-          Ver contenido
-        </button>
-                <button class="btn btn-primary" (click)="eliminar()">Eliminar</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPutC" (click)="maletaCabinaSeleccionada.emit(maletaCabina)">Editar</button>
+              <a
+        class="btn btn-primary contenido"
+        (click)="seleccionarMaletaCabina(maletaCabina
+        )"
+      >Ver detalle</a>
+                <button class="btn btn-primary contenido" (click)="eliminar()">Eliminar</button>
             </div>
         </div>
     </div>

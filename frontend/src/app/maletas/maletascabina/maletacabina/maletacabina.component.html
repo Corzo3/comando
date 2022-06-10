@@ -1,1 +1,62 @@
-<pre>{{maletaCabina.elementos | json }} </pre>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <div class="card tarjetapeso">
+        <p class="peso">Peso máximo permitido 8kg</p>
+      </div>
+      <img class="maleta-nueva img-fluid ocultar" src="assets/mochila.png" alt="Maleta de Cabina"/>
+    </div>
+    <div class="col-4">
+      <h1>Maleta de cabina nº {{ maletaCabina.id }}</h1>
+      <div class="card">
+        <p class="dato">Peso: {{ maletaCabina.pesoEnVacio }} kg</p>
+        <p class="dato">Altura: {{ maletaCabina.altura }}</p>
+        <p class="dato">Anchura: {{ maletaCabina.anchura }}</p>
+        <p class="dato">Profundidad: {{ maletaCabina.profundidad }}</p>
+        <button
+        type="button"
+        class="btn btn-primary contenido"
+        data-bs-toggle="modal"
+        data-bs-target="#modalPutC"
+        (click)="maletaCabinaSeleccionada.emit(this.maletaCabina)"
+      >
+        Editar
+      </button>
+      </div>
+    </div>
+    <div class="col-4">
+      <h1>Elementos cargados</h1>
+      <div *ngIf="elementos.length > 0"></div>
+      <div class="list-items">
+        <app-elemento></app-elemento>
+      </div>
+    </div>
+  </div>
+  <div id="volver">
+    <a type="button" routerLink="/maletas" class="btn">Volver</a>
+  </div>
+</div>
+<ng-template #elseMaletas>
+<h3>Su maleta está vacía</h3>
+</ng-template>
+
+<div class="col-4">
+  <div class="modal fade" id="modalPutC" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editar Maleta de cabina {{maletaCabina.id}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <app-mcabinamodificar [maletaCabina]="maletaCabina"></app-mcabinamodificar>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+Cerrar
+            </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

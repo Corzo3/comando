@@ -9,3 +9,12 @@ h1 {
     font-weight: bold;
     margin-left: 0%;
 }
+
+.list-items {
+  display: inline-block;
+  height: 32em;
+  background-color: #a5abb1;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  overflow-y: scroll;
+}

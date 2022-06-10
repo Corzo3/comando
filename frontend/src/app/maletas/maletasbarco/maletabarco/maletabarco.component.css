@@ -2,22 +2,19 @@
     background-color: rgb(5, 71, 46);
     color: white;
     border: none;
-    margin-top: 10%;
-    margin-left: 2%;
-}
-
-.petate {
-    width: 2em;
+    margin-top: 1%;
+    margin-left: 45%;
 }
 
 .list-items {
   display: inline-block;
-  width: 45em;
+  width: 30em;
   height: 32em;
   background-color: #a5abb1;
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 2%;
   overflow-y: scroll;
+  margin-left: 15%;
 }
 
 .seleccionado {
@@ -26,4 +23,41 @@
   font-size: large;
   margin-top: 4%;
 
+}
+
+h1{
+  margin-left: 34%;
+  margin-top: 10%;
+  color: black;
+  font-weight: 500;
+}
+
+.maleta-nueva {
+  width: 13em;
+  margin-left: 45%;
+  margin-top: 10%;
+}
+
+.dato{
+  margin-top: 10%;
+  margin-left: 10%;
+  font-size: 1.5em;
+  font-weight: 500;
+
+}
+
+.card{
+  margin-top: 5%;
+  width: 25em;
+  margin-left: 25%;
+  background-color: #a5abb1;
+}
+.peso{
+  font-size: 1.5em;
+  margin-top: 5%;
+}
+.tarjetapeso{
+  width: 20em;
+  margin-top: 20%;
+  margin-left: 40%;
 }

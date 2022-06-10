@@ -5,6 +5,8 @@ import { EventEmitter } from '@angular/core';
 import { Maletabarco } from '../../models/maletabarco';
 import { Maletabarcoimpl } from '../../models/maletabarcoimpl';
 import { MaletaService } from '../../service/maleta.service';
+import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
+import { Maletacabina } from '../../models/maletacabina';
 
 @Component({
   selector: 'app-maletabarco',
@@ -12,14 +14,27 @@ import { MaletaService } from '../../service/maleta.service';
   styleUrls: ['./maletabarco.component.css'],
 })
 export class MaletabarcoComponent implements OnInit {
-  elementos : ElementoEquipo[] = [];
- @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
-
+  @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
+  @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
+  maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
+  elementos: ElementoEquipo[] = [];
+  maletasBarco: Maletabarco[] = [];
+  maletasCabina: Maletacabina[] = [];
   constructor(
-    private activateRoute: ActivatedRoute, private maletaService : MaletaService
+    private activateRoute: ActivatedRoute,
+    private maletaService: MaletaService,
+    private elementoService: ElementoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    let id: string = this.cargarMaletaBarco();
+    this.maletaService.getMaleta(id).subscribe((response) => {
+      this.maletaBarco = this.maletaService.mapearMaletaB(response);
+    });
+    this.elementoService.getElementos().subscribe((response) => {
+      this.elementos = this.elementoService.extraerElementos(response);
+    });
 
   }
 
@@ -27,4 +42,15 @@ export class MaletabarcoComponent implements OnInit {
     const idBarraNavegacion: string = this.activateRoute.snapshot.params['id'];
     return idBarraNavegacion;
   }
+
+  modificarMaletaBarco(maleta: Maletabarcoimpl){
+    this.maletaService.patchMaletaBarco(maleta).subscribe();
+  }
+
+  verDatos(maletaBarco: Maletabarco) : void {
+    this.maletaBarcoVerDatos = maletaBarco;
+
+  }
+
+
 }

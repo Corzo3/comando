@@ -15,7 +15,7 @@
                     <h1>Maletas de Barco</h1>
                     <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
                         <div *ngFor="let maleta of maletasBarco">
-                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)" (maletaBarcoEditar)="onMaletaBarcoEditar($event)"></app-maletasbarco>
+                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)"></app-maletasbarco>
                         </div>
                     </div>
                     <ng-template #elseMaletas>
@@ -36,86 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <!-- Modal -->
-                <div class="modal fade" id="modalBarco" tabindex="-1" aria-labelledby="modalBarcoLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">
-                                    Contenido maleta de barco {{ maletaBarcoVerDatos.id }}
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <app-elemento></app-elemento>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                  Cerrar
-                </button>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="modalCabina" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Contenido maleta de cabina {{maletaCabinaVerDatos.id}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <app-elemento></app-elemento>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  Cerrar
-                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalPut" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Maleta de barco {{maletaBarcoVerDatos.id}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <app-mbarcomodificar [maletaBarco]="maletaBarcoVerDatos"></app-mbarcomodificar>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                  Cerrar
-                            </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="modalPutC" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Maleta de cabina {{maletaCabinaVerDatos.id}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <app-mcabinamodificar [maletaCabina]="maletaCabinaVerDatos"></app-mcabinamodificar>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-                          </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
