@@ -16,6 +16,7 @@ export class MaletacabinaComponent implements OnInit {
   elementos: ElementoEquipo[] = [];
   @Output() maletaCabinaSeleccionada = new EventEmitter<Maletacabina>();
   @Output() maletaCabinaEditar = new EventEmitter<Maletacabina>();
+  @Output() maletaCabinaEliminar = new EventEmitter<Maletacabina>();
   maletaCabinaVerDatos = new Maletacabinaimpl(0, 0, 0, 0);
   constructor(
     private activateRoute: ActivatedRoute,
@@ -37,5 +38,9 @@ export class MaletacabinaComponent implements OnInit {
   cargarMaletaCabina(): string {
     const idBarraNavegacion: string = this.activateRoute.snapshot.params['id'];
     return idBarraNavegacion;
+  }
+
+  avisar(){
+    alert('Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?')
   }
 }

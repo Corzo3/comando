@@ -16,6 +16,7 @@ import { Maletacabina } from '../../models/maletacabina';
 export class MaletabarcoComponent implements OnInit {
   @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
   @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
+  @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
   elementos: ElementoEquipo[] = [];
   maletasBarco: Maletabarco[] = [];
@@ -50,6 +51,9 @@ export class MaletabarcoComponent implements OnInit {
   verDatos(maletaBarco: Maletabarco) : void {
     this.maletaBarcoVerDatos = maletaBarco;
 
+  }
+  avisar(){
+    alert('Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?')
   }
 
 

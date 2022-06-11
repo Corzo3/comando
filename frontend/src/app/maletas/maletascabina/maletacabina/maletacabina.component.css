@@ -61,3 +61,14 @@ width: 20em;
 margin-top: 20%;
 margin-left: 40%;
 }
+#volver{
+  margin-top: 30%;
+  margin-left: 10%;
+}
+
+.eliminar{
+  margin-left: 0%;
+}
+.contenido:hover{
+  background-color:rgb(58, 58, 57);
+}

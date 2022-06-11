@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid col-12">
   <div class="row">
     <div class="col-4">
       <div class="card tarjetapeso">
@@ -23,6 +23,18 @@
         Editar
       </button>
       </div>
+      <div id="volver">
+        <div class="row">
+          <div class="col">
+            <a type="button" routerLink="/maletas" class="btn contenido">Volver</a>
+          </div>
+          <div class="col">
+          <button class="btn btn-primary contenido eliminar" routerLink="/maletas" (click)="avisar()">
+            Eliminar Maleta
+          </button>
+        </div>
+        </div>
+      </div>
     </div>
     <div class="col-4">
       <h1>Elementos cargados</h1>
@@ -31,9 +43,6 @@
         <app-elemento></app-elemento>
       </div>
     </div>
-  </div>
-  <div id="volver">
-    <a type="button" routerLink="/maletas" class="btn">Volver</a>
   </div>
 </div>
 <ng-template #elseMaletas>
