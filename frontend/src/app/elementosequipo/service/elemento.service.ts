@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,7 @@ import { ElementoequipoImpl } from '../models/elementoequipo-impl';
 export class ElementoService {
   private host: string = environment.host;
   private urlEndPoint: string = `${this.host}elementos?page=0&size=100`;
-  private urlEndPoint1: string = `${this.host}elementos`
+  private urlEndPoint1: string = `${this.host}elementos`;
 
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
@@ -30,21 +30,20 @@ export class ElementoService {
     return elementosEquipo;
   }
 
-  getId(url:string): string {
+  getId(url: string): string {
     let posicionFinal: number = url.lastIndexOf('/');
     let numId: string = url.slice(posicionFinal + 1, url.length);
     return numId;
-
   }
 
   mapearElemento(elementoApi: any): ElementoequipoImpl {
-     let elemento = new ElementoequipoImpl();
-     elemento.id = this.getId(elementoApi._links.elemento.href)
-     elemento.nombre = elementoApi.nombre;
-     elemento.peso = elementoApi.peso;
-     elemento.maleta = elementoApi._links.maleta.href;
-     elemento.urlElemento = elementoApi._links.self.href
-     return elemento;
+    let elemento = new ElementoequipoImpl();
+    elemento.id = this.getId(elementoApi._links.elemento.href);
+    elemento.nombre = elementoApi.nombre;
+    elemento.peso = elementoApi.peso;
+    elemento.maleta = elementoApi._links.maleta.href;
+    elemento.urlElemento = elementoApi._links.self.href;
+    return elemento;
   }
 
   // crea un nuevo elemento de equipo que se añade al listado
@@ -64,16 +63,14 @@ export class ElementoService {
   }
 
   delete(id: string): Observable<ElementoEquipo> {
-    return this.http
-      .delete<ElementoEquipo>(`${this.urlEndPoint1}/${id}`)
-      .pipe(
-        catchError((e) => {
-          if (e.error.mensaje) {
-            console.error(e.error.mensaje);
-          }
-          return throwError(e);
-        })
-      );
+    return this.http.delete<ElementoEquipo>(`${this.urlEndPoint1}/${id}`).pipe(
+      catchError((e) => {
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
   }
 
   update(elemento: ElementoEquipo): Observable<any> {
@@ -103,16 +100,22 @@ export class ElementoService {
     );
   }
 
-  postElemento(elemento: ElementoequipoImpl){
-    this.http.post(this.urlEndPoint1,elemento).subscribe();
-    alert('Se ha creado un nuevo elemento de equipo')
+  postElemento(elemento: ElementoequipoImpl) {
+    this.http.post(this.urlEndPoint1, elemento).subscribe();
+    alert('Se ha creado un nuevo elemento de equipo');
   }
   createE(elemento: ElementoequipoImpl) {
     return this.http.post(`${this.urlEndPoint1}`, elemento);
-
   }
 
   getElementosPagina(pagina: number): Observable<any> {
     return this.auxService.getItemsPorPagina(this.urlEndPoint, pagina);
+  }
+
+  patchElemento(elemento: ElementoequipoImpl) {
+    return this.http.patch<any>(
+      `${this.urlEndPoint1}/${elemento.id}`,
+      elemento
+    );
   }
 }

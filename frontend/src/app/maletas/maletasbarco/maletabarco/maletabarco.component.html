@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-4">
       <div class="card tarjetapeso">
-        <p class="peso">Peso máximo permitido 25kg</p>
+        <p class="peso" title="El peso máximo permitido es la suma del peso en vacío de su maleta y el peso de todos sus elementos">Peso máximo permitido 25kg</p>
       </div>
       <img
         class="maleta-nueva img-fluid ocultar"
@@ -14,7 +14,7 @@
       <h1>Maleta de barco nº {{ maletaBarco.id }}</h1>
       <div class="card">
         <p class="dato">Fecha de recogida: {{ maletaBarco.fechaRecogida }}</p>
-        <p class="dato">Peso: {{ maletaBarco.pesoEnVacio }} kg</p>
+        <p class="dato">Peso: {{maletaBarco.pesoEnVacio}} Kg</p>
         <button
           type="button"
           class="btn btn-primary contenido"
@@ -24,6 +24,7 @@
         >
           Editar
         </button>
+        <!-- <button class="btn" (click)="sumarPesos()"> Sumar peso</button> -->
       </div>
       <div id="volver">
         <div class="row">
@@ -42,8 +43,9 @@
       <h1>Elementos cargados</h1>
       <div *ngIf="elementos.length > 0"></div>
       <div class="list-items">
-        <app-elemento ></app-elemento>
+        <app-elemento></app-elemento>
       </div>
+      <!-- <button class="btn" (click)="sumarPesos()">Ver peso total</button> -->
     </div>
   </div>
 </div>

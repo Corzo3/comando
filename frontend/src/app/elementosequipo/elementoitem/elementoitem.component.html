@@ -1,15 +1,42 @@
-<div class="container fluid" for=""> <div class="row"><label for="">{{elemento.nombre | uppercase}} ({{elemento.peso}} kg)</label> <div class="col" ><span class="maletas"><span *ngFor="let maleta of maletas"><!-- <select name="selectorFormulario" id="selectorMaleta" class="form-select" aria-label="Default select example" [(ngModel)]="elemento.maleta">
-  <option class="form-control campo-peso" *ngFor="let maleta of maletas " value={{maleta.urlMaleta}}>Maleta de Barco {{maleta.id}}</option>
-  <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
-</select> -->
-<label for="">B{{maleta.id}}</label>
-<input type="checkbox" name="maletas[]" [value]="maleta.id" (change)="getMaletaElemento($event, elemento)">
-</span>
-<span *ngFor="let maleta of maletas1">
-<label for="">C{{maleta.id}}</label>
-<input type="checkbox"  [value]="maleta.id" (change)="getMaletaElemento($event, elemento)">
-</span>
-</span>
-</div>
-</div>
+<div class="row">
+  <div class="col-6">
+    <label for="" [(ngModel)]="elemento.nombre">{{
+      elemento.nombre | uppercase
+    }}</label>
+    <label [(ngModel)]="elemento.peso">({{ elemento.peso }} kg)</label>
+  </div>
+  <div class="col-3">
+    <span class="maletas"
+      ><span>
+        <select
+          name="selectorFormulario"
+          id="selectorMaleta"
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="elemento.maleta"
+
+        >
+          <option
+            class="form-control"
+            *ngFor="let maleta of maletas"
+            value="{{ maleta.urlMaleta }}"
+          >
+            M.Barco {{ maleta.id }}
+          </option>
+          <option
+            class="form-control campo-peso"
+            *ngFor="let maleta of maletas1"
+            value="{{ maleta.urlMaleta }}"
+          >
+            M.Cabina {{ maleta.id }}
+          </option>
+        </select>
+      </span>
+    </span>
+  </div>
+  <div class="col-3">
+    <button class="boton-elementos" name="aceptar" id="aceptar" (click)="modificarElemento(this.elemento)">
+      Aceptar
+    </button>
+  </div>
 </div>

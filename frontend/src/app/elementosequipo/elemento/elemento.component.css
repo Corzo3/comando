@@ -10,3 +10,15 @@
   width: 3em;
   margin-top: 4%;
 }
+
+.btn{
+  background-color: rgb(5, 71, 46);
+  color: white;
+}
+
+.peso{
+  background-color:rgb(5, 71, 46);
+  color: white;
+  width: 8em;
+  margin-left: 70%;
+}

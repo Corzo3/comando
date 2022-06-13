@@ -30,6 +30,7 @@
                   fechRec.invalid && (fechRec.dirty || fechRec.touched),
                 'is-valid': !fechRec.invalid
               }" />
+              <div class="invalid-feedback">Todos los campos son obligatorios</div>
                     </div>
                     <div *ngIf="formulario == 2">
                         <label for="peso" class="nombre-campo">Peso</label>
@@ -37,6 +38,7 @@
                 'is-invalid': pes.invalid && (pes.dirty || pes.touched),
                 'is-valid': !pes.invalid
               }" />
+              <div class="invalid-feedback">La altura de su maleta debe ser menor de 55cm</div>
                         <label for="altura" class="nombre-campo">Altura(cm)</label>
                         <input name="altura" type="number" class="form-control" placeholder="alto" min="0" max="55" [(ngModel)]="maletaCabina.altura" required #alt="ngModel" [ngClass]="{
                 'is-invalid': alt.invalid && (alt.dirty || alt.touched),
@@ -53,6 +55,8 @@
                 'is-invalid': prof.invalid && (prof.dirty || prof.touched),
                 'is-valid': !prof.invalid
               }" />
+              <div class="invalid-feedback">Todos los campos son obligatorios.</div>
+              <div class="invalid-feedback"><p>Las medidas de su maleta no deben superar las siguientes: 55x35x25</p></div>
                     </div>
                 </div>
                 <div class="row" *ngIf="formulario == 1">
@@ -81,19 +85,10 @@
                     </div>
                     <br />
                 </div>
-                <div class="botonera col-4" *ngIf="formulario == 1 || formulario == 2">
-                    <button id="aceptar" type="submit" class="boton-primario">
-            Aceptar
-          </button>
-                    <button id="cancelar" class="boton-primario">Eliminar</button>
-                </div>
             </form>
         </div>
 
-        <div class="col-4">
-
-
-            <!-- listado de elementos que viene de la api. el checkbox de cada elemento se activa cuando se valida el formulario de creación de maleta -->
+  <!-- <div class="col-4">
             <div class="list-items" *ngIf="formulario ==1 || formulario == 2">
                 <div class="item" *ngFor="let elemento of elementos">
                     <input type="checkbox" [disabled]="!barcoForm.form.valid" name="" [value]="elemento.nombre" (change)="getNombreElemento($event, elemento)" />
@@ -102,16 +97,15 @@
                         <option class="form-control campo-peso" *ngFor="let maleta of maletas " value={{maleta.urlMaleta}}>Maleta de Barco {{maleta.id}}</option>
                         <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
                     </select>
-            <!-- <input type="number" min="0" class="cantidad" placeholder="cant." /> -->
+             <input type="number" min="0" class="cantidad" placeholder="cant." />
                 </div>
             </div>
 
-            <!-- este listado muestra por pantalla los elementos que el usuario va cargando en su maleta, se muestra el contenido del array maleta.elementos -->
             <div class="list-items seleccionados" *ngIf="formulario ==1 || formulario == 2">
                 <div class="seleccionado" *ngFor="let elemento of elementosSeleccionados">
                     <app-elemento-lista-item *ngIf="elemento" [elemento]="elemento"></app-elemento-lista-item>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

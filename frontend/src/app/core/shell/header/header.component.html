@@ -1,57 +1,95 @@
 <header>
-    <h1>
-        <img class="icono-comando img-fluid" src="assets/iconoComando.png" alt="iconoComando" /> COMANDO
-    </h1>
-    <h3 id="subtitulo">
-        Control y Organización del Material Necesario para el Despliegue en Operaciones
-    </h3>
-    <div class="container-fluid">
-      <!--   <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+  <h1>
+    <img
+      class="icono-comando img-fluid"
+      src="assets/iconoComando.png"
+      alt="iconoComando"
+    />
+    COMANDO
+  </h1>
+  <h3 id="subtitulo">
+    Control y Organización del Material Necesario para el Despliegue en
+    Operaciones
+  </h3>
+  <div class="container-fluid">
+    <!--   <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
             <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Administrador" formControlName="administrador" />
             <input type="password" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername2" placeholder="Contraseña" formControlName="password" />
             <button type="submit" class="btn btn-primary mb-2">Aceptar</button>
         </form> -->
-    </div>
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="menu">Menú</span>
       </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navegacion col-12">
-                    <li class="col-4">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary enlacenav" href="#" id="dropdownMenuLink" aria-expanded="false">
-            Inicio
-          </a>
-                        </div>
-                    </li>
-                    <li class="col-4">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle enlacenav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navegacion col-12">
+          <li class="col-4">
+            <div class="dropdown">
+              <a
+                class="btn btn-secondary enlacenav"
+                href="#"
+                id="dropdownMenuLink"
+                aria-expanded="false"
+              >
+                Inicio
+              </a>
+            </div>
+          </li>
+          <li class="col-4">
+            <div class="dropdown">
+              <a
+                class="btn btn-secondary dropdown-toggle enlacenav"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 Maletas
               </a>
 
-                            <ul class="dropdown-menu dropdownMenuLink" aria-labelledby="dropdownMenuLink">
-                                <li><a class="desplegable" routerLink="maletas/barco-form">Nueva Maleta</a></li>
-                                <li> <a class="desplegable" routerLink="maletas">Ver todas</a></li>
-                            </ul>
-                        </div>
-                    </li>
+              <ul
+                class="dropdown-menu dropdownMenuLink"
+                aria-labelledby="dropdownMenuLink"
+              >
+                <li>
+                  <a class="desplegable" routerLink="maletas/barco-form"
+                    >Nueva Maleta</a
+                  >
+                </li>
+                <li>
+                  <a class="desplegable" routerLink="maletas">Ver todas</a>
+                </li>
+              </ul>
+            </div>
+          </li>
 
-                    <li class="col-4">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle enlacenav" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <li class="col-4">
+            <div class="dropdown">
+              <a
+                class="btn btn-secondary enlacenav"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                aria-expanded="false"
+                routerLink="elementosequipo"
+              >
                 Equipo
               </a>
-
-                            <ul class="dropdown-menu dropdownMenuLink" aria-labelledby="dropdownMenuLink">
-                                <li><a class="desplegable" routerLink="elementosequipo">Ver Listado</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
             </div>
-        </div>
-    </nav>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>

@@ -1,9 +1,18 @@
 #selectorMaleta{
-  width: 15em;
+  width: 9em;
   height: 2em;
   background-color:#a5abb1;
 }
 
 .maletas{
-  margin-left: 45%;
+  margin-left: 0%;
+}
+
+.boton-elementos{
+  position:sticky;
+  background-color: rgb(5, 71, 46);
+  margin-left: 25%;
+  width: 4.5em;
+  height: 2em;
+  color: white;
 }

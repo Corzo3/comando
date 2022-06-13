@@ -9,6 +9,7 @@ import { ElementoComponent } from './elemento/elemento.component';
 
 
 
+
 @NgModule({
   declarations: [ElementosequipoComponent, ElementoitemComponent, ElementoComponent],
   imports: [CommonModule, ElementosequipoRoutingModule, FormsModule,],

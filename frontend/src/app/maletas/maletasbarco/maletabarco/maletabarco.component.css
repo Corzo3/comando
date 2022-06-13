@@ -69,3 +69,6 @@ h1{
 .eliminar{
   margin-left: 0%;
 }
+.contenido:hover{
+  background-color:rgb(58, 58, 57);
+}

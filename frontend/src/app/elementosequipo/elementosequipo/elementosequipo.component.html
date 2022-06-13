@@ -1,51 +1,112 @@
 <div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <button class="btn btn-primary boton-formulario" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <button
+          class="btn btn-primary boton-formulario"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
           Nuevo Elemento
         </button>
-                <div class="collapse" id="collapseExample">
-                    <form #elementoForm="ngForm" class="row g-3 needs-validation">
-                        <div class="col-md-4 position-relative ">
-                            <label for="validationTooltip01" class="form-label campo-nombre">Nombre</label>
-                            <input name="nombre" type="text" class="form-control campo-nombre" id="validationTooltip01" value="" required [(ngModel)]="elemento.nombre">
-                            <div class="valid-tooltip">
-                                nombre válido
-                            </div>
-                        </div>
-                        <div class="col-md-4 position-relative">
-                            <label for="validationTooltip02" class="form-label campo-peso">Peso</label>
-                            <input name="peso" type="number" class="form-control campo-peso" id="validationTooltip02" value="" required min="0" [(ngModel)]="elemento.peso">
-                            <div class="valid-tooltip">
-                                peso válido
-                            </div>
-                        </div>
-                        <label class="form-label campo-peso">Seleccione la maleta</label><br>
-                        <select name="selectorFormulario" id="selectorMaleta" class="form-select" aria-label="Default select example" [(ngModel)]="elemento.maleta">
-          <option class="form-control campo-peso" *ngFor="let maleta of maletas " value={{maleta.urlMaleta}}>Maleta de Barco {{maleta.id}}</option>
-          <option class="form-control campo-peso" *ngFor="let maleta of maletas1 " value={{maleta.urlMaleta}}>Maleta de Cabina {{maleta.id}}</option>
-      </select>
-                        <div class="col-6">
-                            <button class="btn btn-primary boton-formulario enviar" type="submit" (click)="create()">Crear elemento</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-primary boton-formulario enviar" type="reset">Cancelar</button>
-                        </div>
-                    </form>
-                </div>
+        <div class="collapse" id="collapseExample">
+          <form #elementoForm="ngForm" class="row g-3 needs-validation">
+            <div class="col-md-4 position-relative">
+              <label for="validationTooltip01" class="form-label campo-nombre"
+                >Nombre</label
+              >
+              <input
+                name="nombre"
+                type="text"
+                class="form-control campo-nombre"
+                id="validationTooltip01"
+                value=""
+                required
+                [(ngModel)]="elemento.nombre"
+              />
+              <div class="valid-tooltip">nombre válido</div>
+            </div>
+            <div class="col-md-4 position-relative">
+              <label for="validationTooltip02" class="form-label campo-peso"
+                >Peso</label
+              >
+              <input
+                name="peso"
+                type="number"
+                class="form-control campo-peso"
+                id="validationTooltip02"
+                value=""
+                required
+                min="0"
+                [(ngModel)]="elemento.peso"
+              />
+              <div class="valid-tooltip">peso válido</div>
+            </div>
+            <label class="form-label campo-peso">Seleccione la maleta</label
+            ><br />
+            <select
+              name="selectorFormulario"
+              id="selectorMaleta"
+              class="form-select"
+              aria-label="Default select example"
+              [(ngModel)]="elemento.maleta"
+            >
+              <option
+                class="form-control campo-peso"
+                *ngFor="let maleta of maletas"
+                value="{{ maleta.urlMaleta }}"
+              >
+                Maleta de Barco {{ maleta.id }}
+              </option>
+              <option
+                class="form-control campo-peso"
+                *ngFor="let maleta of maletas1"
+                value="{{ maleta.urlMaleta }}"
+              >
+                Maleta de Cabina {{ maleta.id }}
+              </option>
+            </select>
+            <div class="col-6">
+              <button
+                class="btn btn-primary boton-formulario enviar"
+                type="submit"
+                (click)="create()"
+              >
+                Crear elemento
+              </button>
             </div>
             <div class="col-6">
-                <h1>Listado de Elementos</h1>
-                <div class="list-items">
-                  <form>
-                    <button class="boton-elementos">Enviar</button>
-                    <div class="seleccionado item" *ngFor="let elemento of elementos">
-                        <app-elementoitem *ngIf="elemento" [elemento]="elemento"></app-elementoitem>
-                    </div>
-                  </form>
-                </div>
+              <button
+                class="btn btn-primary boton-formulario enviar"
+                type="reset"
+              >
+                Cancelar
+              </button>
             </div>
+          </form>
         </div>
+      </div>
+      <div class="col-6">
+        <h1>Listado de Elementos</h1>
+        <div class="list-items">
+          <form>
+            <div
+              class="seleccionado item container-fluid"
+              *ngFor="let elemento of elementos"
+            >
+              <div class="row">
+                <app-elementoitem
+                  *ngIf="elemento"
+                  [elemento]="elemento"
+                ></app-elementoitem>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

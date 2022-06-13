@@ -15,6 +15,7 @@ import { Maletacabina } from '../../models/maletacabina';
 })
 export class MaletabarcoComponent implements OnInit {
   @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
+  @Input() elementosCargados: ElementoEquipo[] = [];
   @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
@@ -54,6 +55,14 @@ export class MaletabarcoComponent implements OnInit {
   }
   avisar(){
     alert('Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?')
+  }
+
+  sumarPesos(){
+    let pesoTotal = this.maletaBarco.pesoEnVacio;
+    for (const elemento of this.elementosCargados) {
+      pesoTotal += 3;
+    }
+    console.log("Peso total = " + pesoTotal)
   }
 
 

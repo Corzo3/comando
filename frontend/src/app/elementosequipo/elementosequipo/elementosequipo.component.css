@@ -1,6 +1,6 @@
 .list-items {
     display: inline-block;
-    width: 45em;
+    width: 40em;
     height: 32em;
     background-color: #a5abb1;
     margin-top: 5%;
@@ -36,15 +36,7 @@ h1 {
     margin-top: 3%;
 }
 
-.boton-elementos{
-  position:sticky;
-  top: 1.5%;
-  background-color: rgb(5, 71, 46);
-  margin-left: 90%;
-  width: 4em;
-  height: 2.5em;
-  color: white;
-}
+
 
 label.campo-nombre {
     margin-top: 2%;

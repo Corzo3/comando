@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Maletabarco } from 'src/app/maletas/models/maletabarco';
 import { Maletabarcoimpl } from 'src/app/maletas/models/maletabarcoimpl';
@@ -12,7 +12,7 @@ import { ElementoService } from '../service/elemento.service';
   styleUrls: ['./elemento.component.css'],
 })
 export class ElementoComponent implements OnInit {
-  elementos: ElementoEquipo[] = [];
+  @Input() elementos: ElementoEquipo[] = [];
   // @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
 
   constructor(
@@ -36,5 +36,13 @@ export class ElementoComponent implements OnInit {
           (this.elementos =
             this.maletaService.extraerElementosMaletaC(response))
       );
+  }
+
+  sumarPeso(){
+    let pesoTotal = 0;
+    for (const elemento of this.elementos) {
+      pesoTotal += elemento.peso
+    }
+    return pesoTotal;
   }
 }

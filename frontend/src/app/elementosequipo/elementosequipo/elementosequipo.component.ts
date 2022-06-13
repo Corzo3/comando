@@ -16,16 +16,14 @@ import { Maleta } from 'src/app/maletas/models/maleta';
   styleUrls: ['./elementosequipo.component.css'],
 })
 export class ElementosequipoComponent implements OnInit {
-
   elementos: ElementoEquipo[] = [];
   todosElementos: ElementoEquipo[] = [];
   elementoVerDatos!: ElementoEquipo;
   numPaginas: number = 0;
   listaCargada: boolean = false;
-  elemento : ElementoEquipo = new ElementoequipoImpl();
-  maletas : Maleta [] = [];
-  maletas1 : Maletacabina [] = [];
-
+  elemento: ElementoEquipo = new ElementoequipoImpl();
+  maletas: Maleta[] = [];
+  maletas1: Maletacabina[] = [];
 
   constructor(
     private elementoService: ElementoService,
@@ -33,18 +31,25 @@ export class ElementosequipoComponent implements OnInit {
     private auxService: AuxiliarService
   ) {}
 
-
-  ngOnInit(): void{
-
-     this.elementoService
+  ngOnInit(): void {
+    this.elementoService
       .getElementos()
       .subscribe(
         (response) =>
           (this.elementos = this.elementoService.extraerElementos(response))
       );
-      this.maletaService.getMaletasB().subscribe((response) => this.maletas = this.maletaService.extraerMaletasBarco(response));
-      this.maletaService.getMaletasC().subscribe((response) => this.maletas1 = this.maletaService.extraerMaletasCabina(response));
-
+    this.maletaService
+      .getMaletasB()
+      .subscribe(
+        (response) =>
+          (this.maletas = this.maletaService.extraerMaletasBarco(response))
+      );
+    this.maletaService
+      .getMaletasC()
+      .subscribe(
+        (response) =>
+          (this.maletas1 = this.maletaService.extraerMaletasCabina(response))
+      );
   }
 
   getTodosElementos(): void {
@@ -66,7 +71,10 @@ export class ElementosequipoComponent implements OnInit {
   }
 
   create(): void {
-    this.elementoService.postElemento(this.elemento)
+    this.elementoService.postElemento(this.elemento);
   }
 
+  modificarElemento(elemento: ElementoequipoImpl) {
+    this.elementoService.patchElemento(elemento).subscribe();
+  }
 }
