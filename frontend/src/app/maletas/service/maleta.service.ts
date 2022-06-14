@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 import { Maletaimpl } from '../models/maletaimpl';
+import { Maleta } from '../models/maleta';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,8 @@ export class MaletaService {
   private host: string = environment.host;
   private urlEndPoint: string = `${this.host}maletasbarco`;
   private urlEndPoint1: string = `${this.host}maletascabina`;
-
+  private urlEndpoint2: string = `${this.host}maletas`;
+  private urlFiltrar: string = `${this.host}elementos/search/por-maleta?elemento=`;
 
   constructor(private http: HttpClient, private auxService: AuxiliarService) {}
 
@@ -59,7 +61,7 @@ export class MaletaService {
     maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.fechaRecogida = maletaApi.fechaRecogida;
     maleta.urlMaleta = maletaApi._links.self.href;
-    //maleta.elementos = maletaApi._links.elementos.href;
+    maleta.elementos = maletaApi._links.elementos.href;
     return maleta;
   }
 
@@ -114,7 +116,7 @@ export class MaletaService {
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
     maleta.urlMaleta = maletaApi._links.self.href;
-    //maleta.elementos = maletaApi._links.elementos.href;
+    maleta.elementos = maletaApi._links.elementos.href;
     return maleta;
   }
 
@@ -199,7 +201,7 @@ export class MaletaService {
     return this.http.post(`${this.urlEndPoint1}`, maletaCabina);
   }
 
-   getElementosMaletaB(idMaleta: string): Observable<any> {
+  getElementosMaletaB(idMaleta: string): Observable<any> {
     return this.http.get<any>(
       `${this.host}maletasbarco/${idMaleta}/elementos?page=0&size=100`
     );
@@ -222,7 +224,7 @@ export class MaletaService {
     return elemento;
   }
 
-   getElementosMaletaC(idMaleta: string): Observable<any> {
+  getElementosMaletaC(idMaleta: string): Observable<any> {
     return this.http.get<any>(
       `${this.host}maletascabina/${idMaleta}/elementos?page=0&size=100`
     );
@@ -246,17 +248,38 @@ export class MaletaService {
     return this.http.patch<any>(`${this.urlEndPoint1}/${maleta.id}`, maleta);
   }
 
-  getElementosMaletaBarco(maleta: Maletabarcoimpl){
+  getElementosMaletaBarco(maleta: Maletabarcoimpl) {
     return this.http.get<any>(`${this.urlEndPoint}/${maleta.id}/elementos`);
   }
-  getElementosMaletaCabina(id: string){
+  getElementosMaletaCabina(id: string) {
     return this.http.get<any>(`${this.urlEndPoint1}/${id}/elementos`);
   }
 
-  getMaletaBarco(elemento : ElementoEquipo): Observable <any> {
+  getMaletaBarco(elemento: ElementoEquipo): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint}/${elemento.id}/maleta`);
   }
-  getMaletaCabina(elemento : ElementoEquipo): Observable <any> {
+  getMaletaCabina(elemento: ElementoEquipo): Observable<any> {
     return this.http.get<any>(`${this.urlEndPoint1}/${elemento.id}/maleta`);
+  }
+
+  getMaletaConElemento(nombre: string): Observable<any> {
+    return this.http.get<any>(`${this.urlFiltrar}${nombre}`);
+  }
+
+  mapearMaleta(maletaApi: any): Maletaimpl {
+    let maleta = new Maletaimpl();
+    maleta.id = this.getId(maletaApi._links.maleta.href);
+    maleta.pesoEnVacio = maletaApi.pesoEnVacio;
+    maleta.urlMaleta = maletaApi._links.self.href;
+    maleta.elementos = maletaApi._links.elementos.href;
+    return maleta;
+  }
+
+extraerMaletasMetodo(respuestaApi : any): Maleta[]{
+const maletas: Maleta[] = [];
+respuestaApi._embedded.maletas.forEach((m:any) => {
+  maletas.push(this.mapearMaleta(m))
+});
+return maletas;
   }
 }

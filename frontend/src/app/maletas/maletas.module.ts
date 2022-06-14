@@ -14,6 +14,7 @@ import { ElementoListaItemComponent } from './elemento-lista-item/elemento-lista
 import { MaletacabinaComponent } from './maletascabina/maletacabina/maletacabina.component';
 import { MbarcomodificarComponent } from './maletasbarco/mbarcomodificar/mbarcomodificar.component';
 import { McabinamodificarComponent } from './maletascabina/mcabinamodificar/mcabinamodificar.component';
+import { FiltradoComponent } from './filtrado/filtrado.component';
 
 
 
@@ -29,6 +30,7 @@ import { McabinamodificarComponent } from './maletascabina/mcabinamodificar/mcab
     MaletacabinaComponent,
     MbarcomodificarComponent,
     McabinamodificarComponent,
+    FiltradoComponent,
   ],
   imports: [CommonModule, MaletasRoutingModule, FormsModule, ElementosequipoModule],
 

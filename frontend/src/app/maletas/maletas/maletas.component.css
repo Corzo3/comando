@@ -18,3 +18,8 @@ h1 {
   margin-bottom: 2%;
   overflow-y: scroll;
 }
+.boton-formulario {
+  background-color: rgb(5, 71, 46);
+  color: white;
+  width: 6em;
+}

@@ -1,42 +1,63 @@
 <section class="maletas">
-    <div class="container-fluid">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col">
-                    <button type="button" class="mt-5 btn btn-success btn-md" (click)="registrarMaletaBarco()">
+  <div class="container-fluid">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col">
+          <button
+            type="button"
+            class="mt-5 btn btn-success btn-md"
+            (click)="registrarMaletaBarco()"
+          >
             Nueva Maleta
           </button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-9">
-                    <h1>Maletas de Barco</h1>
-                    <div class="col-sm-12" *ngIf="maletasBarco.length > 0; else elseMaletas">
-                        <div *ngFor="let maleta of maletasBarco">
-                            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)" (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)"></app-maletasbarco>
-                        </div>
-                    </div>
-                    <ng-template #elseMaletas>
-                        <h4 class="card-title"><b>NO HAY MALETAS DISPONIBLES</b></h4>
-                    </ng-template>
-                </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-9">
-                    <h1>Maletas de Cabina</h1>
-                    <div class="col-sm-12" *ngIf="maletasCabina.length > 0">
-                        <div *ngFor="let maleta of maletasCabina">
-                            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)" (maletaCabinaEliminar)="onMaletaCabinaEliminar($event)">
-                            </app-maletascabina>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+          <button
+            type="button"
+            class="mt-5 btn btn-success btn-md"
+            routerLink="filtrado"
+          >
+            Buscar por elemento
+          </button>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <h1>Maletas de Barco</h1>
+          <div
+            class="col-sm-12"
+            *ngIf="maletasBarco.length > 0; else elseMaletas"
+          >
+            <div *ngFor="let maleta of maletasBarco">
+              <app-maletasbarco
+                [maletaBarco]="maleta"
+                (maletaBarcoSeleccionada)="verDatos($event)"
+                (maletaBarcoEliminar)="onMaletaBarcoEliminar($event)"
+              ></app-maletasbarco>
+            </div>
+          </div>
+          <ng-template #elseMaletas>
+            <h4 class="card-title"><b>NO HAY MALETAS DISPONIBLES</b></h4>
+          </ng-template>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <h1>Maletas de Cabina</h1>
+          <div class="col-sm-12" *ngIf="maletasCabina.length > 0">
+            <div *ngFor="let maleta of maletasCabina">
+              <app-maletascabina
+                [maletaCabina]="maleta"
+                (maletaCabinaSeleccionada)="verDatosC($event)"
+                (maletaCabinaEliminar)="onMaletaCabinaEliminar($event)"
+              >
+              </app-maletascabina>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

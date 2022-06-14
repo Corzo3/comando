@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="container filtrado">
+    <div >
+      <form #elementoForm="ngForm" class="row g-3 needs-validation">
+        <div class="col-md-4 position-relative">
+          <label for="validationTooltip01" class="form-label campo-nombre"
+            >Nombre del elemento buscado</label
+          >
+          <input
+            name="nombre"
+            type="text"
+            class="form-control campo-nombre"
+            id="validationTooltip01"
+            value=""
+            required
+            [(ngModel)]="nombreBuscado"
+          />
+        </div>
+        <button
+          class="btn btn-primary boton-formulario enviar"
+          type="submit"
+          (click)="buscarMaletasConElemento(nombreBuscado)"
+        >
+          Buscar Maletas
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid maletas-filtradas">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <h1>Maletas de Barco con elemento buscado</h1>
+        <div
+          class="col-sm-12"
+          *ngIf="maletasBarco.length > 0; else elseMaletas"
+        >
+          <div *ngFor="let maleta of maletasBarco">
+            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+          </div>
+        </div>
+        <ng-template #elseMaletas>
+          <h4 class="card-title">
+            <b>NO HAY MALETAS QUE CONTENGAN ESE ELEMENTO</b>
+          </h4>
+        </ng-template>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <h1>Maletas de Cabina con elemento buscado</h1>
+        <div
+          class="col-sm-12"
+          *ngIf="maletasCabina.length > 0; else elseMaletas"
+        >
+          <div *ngFor="let maleta of maletasCabina">
+            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)"> </app-maletascabina>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,7 @@ export class MaletasComponent implements OnInit {
   maletasBarco: Maletabarco[] = [];
   maletasCabina: Maletacabina[] = [];
   elementos: ElementoEquipo[] = [];
+  nombreBuscado: string = ''
 
   maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
   maletaCabinaVerDatos = new Maletacabinaimpl(0, 0, 0, 0);
@@ -91,7 +92,13 @@ export class MaletasComponent implements OnInit {
   modificarMaletaCabina(maleta: Maletacabinaimpl) {
     this.maletaService.patchMaletaCabina(maleta).subscribe();
   }
-  modificarMaletaBarco(maleta: Maletabarcoimpl){
+  modificarMaletaBarco(maleta: Maletabarcoimpl) {
     this.maletaService.patchMaletaBarco(maleta).subscribe();
   }
+ /*  buscarMaletasConElemento(nombre: string) {
+    this.maletaService.getMaletaConElemento(nombre).subscribe((response) => {
+      this.maletasBarco = this.maletaService.extraerMaletasBMetodo(response);
+      this.maletasCabina = this.maletaService.extraerMaletasCMetodo(response);
+    });
+  } */
 }
