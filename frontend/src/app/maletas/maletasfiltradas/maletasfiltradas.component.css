@@ -1,0 +1,23 @@
+.card-body {
+  background-color: rgb(120, 134, 107);
+  border: none;
+}
+
+div.p-2.m-1.card {
+  background-color: rgb(120, 134, 107);
+  border: none;
+}
+
+.btn {
+  background-color: rgb(5, 71, 46);
+  color: white;
+  border: none;
+}
+
+.petate {
+  width: 2em;
+}
+.contenido:hover{
+background-color: rgb(58, 58, 57);
+}
+

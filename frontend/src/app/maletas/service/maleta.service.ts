@@ -39,6 +39,10 @@ export class MaletaService {
     return this.http.get<any>(this.urlEndPoint1);
   }
 
+  getMaletas():Observable <any>{
+    return this.http.get<any>(this.urlEndpoint2);
+  }
+
   extraerMaletasBarco(respuestaApi: any): Maletabarco[] {
     const maletas: Maletabarco[] = [];
     respuestaApi._embedded.maletasbarco.forEach((m: any) => {
@@ -51,6 +55,13 @@ export class MaletaService {
     const maletas: Maletacabina[] = [];
     respuestaApi._embedded.maletascabina.forEach((m: any) => {
       maletas.push(this.mapearMaletaC(m));
+    });
+    return maletas;
+  }
+  extraerMaletas(respuestaApi: any): Maleta[] {
+    const maletas: Maleta[] = [];
+    respuestaApi._embedded.maletas.forEach((m: any) => {
+      maletas.push(this.mapearMaleta(m));
     });
     return maletas;
   }

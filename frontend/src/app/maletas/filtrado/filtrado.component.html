@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="container filtrado">
-    <div >
+    <div>
       <form #elementoForm="ngForm" class="row g-3 needs-validation">
         <div class="col-md-4 position-relative">
           <label for="validationTooltip01" class="form-label campo-nombre"
@@ -29,37 +29,22 @@
   <div class="container-fluid maletas-filtradas">
     <div class="row">
       <div class="col-3"></div>
-      <div class="col-9">
-        <h1>Maletas de Barco con elemento buscado</h1>
-        <div
-          class="col-sm-12"
-          *ngIf="maletasBarco.length > 0; else elseMaletas"
-        >
-          <div *ngFor="let maleta of maletasBarco">
-            <app-maletasbarco [maletaBarco]="maleta" (maletaBarcoSeleccionada)="verDatos($event)"></app-maletasbarco>
+      <div class="col-6">
+        <h1>Maletas con elemento buscado</h1>
+        <div class="col-sm-12" *ngIf="maletas.length > 0; else elseMaletas">
+          <div *ngFor="let maleta of maletas">
+            <app-maletasfiltradas [maleta]="maleta"></app-maletasfiltradas>
           </div>
         </div>
+        <a class="btn btn-primary contenido volver" routerLink="/maletas">Volver</a>
         <ng-template #elseMaletas>
           <h4 class="card-title">
             <b>NO HAY MALETAS QUE CONTENGAN ESE ELEMENTO</b>
           </h4>
         </ng-template>
       </div>
+      <div class="col-3"></div>
     </div>
     <hr />
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-9">
-        <h1>Maletas de Cabina con elemento buscado</h1>
-        <div
-          class="col-sm-12"
-          *ngIf="maletasCabina.length > 0; else elseMaletas"
-        >
-          <div *ngFor="let maleta of maletasCabina">
-            <app-maletascabina [maletaCabina]="maleta" (maletaCabinaSeleccionada)="verDatosC($event)"> </app-maletascabina>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

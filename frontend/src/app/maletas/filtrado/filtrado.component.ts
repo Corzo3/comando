@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { Maleta } from '../models/maleta';
 import { Maletabarco } from '../models/maletabarco';
 import { Maletabarcoimpl } from '../models/maletabarcoimpl';
 import { Maletacabina } from '../models/maletacabina';
 import { Maletacabinaimpl } from '../models/maletacabinaimpl';
+import { Maletaimpl } from '../models/maletaimpl';
 import { MaletaService } from '../service/maleta.service';
 
 @Component({
@@ -13,11 +14,8 @@ import { MaletaService } from '../service/maleta.service';
   styleUrls: ['./filtrado.component.css']
 })
 export class FiltradoComponent implements OnInit {
+  @Input() maleta: Maleta = new Maletaimpl();
   maletas: Maleta[]= [];
-  maletasBarco: Maletabarco[] = [];
-  maletasCabina: Maletacabina[] = [];
-  maletaBarco!: Maletabarco;
-  maletaCabina!:Maletacabina;
   elementos: ElementoEquipo[] = [];
   nombreBuscado: string = ''
   maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
@@ -30,21 +28,13 @@ export class FiltradoComponent implements OnInit {
 
   buscarMaletasConElemento(nombre: string){
     this.maletaService.getMaletaConElemento(nombre).subscribe((response)=> {
-      /* this.maletasBarco = this.maletaService.extraerMaletasBarco(response);
-      this.maletasCabina = this.maletaService.extraerMaletasCabina(response); */
       this.maletas = this.maletaService.extraerMaletasMetodo(response);
       console.log("paso por metodo personalizado componente")
 
     })
   }
 
-  verDatos(maletaBarco: Maletabarco): void {
-    this.maletaBarcoVerDatos = maletaBarco;
-  }
 
-  verDatosC(maletaCabina: Maletacabina): void {
-    this.maletaCabinaVerDatos = maletaCabina;
-  }
 
 
 
