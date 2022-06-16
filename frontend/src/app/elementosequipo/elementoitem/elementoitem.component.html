@@ -1,18 +1,18 @@
 <div class="row">
-  <div class="col-6">
-    <label for="" [(ngModel)]="elemento.nombre">{{
+    <div class="col-6">
+        <label for="" [(ngModel)]="elemento.nombre" name="nombre" ngDefaultControl>{{
       elemento.nombre | uppercase
     }}</label>
-    <label [(ngModel)]="elemento.peso">({{ elemento.peso }} kg)</label>
-  </div>
-  <div class="col-3">
-    <span class="maletas"
-      ><span>
+        <label [(ngModel)]="elemento.peso" name="peso" ngDefaultControl>({{ elemento.peso }} kg)</label>
+    </div>
+    <div class="col-3">
+        <span class="maletas"><span>
         <select
           name="selectorFormulario"
           id="selectorMaleta"
           class="form-select"
           aria-label="Default select example"
+          name="maleta" ngDefaultControl
           [(ngModel)]="elemento.maleta"
 
         >
@@ -32,11 +32,11 @@
           </option>
         </select>
       </span>
-    </span>
-  </div>
-  <div class="col-3">
-    <button class="boton-elementos" name="aceptar" id="aceptar" (click)="modificarElemento(this.elemento)">
+        </span>
+    </div>
+    <div class="col-3">
+        <button class="boton-elementos" name="aceptar" id="aceptar" (click)="modificarElemento(this.elemento)">
       Aceptar
     </button>
-  </div>
+    </div>
 </div>
