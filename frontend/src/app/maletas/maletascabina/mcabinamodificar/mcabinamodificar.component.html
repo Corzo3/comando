@@ -1,4 +1,4 @@
-<section id="datosMaletaCabina">
+<form #modificarCabina="ngForm">
     <div class="form-row py-2">
         <div class="">
             <label for="peso" class="nombre-campo">Peso</label>
@@ -24,5 +24,5 @@
 }" />
         </div>
     </div>
-    <button class="btn modificar" data-bs-toggle="modal" (click)="modificarMaletaCabina(this.maletaCabina)">Modificar</button>
-</section>
+    <button class="btn modificar" data-bs-toggle="modal" (click)="modificarMaletaCabina(this.maletaCabina)" [disabled]="!modificarCabina.form.valid">Modificar</button>
+</form>
