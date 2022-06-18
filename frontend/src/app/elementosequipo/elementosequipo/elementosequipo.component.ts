@@ -9,6 +9,7 @@ import { Maletabarco } from 'src/app/maletas/models/maletabarco';
 import { Maletacabina } from 'src/app/maletas/models/maletacabina';
 import { MaletaService } from 'src/app/maletas/service/maleta.service';
 import { Maleta } from 'src/app/maletas/models/maleta';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-elementosequipo',
@@ -28,6 +29,7 @@ export class ElementosequipoComponent implements OnInit {
   constructor(
     private elementoService: ElementoService,
     private maletaService: MaletaService,
+    private router: Router,
     private auxService: AuxiliarService
   ) {}
 
@@ -76,5 +78,13 @@ export class ElementosequipoComponent implements OnInit {
 
   modificarElemento(elemento: ElementoequipoImpl) {
     this.elementoService.patchElemento(elemento).subscribe();
+  }
+
+  onElementoEquipoEliminar(elemento: ElementoEquipo) {
+    this.elementoService.delete(elemento.id).subscribe((response) => {
+      this.router.navigate(['elementosequipo']);
+      this.elementos = this.elementos.filter((e) => elemento !== e);
+      location.reload;
+    });
   }
 }

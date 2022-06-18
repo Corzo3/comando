@@ -93,6 +93,7 @@
                 <app-elementoitem
                   *ngIf="elemento"
                   [elemento]="elemento"
+                  (elementoEliminar)="onElementoEquipoEliminar($event)"
                 ></app-elementoitem>
               </div>
             </div>

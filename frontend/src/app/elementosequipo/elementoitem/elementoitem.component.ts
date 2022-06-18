@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Maleta } from 'src/app/maletas/models/maleta';
 import { Maletacabina } from 'src/app/maletas/models/maletacabina';
 import { MaletaService } from 'src/app/maletas/service/maleta.service';
@@ -18,6 +18,7 @@ export class ElementoitemComponent implements OnInit {
   elementos: ElementoEquipo[] = [];
   @Input()
   elemento!: ElementoEquipo;
+  @Output() elementoEliminar = new EventEmitter<ElementoEquipo>();
   constructor(
     private activateRoute: ActivatedRoute,
     private elementoService: ElementoService,
@@ -55,6 +56,12 @@ export class ElementoitemComponent implements OnInit {
   activarBoton(campo: any, boton: any) {
     if (campo.value != '') {
       boton.disabled = false;
+    }
+  }
+
+  eliminar() : void{
+    if (confirm ('¿Está seguro? Recuerde que debe llevar todo el equipo del listado oficial')){
+      this.elementoEliminar.emit(this.elemento);
     }
   }
 }
