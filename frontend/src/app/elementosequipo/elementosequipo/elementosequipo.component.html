@@ -1,14 +1,22 @@
 <div class="container-fluid">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <button class="btn btn-primary boton-formulario" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <button
+          class="btn btn-primary boton-formulario"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
           Nuevo Elemento
         </button>
-                <div class="collapse" id="collapseExample">
-                    <form #elementoForm="ngForm" class="row g-3 needs-validation">
-                        <div class="col-md-4 position-relative">
-                            <label for="validationTooltip01" class="form-label campo-nombre">Nombre</label
+        <div class="collapse" id="collapseExample">
+          <form #elementoForm="ngForm" class="row g-3 needs-validation">
+            <div class="col-md-4 position-relative">
+              <label for="validationTooltip01" class="form-label campo-nombre"
+                >Nombre</label
               >
               <input
                 name="nombre"
@@ -18,8 +26,12 @@
                 value=""
                 required
                 [(ngModel)]="elemento.nombre"
+                #nom="ngModel"
+                [ngClass]="{
+                  'is-invalid': nom.invalid && (nom.dirty || nom.touched),
+                  'is-valid': !nom.invalid
+                }"
               />
-              <div class="valid-tooltip">nombre válido</div>
             </div>
             <div class="col-md-4 position-relative">
               <label for="validationTooltip02" class="form-label campo-peso"
@@ -34,8 +46,12 @@
                 required
                 min="0"
                 [(ngModel)]="elemento.peso"
+                #pes="ngModel"
+                [ngClass]="{
+                  'is-invalid': pes.invalid && (pes.dirty || pes.touched),
+                  'is-valid': !pes.invalid
+                }"
               />
-              <div class="valid-tooltip">peso válido</div>
             </div>
             <label class="form-label campo-peso">Seleccione la maleta</label
             ><br />
@@ -82,8 +98,17 @@
         </div>
       </div>
       <div class="col-6">
-        <h1>Listado de Elementos</h1>
-        <div class="list-items">
+        <h1 class="titulo">Listado de Elementos</h1>
+        <div class="container list-items">
+          <div class="row campos">
+            <div class="col-4 nombrePeso">
+              Nombre(peso)
+            </div>
+            <div class="col-4 maleta">
+              Maleta
+            </div>
+
+          </div>
           <form>
             <div
               class="seleccionado item container-fluid"

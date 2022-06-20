@@ -38,7 +38,6 @@
                 'is-invalid': pes.invalid && (pes.dirty || pes.touched),
                 'is-valid': !pes.invalid
               }" />
-              <div class="invalid-feedback">La altura de su maleta debe ser menor de 55cm</div>
                         <label for="altura" class="nombre-campo">Altura(cm)</label>
                         <input name="altura" type="number" class="form-control" placeholder="alto" min="0" max="55" [(ngModel)]="maletaCabina.altura" required #alt="ngModel" [ngClass]="{
                 'is-invalid': alt.invalid && (alt.dirty || alt.touched),

@@ -57,7 +57,7 @@ export class ElementoService {
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -68,7 +68,7 @@ export class ElementoService {
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }
@@ -79,12 +79,12 @@ export class ElementoService {
       .pipe(
         catchError((e) => {
           if (e.status === 400) {
-            return throwError(e);
+            return throwError(() => new Error(e));
           }
           if (e.error.mensaje) {
             console.error(e.error.mensaje);
           }
-          return throwError(e);
+          return throwError(() => new Error(e));
         })
       );
   }
@@ -95,7 +95,7 @@ export class ElementoService {
         if (e.status !== 401 && e.error.mensaje) {
           console.error(e.error.mensaje);
         }
-        return throwError(e);
+        return throwError(() => new Error(e));
       })
     );
   }

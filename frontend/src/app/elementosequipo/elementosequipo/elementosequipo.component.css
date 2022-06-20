@@ -61,3 +61,21 @@ label.campo-nombre {
 div.col-4 {
   margin-top: 2%;
 }
+.titulo{
+  font-family: 'Franklin Gothic Medium';
+  font-size: 3em;
+  color: #000;
+}
+.nombrePeso{
+  margin-left: 4.5%;
+  margin-top: 2%;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.maleta{
+  margin-top: 2%;
+  margin-left: 10%;
+  font-size: 1.5em;
+  font-weight: 500;
+}

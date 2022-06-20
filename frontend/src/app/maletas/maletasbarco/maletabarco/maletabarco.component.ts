@@ -37,7 +37,6 @@ export class MaletabarcoComponent implements OnInit {
     this.elementoService.getElementos().subscribe((response) => {
       this.elementos = this.elementoService.extraerElementos(response);
     });
-
   }
 
   cargarMaletaBarco(): string {
@@ -45,25 +44,24 @@ export class MaletabarcoComponent implements OnInit {
     return idBarraNavegacion;
   }
 
-  modificarMaletaBarco(maleta: Maletabarcoimpl){
+  modificarMaletaBarco(maleta: Maletabarcoimpl) {
     this.maletaService.patchMaletaBarco(maleta).subscribe();
   }
 
-  verDatos(maletaBarco: Maletabarco) : void {
+  verDatos(maletaBarco: Maletabarco): void {
     this.maletaBarcoVerDatos = maletaBarco;
-
   }
-  avisar(){
-    alert('Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?')
+  avisar() {
+    alert(
+      'Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?'
+    );
   }
 
-  sumarPesos(){
+  sumarPesos() {
     let pesoTotal = this.maletaBarco.pesoEnVacio;
     for (const elemento of this.elementosCargados) {
       pesoTotal += 3;
     }
-    console.log("Peso total = " + pesoTotal)
+    console.log('Peso total = ' + pesoTotal);
   }
-
-
 }
