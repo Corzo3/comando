@@ -1,13 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-4">
+          <h1>Maleta de barco nº {{ maletaBarco.id }}</h1>
             <div class="card tarjetapeso">
                 <p class="peso" title="El peso máximo permitido es la suma del peso en vacío de su maleta y el peso de todos sus elementos">Peso máximo permitido 25kg</p>
             </div>
             <img class="maleta-nueva img-fluid ocultar" src="assets/maletaB.png" alt="Maleta de Barco" />
         </div>
         <div class="col-4" *ngIf="maletaBarco">
-            <h1>Maleta de barco nº {{ maletaBarco.id }}</h1>
+
             <div class="card">
                 <p class="dato">Fecha de recogida: {{ maletaBarco.fechaRecogida }}</p>
                 <p class="dato">Peso: {{maletaBarco.pesoEnVacio}} Kg</p>

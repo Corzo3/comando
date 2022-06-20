@@ -5,6 +5,7 @@ export class ElementoequipoImpl implements ElementoEquipo{
   nombre: string = '';
   peso: number = 0;
   maleta:string ='';
+  cantidad: number = 1;
   urlElemento: string = '';
 
   constructor(){}

@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-5">
-    <label for="" [(ngModel)]="elemento.nombre">{{
+    <label for="" [(ngModel)]="elemento.nombre" name="nombre" ngDefaultControl>{{
       elemento.nombre | uppercase
     }}</label>
-    <label [(ngModel)]="elemento.peso">({{ elemento.peso }} kg)</label>
+    <label [(ngModel)]="elemento.peso" name="peso" ngDefaultControl>({{ elemento.peso }} kg)</label>
   </div>
   <div class="col-3">
     <span class="maletas"
@@ -14,6 +14,7 @@
           class="form-select"
           aria-label="Default select example"
           [(ngModel)]="elemento.maleta"
+          name="maleta" ngDefaultControl
         >
           <option
             class="form-control"

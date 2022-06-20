@@ -29,6 +29,7 @@ export class ElementoComponent implements OnInit {
           (this.elementos =
             this.maletaService.extraerElementosMaletaB(response))
       );
+
     this.maletaService
       .getElementosMaletaC(this.activateRoute.snapshot.params['id'])
       .subscribe(
@@ -38,11 +39,32 @@ export class ElementoComponent implements OnInit {
       );
   }
 
-  sumarPeso(){
+  sumarPeso() {
     let pesoTotal = 0;
     for (const elemento of this.elementos) {
-      pesoTotal += elemento.peso
+      pesoTotal += elemento.peso;
     }
     return pesoTotal;
   }
+
+  extraerNombres(elementos: ElementoEquipo[]) {
+    var arrayNombres: string[] = [];
+    elementos.forEach((elemento) => {
+      arrayNombres.push(elemento.nombre + " (" + elemento.peso + " kg)");
+    });
+    return arrayNombres;
+  }
+
+  contarOcurrencias(nombres: any[]) {
+    if (!Array.isArray(nombres)) {
+      throw TypeError('El argumento debe ser un array');
+    }
+    return(nombres.reduce((a, d) => (a[d] ? (a[d] += 1) : (a[d] = 1), a), {})) ;
+  }
+
+  mostrarElementos(){
+    var elementosExtraidos = this.contarOcurrencias(this.extraerNombres(this.elementos))
+    return elementosExtraidos;
+  }
+
 }
