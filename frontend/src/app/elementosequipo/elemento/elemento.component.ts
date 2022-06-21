@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Maletabarco } from 'src/app/maletas/models/maletabarco';
 import { Maletabarcoimpl } from 'src/app/maletas/models/maletabarcoimpl';
@@ -14,6 +14,9 @@ import { ElementoService } from '../service/elemento.service';
 export class ElementoComponent implements OnInit {
   @Input() elementos: ElementoEquipo[] = [];
   // @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
+  @Input()
+  elemento!: ElementoEquipo;
+  @Output() elementoEliminar = new EventEmitter<ElementoEquipo>();
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -65,6 +68,12 @@ export class ElementoComponent implements OnInit {
   mostrarElementos(){
     var elementosExtraidos = this.contarOcurrencias(this.extraerNombres(this.elementos))
     return elementosExtraidos;
+  }
+
+  eliminar() : void{
+    if (confirm ('¿Está seguro? Recuerde que debe llevar todo el equipo del listado oficial')){
+      this.elementoEliminar.emit(this.elemento);
+    }
   }
 
 }

@@ -216,6 +216,7 @@ export class MaletaService {
 
   mapearElemento(elementoApi: any): ElementoEquipo {
     let elemento: ElementoEquipo = new ElementoequipoImpl();
+    elemento.id = this.getId(elementoApi._links.elemento.href);
     elemento.nombre = elementoApi.nombre;
     elemento.peso = elementoApi.peso;
     return elemento;

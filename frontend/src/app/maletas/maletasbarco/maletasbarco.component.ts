@@ -20,6 +20,7 @@ export class MaletasbarcoComponent implements OnInit {
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEditar = new EventEmitter<Maletabarco>();
 
+
   constructor(
     private maletaService: MaletaService,
     auxService: AuxiliarService, private router: Router,
@@ -53,7 +54,5 @@ export class MaletasbarcoComponent implements OnInit {
   modificarMaletaBarco(maleta: Maletabarcoimpl){
     this.maletaService.patchMaletaBarco(maleta).subscribe();
   }
-
-
 
 }

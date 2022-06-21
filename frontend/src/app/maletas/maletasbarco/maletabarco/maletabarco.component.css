@@ -76,3 +76,9 @@ h1{
 div.col-4{
   margin-right: 0%;
 }
+.pesoTotal{
+  background-color:rgb(5, 71, 46);
+  color: white;
+  width: 8em;
+  margin-left: 70%;
+}

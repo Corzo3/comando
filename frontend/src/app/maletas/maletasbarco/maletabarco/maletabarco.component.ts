@@ -7,6 +7,7 @@ import { Maletabarcoimpl } from '../../models/maletabarcoimpl';
 import { MaletaService } from '../../service/maleta.service';
 import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
 import { Maletacabina } from '../../models/maletacabina';
+import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 
 @Component({
   selector: 'app-maletabarco',
@@ -19,6 +20,7 @@ export class MaletabarcoComponent implements OnInit {
   @Output() maletaBarcoSeleccionada = new EventEmitter<Maletabarco>();
   @Output() maletaBarcoEliminar = new EventEmitter<Maletabarco>();
   maletaBarcoVerDatos = new Maletabarcoimpl(0, '');
+  elemento: ElementoEquipo = new ElementoequipoImpl();
   elementos: ElementoEquipo[] = [];
   maletasBarco: Maletabarco[] = [];
   maletasCabina: Maletacabina[] = [];
@@ -34,9 +36,16 @@ export class MaletabarcoComponent implements OnInit {
     this.maletaService.getMaleta(id).subscribe((response) => {
       this.maletaBarco = this.maletaService.mapearMaletaB(response);
     });
-    this.elementoService.getElementos().subscribe((response) => {
+    this.maletaService
+    .getElementosMaletaB(this.activateRoute.snapshot.params['id'])
+    .subscribe(
+      (response) =>
+        (this.elementos =
+          this.maletaService.extraerElementosMaletaB(response))
+    );
+    /* this.elementoService.getElementos().subscribe((response) => {
       this.elementos = this.elementoService.extraerElementos(response);
-    });
+    }); */
   }
 
   cargarMaletaBarco(): string {
@@ -57,11 +66,18 @@ export class MaletabarcoComponent implements OnInit {
     );
   }
 
-  sumarPesos() {
-    let pesoTotal = this.maletaBarco.pesoEnVacio;
-    for (const elemento of this.elementosCargados) {
-      pesoTotal += 3;
+  sumarPeso() {
+    let pesoTotal = 0;
+    for (const elemento of this.elementos) {
+      pesoTotal += elemento.peso;
     }
-    console.log('Peso total = ' + pesoTotal);
+    return pesoTotal;
+  }
+  onElementoEquipoEliminar(elemento: ElementoEquipo) {
+    this.elementoService.delete(elemento.id).subscribe((response) => {
+
+      this.elementos = this.elementos.filter((e) => elemento !== e);
+      location.reload;
+    });
   }
 }

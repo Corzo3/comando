@@ -30,9 +30,13 @@ export class MaletacabinaComponent implements OnInit {
     this.maletaService.getMaletaC(id).subscribe((response) => {
       this.maletaCabina = this.maletaService.mapearMaletaC(response);
     });
-    this.elementoService.getElementos().subscribe((response) => {
-      this.elementos = this.elementoService.extraerElementos(response);
-    });
+    this.maletaService
+      .getElementosMaletaB(this.activateRoute.snapshot.params['id'])
+      .subscribe(
+        (response) =>
+          (this.elementos =
+            this.maletaService.extraerElementosMaletaB(response))
+      );
   }
 
   cargarMaletaCabina(): string {
@@ -42,5 +46,12 @@ export class MaletacabinaComponent implements OnInit {
 
   avisar(){
     alert('Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?')
+  }
+  onElementoEquipoEliminar(elemento: ElementoEquipo) {
+    this.elementoService.delete(elemento.id).subscribe((response) => {
+
+      this.elementos = this.elementos.filter((e) => elemento !== e);
+      location.reload;
+    });
   }
 }

@@ -53,12 +53,6 @@ export class ElementoitemComponent implements OnInit {
     this.elementoService.patchElemento(elemento).subscribe();
   }
 
-  activarBoton(campo: any, boton: any) {
-    if (campo.value != '') {
-      boton.disabled = false;
-    }
-  }
-
   eliminar() : void{
     if (confirm ('¿Está seguro? Recuerde que debe llevar todo el equipo del listado oficial')){
       this.elementoEliminar.emit(this.elemento);

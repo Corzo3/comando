@@ -72,3 +72,7 @@ margin-left: 35%;
 .contenido:hover{
   background-color:rgb(58, 58, 57);
 }
+
+.campos{
+  padding: 0%;
+}

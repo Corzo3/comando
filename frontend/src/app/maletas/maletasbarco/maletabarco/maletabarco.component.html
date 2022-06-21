@@ -1,61 +1,106 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-4">
-          <h1>Maleta de barco nº {{ maletaBarco.id }}</h1>
-            <div class="card tarjetapeso">
-                <p class="peso" title="El peso máximo permitido es la suma del peso en vacío de su maleta y el peso de todos sus elementos">Peso máximo permitido 25kg</p>
-            </div>
-            <img class="maleta-nueva img-fluid ocultar" src="assets/maletaB.png" alt="Maleta de Barco" />
-        </div>
-        <div class="col-4" *ngIf="maletaBarco">
-
-            <div class="card">
-                <p class="dato">Fecha de recogida: {{ maletaBarco.fechaRecogida }}</p>
-                <p class="dato">Peso: {{maletaBarco.pesoEnVacio}} Kg</p>
-                <button type="button" class="btn btn-primary contenido" data-bs-toggle="modal" data-bs-target="#modalPut" (click)="maletaBarcoSeleccionada.emit(this.maletaBarco)">
+  <div class="row">
+    <div class="col-4">
+      <h1>Maleta de barco nº {{ maletaBarco.id }}</h1>
+      <div class="card tarjetapeso">
+        <p
+          class="peso"
+          title="El peso máximo permitido es la suma del peso en vacío de su maleta y el peso de todos sus elementos"
+        >
+          Peso máximo permitido 25kg
+        </p>
+      </div>
+      <img
+        class="maleta-nueva img-fluid ocultar"
+        src="assets/maletaB.png"
+        alt="Maleta de Barco"
+      />
+    </div>
+    <div class="col-4" *ngIf="maletaBarco">
+      <div class="card">
+        <p class="dato">Fecha de recogida: {{ maletaBarco.fechaRecogida }}</p>
+        <p class="dato">Peso: {{ maletaBarco.pesoEnVacio }} Kg</p>
+        <button
+          type="button"
+          class="btn btn-primary contenido"
+          data-bs-toggle="modal"
+          data-bs-target="#modalPut"
+          (click)="maletaBarcoSeleccionada.emit(this.maletaBarco)"
+        >
           Editar
         </button>
-            </div>
-            <div id="volver">
-                <div class="row">
-                    <div class="col">
-                        <a type="button" routerLink="/maletas" class="btn">Volver</a>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary contenido eliminar" routerLink="/maletas" (click)="avisar()">
-            Eliminar Maleta
-          </button>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div id="volver">
+        <div class="row">
+          <div class="col">
+            <a type="button" routerLink="/maletas" class="btn">Volver</a>
+          </div>
+          <div class="col">
+            <button
+              class="btn btn-primary contenido eliminar"
+              routerLink="/maletas"
+              (click)="avisar()"
+            >
+              Eliminar Maleta
+            </button>
+          </div>
         </div>
-        <div class="col-4">
-            <app-elementos-form></app-elementos-form>
-            <div *ngIf="elementos.length > 0"></div>
-            <div class="list-items">
-                <app-elemento></app-elemento>
-            </div>
-
-        </div>
+      </div>
     </div>
-</div>
-<div class="modal fade" id="modalPut" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+    <div class="col-4">
+      <app-elementos-form></app-elementos-form>
+      <div *ngIf="elementos.length > 0"></div>
+      <div class="list-items">
+        <div class="container-fluid col-12 campos">
+            <div class="col-10">
+              <div class="seleccionado item" *ngFor="let elemento of elementos">
+                <app-elemento
+                  *ngIf="elemento"
+                  [elemento]="elemento"
+                  (elementoEliminar)="onElementoEquipoEliminar($event)"
+                ></app-elemento>
+              </div>
+              <div class="card pesoTotal">Peso total: {{ sumarPeso() }} Kg</div>
+            </div>
+        </div>
+        <div
+          class="modal fade"
+          id="modalPut"
+          tabindex="-1"
+          aria-labelledby="formularioMaleta"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
-                    Editar Maleta de barco {{ maletaBarco.id }}
+                  Editar Maleta de barco {{ maletaBarco.id }}
                 </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <app-mbarcomodificar
+                  [maletaBarco]="maletaBarco"
+                ></app-mbarcomodificar>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
-            <div class="modal-body">
-                <app-mbarcomodificar [maletaBarco]="maletaBarco"></app-mbarcomodificar>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
-        </button>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
