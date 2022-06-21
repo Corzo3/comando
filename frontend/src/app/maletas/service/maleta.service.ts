@@ -72,7 +72,7 @@ export class MaletaService {
     maleta.pesoEnVacio = maletaApi.pesoEnVacio;
     maleta.fechaRecogida = maletaApi.fechaRecogida;
     maleta.urlMaleta = maletaApi._links.self.href;
-    maleta.elementos = maletaApi._links.elementos.href;
+    // maleta.elementos = maletaApi._links.elementos.href;
     return maleta;
   }
 
@@ -127,7 +127,7 @@ export class MaletaService {
     maleta.anchura = maletaApi.anchura;
     maleta.profundidad = maletaApi.profundidad;
     maleta.urlMaleta = maletaApi._links.self.href;
-    maleta.elementos = maletaApi._links.elementos.href;
+    // maleta.elementos = maletaApi._links.elementos.href;
     return maleta;
   }
 
@@ -237,7 +237,7 @@ export class MaletaService {
 
   getElementosMaletaC(idMaleta: string): Observable<any> {
     return this.http.get<any>(
-      `${this.host}maletascabina/${idMaleta}/elementos?page=0&size=100`
+      `${this.host}maletascabina/${idMaleta}/elementos`
     );
   }
 

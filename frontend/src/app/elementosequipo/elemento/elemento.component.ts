@@ -30,7 +30,7 @@ export class ElementoComponent implements OnInit {
             this.maletaService.extraerElementosMaletaB(response))
       );
 
-    this.maletaService
+     this.maletaService
       .getElementosMaletaC(this.activateRoute.snapshot.params['id'])
       .subscribe(
         (response) =>

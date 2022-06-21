@@ -43,7 +43,7 @@ export class MaletasComponent implements OnInit {
         (response) =>
           (this.maletasBarco = this.maletaService.extraerMaletasBarco(response))
       );
-    this.maletaService
+     this.maletaService
       .getMaletasC()
       .subscribe(
         (response) =>
