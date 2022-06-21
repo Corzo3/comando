@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="col-4">
-            <h1>Elementos cargados</h1>
+     <app-elementos-cab-form></app-elementos-cab-form>
             <div *ngIf="elementos.length > 0"></div>
             <div class="list-items">
                 <app-elemento></app-elemento>
@@ -40,10 +40,6 @@
         </div>
     </div>
 </div>
-<ng-template #elseMaletas>
-    <h3>Su maleta está vacía</h3>
-</ng-template>
-
 <div class="col-4">
     <div class="modal fade" id="modalPutC" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
         <div class="modal-dialog">

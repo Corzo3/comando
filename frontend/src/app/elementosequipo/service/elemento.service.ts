@@ -90,14 +90,7 @@ export class ElementoService {
   }
 
   getElemento(id: string): Observable<ElementoEquipo> {
-    return this.http.get<ElementoEquipo>(`${this.urlEndPoint}/${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(() => new Error(e));
-      })
-    );
+    return this.http.get<ElementoEquipo>(`${this.urlEndPoint}/${id}`)
   }
 
   postElemento(elemento: ElementoequipoImpl) {

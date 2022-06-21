@@ -173,25 +173,11 @@ export class MaletaService {
   } */
 
   getMaleta(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(() => new Error(e));
-      })
-    );
+    return this.http.get<any>(`${this.urlEndpoint2}/${id}`)
   }
 
   getMaletaC(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlEndPoint1}/${id}`).pipe(
-      catchError((e) => {
-        if (e.status !== 401 && e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(() => new Error(e));
-      })
-    );
+    return this.http.get<any>(`${this.urlEndpoint2}/${id}`)
   }
 
   postMaletaBarco(maleta: Maletabarcoimpl) {
@@ -214,7 +200,7 @@ export class MaletaService {
 
   getElementosMaletaB(idMaleta: string): Observable<any> {
     return this.http.get<any>(
-      `${this.host}maletasbarco/${idMaleta}/elementos?page=0&size=100`
+      `${this.host}maletas/${idMaleta}/elementos?page=0&size=100`
     );
   }
 

@@ -28,6 +28,7 @@
 h1{
   margin-left: 38%;
   margin-top: 10%;
+  margin-bottom: 1%;
   color: black;
   font-weight: 500;
 }
@@ -71,4 +72,7 @@ h1{
 }
 .contenido:hover{
   background-color:rgb(58, 58, 57);
+}
+div.col-4{
+  margin-right: 0%;
 }

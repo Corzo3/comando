@@ -16,6 +16,8 @@ import { MbarcomodificarComponent } from './maletasbarco/mbarcomodificar/mbarcom
 import { McabinamodificarComponent } from './maletascabina/mcabinamodificar/mcabinamodificar.component';
 import { FiltradoComponent } from './filtrado/filtrado.component';
 import { MaletasfiltradasComponent } from './maletasfiltradas/maletasfiltradas.component';
+import { ElementosFormComponent } from './elementos-form/elementos-form.component';
+import { ElementosCabFormComponent } from './elementos-cab-form/elementos-cab-form.component';
 
 
 
@@ -33,6 +35,8 @@ import { MaletasfiltradasComponent } from './maletasfiltradas/maletasfiltradas.c
     McabinamodificarComponent,
     FiltradoComponent,
     MaletasfiltradasComponent,
+    ElementosFormComponent,
+    ElementosCabFormComponent,
   ],
   imports: [CommonModule, MaletasRoutingModule, FormsModule, ElementosequipoModule],
 

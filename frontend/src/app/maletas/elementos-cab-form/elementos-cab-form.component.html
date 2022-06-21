@@ -1,0 +1,81 @@
+<div class="col-4 formularioElemento">
+  <button
+    class="btn btn-primary boton-formulario"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    Nuevo Elemento
+  </button>
+  <div class="collapse" id="collapseExample">
+    <form #elementoForm="ngForm" class="row g-3 needs-validation">
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip01" class="form-label campo-nombre"
+          >Nombre</label
+        >
+        <input
+          name="nombre"
+          type="text"
+          class="form-control campo-nombre"
+          id="validationTooltip01"
+          value=""
+          required
+          [(ngModel)]="elemento.nombre"
+          #nom="ngModel"
+          [ngClass]="{
+            'is-invalid': nom.invalid && (nom.dirty || nom.touched),
+            'is-valid': !nom.invalid
+          }"
+        />
+      </div>
+      <div class="col-md-4 position-relative">
+        <label for="validationTooltip02" class="form-label campo-peso"
+          >Peso</label
+        >
+        <input
+          name="peso"
+          type="number"
+          class="form-control campo-peso"
+          id="validationTooltip02"
+          value=""
+          required
+          min="0"
+          [(ngModel)]="elemento.peso"
+          #pes="ngModel"
+          [ngClass]="{
+            'is-invalid': pes.invalid && (pes.dirty || pes.touched),
+            'is-valid': !pes.invalid
+          }"
+        />
+      </div>
+      <label class="form-label">Seleccione la maleta</label
+      ><br />
+      <select
+        name="selectorFormulario"
+        id="selectorMaleta"
+        class="form-select campo-maleta"
+        aria-label="Default select example"
+        [(ngModel)]="elemento.maleta"
+      >
+        <option
+          class="form-control campo-peso"
+          value="{{ maletaCabina.urlMaleta }}"
+        >
+          Maleta de Cabina {{ maletaCabina.id }}
+        </option>
+      </select>
+      <div class="col-12">
+        <button
+          class="btn btn-primary boton-formulario enviar"
+          type="submit"
+          (click)="create()"
+        >
+          Crear elemento
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

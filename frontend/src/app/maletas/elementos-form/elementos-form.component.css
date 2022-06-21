@@ -1,0 +1,55 @@
+
+.boton-primario {
+  border-radius: 5px;
+  background-color: rgb(5, 71, 46);
+  display: inline;
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: large;
+  width: 10em;
+  height: 2.5em;
+  margin-top: 1%;
+}
+
+.campo-nombre {
+  margin-top: 2%;
+  width: 8em;
+}
+
+.campo-peso {
+  margin-top: 2%;
+  margin-left: 100%;
+  width: 7em;
+}
+.campo-maleta{
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.boton-primario:hover {
+  background-color: rgb(58, 58, 57);
+}
+
+.boton-formulario {
+  background-color: rgb(5, 71, 46);
+  color: white;
+  margin-top: 10%;
+}
+
+.enviar {
+  width: 10em;
+  margin-top: 3%;
+}
+.cancelar{
+  margin-left: 100%;
+}
+.nombrePeso{
+  margin-left: 4.5%;
+  margin-top: 2%;
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.formularioElemento{
+  margin-left: 20%;
+}
+
