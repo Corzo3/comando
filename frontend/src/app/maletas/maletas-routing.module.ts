@@ -5,6 +5,7 @@ import { BarcoFormComponent } from './barco-form/barco-form.component';
 import { MaletabarcoComponent } from './maletasbarco/maletabarco/maletabarco.component';
 import { MaletacabinaComponent } from './maletascabina/maletacabina/maletacabina.component';
 import { FiltradoComponent } from './filtrado/filtrado.component';
+import { ElementosequipoComponent } from '../elementosequipo/elementosequipo/elementosequipo.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'filtrado',
     component: FiltradoComponent,
+  },
+  {
+    path: 'elementosequipo',
+    component: ElementosequipoComponent,
   },
 ];
 

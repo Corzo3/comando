@@ -1,24 +1,22 @@
 <div class="p-2 m-1 card">
-  <div class="row">
-    <div class="col-8">
-      <h3 class="card-title">
-        <img class="petate" src="assets/maletaB.png" alt="Maleta Barco" />
-        <b> Maleta de Barco {{ maletaBarco.id }}</b>
-      </h3>
-      <p class="card-text">
-        Fecha de Recogida:
-        <b>{{ maletaBarco.fechaRecogida | date: "dd/MM/YYYY" }}</b>
-      </p>
-      <p class="card-text">
-        Peso: <b>{{ maletaBarco.pesoEnVacio }}</b>
-      </p>
+    <div class="row">
+        <div class="col-8">
+            <h3 class="card-title">
+                <img class="petate" src="assets/maletaB.png" alt="Maleta Barco" />
+                <b> Maleta de Barco {{ maletaBarco.id }}</b>
+            </h3>
+            <p class="card-text">
+                Fecha de Recogida:
+                <b>{{ maletaBarco.fechaRecogida | date: "dd/MM/YYYY" }}</b>
+            </p>
+            <p class="card-text">
+                Peso: <b>{{ maletaBarco.pesoEnVacio }}</b>
+            </p>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-primary contenido" (click)="seleccionarMaletaBarco(maletaBarco)">Ver detalle</a>
+            <button class="btn btn-primary contenido" (click)="eliminar()">Eliminar</button>
+            <button class="btn btn-primary contenido" routerLink="elementosequipo">Cargar elementos</button>
+        </div>
     </div>
-    <div class="col-4">
-      <a
-        class="btn btn-primary contenido"
-        (click)="seleccionarMaletaBarco(maletaBarco)"
-      >Ver detalle</a>
-      <button class="btn btn-primary contenido" (click)="eliminar()">Eliminar</button>
-    </div>
-  </div>
 </div>
