@@ -4,6 +4,7 @@ import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
+import { environment } from 'src/environments/environment';
 import { Maleta } from '../models/maleta';
 import { Maletabarco } from '../models/maletabarco';
 import { Maletabarcoimpl } from '../models/maletabarcoimpl';
@@ -23,6 +24,8 @@ export class ElementosFormComponent implements OnInit {
   maletas: Maleta[] = [];
   maletas1: Maletacabina[] = [];
   elemento: ElementoEquipo = new ElementoequipoImpl();
+  id: string = this.cargarMaletaBarco();
+  host: string = environment.host;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -32,8 +35,8 @@ export class ElementosFormComponent implements OnInit {
     private auxService: AuxiliarService) { }
 
   ngOnInit(): void {
-    let id: string = this.cargarMaletaBarco();
-    this.maletaService.getMaleta(id).subscribe((response) => {
+
+    this.maletaService.getMaleta(this.id).subscribe((response) => {
       this.maletaBarco = this.maletaService.mapearMaletaB(response);
     });
     this.elementoService
@@ -55,7 +58,8 @@ export class ElementosFormComponent implements OnInit {
   }
 
   create(): void {
-    this.elementoService.postElemento(this.elemento);
+  this.elemento.maleta = `${this.host}maletas/${this.id}`
+  this.elementoService.postElemento(this.elemento);
   }
 
 }
