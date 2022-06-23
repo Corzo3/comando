@@ -29,9 +29,7 @@ export class MaletascabinaComponent implements OnInit {
   }
 
   eliminar(): void {
-    if (confirm('¿Está seguro?')) {
       this.maletaCabinaEliminar.emit(this.maletaCabina);
-    }
   }
 
   editar(): void {

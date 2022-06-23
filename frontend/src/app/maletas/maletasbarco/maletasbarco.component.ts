@@ -42,9 +42,7 @@ export class MaletasbarcoComponent implements OnInit {
   }
 
   eliminar(): void{
-    if (confirm('¿Está seguro?')){
       this.maletaBarcoEliminar.emit(this.maletaBarco);
-    }
   }
 
   editar(): void {

@@ -182,7 +182,6 @@ export class MaletaService {
 
   postMaletaBarco(maleta: Maletabarcoimpl) {
     this.http.post(this.urlEndPoint, maleta).subscribe();
-    alert('Se ha creado una nueva maleta de barco');
   }
 
   create(maletaBarco: Maletabarcoimpl): Observable<any> {
@@ -191,7 +190,7 @@ export class MaletaService {
 
   postMaletaCabina(maleta: Maletacabinaimpl) {
     this.http.post(this.urlEndPoint1, maleta).subscribe();
-    alert('Se ha creado una nueva maleta de cabina');
+
   }
 
   createC(maletaCabina: Maletacabinaimpl): Observable<any> {

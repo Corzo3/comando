@@ -54,8 +54,6 @@ export class ElementoitemComponent implements OnInit {
   }
 
   eliminar() : void{
-    if (confirm ('¿Está seguro? Recuerde que debe llevar todo el equipo del listado oficial')){
       this.elementoEliminar.emit(this.elemento);
-    }
   }
 }

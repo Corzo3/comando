@@ -95,7 +95,7 @@ export class ElementoService {
 
   postElemento(elemento: ElementoequipoImpl) {
     this.http.post(this.urlEndPoint1, elemento).subscribe();
-    alert('Se ha creado un nuevo elemento de equipo');
+
   }
   createE(elemento: ElementoequipoImpl) {
     return this.http.post(`${this.urlEndPoint1}`, elemento);
