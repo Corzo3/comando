@@ -85,8 +85,9 @@ export class MaletabarcoComponent implements OnInit {
   }
 
   onElementoCrear(elemento : ElementoEquipo){
-    this.elemento.maleta = `${this.host}maletas/${this.id}`
-    this.elementoService.postElemento(this.elemento).subscribe();
+    /* this.elemento.maleta = `${this.host}maletas/${this.id}`
+    this.elementoService.postElemento(this.elemento).subscribe(); */
     this.elementos.push(elemento)
+    location.reload;
   }
 }

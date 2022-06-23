@@ -59,9 +59,9 @@ export class ElementosFormComponent implements OnInit {
   }
 
   create(): void {
-    this.elementoCrear.emit(this.elemento)
-  /* this.elemento.maleta = `${this.host}maletas/${this.id}`
-  this.elementoService.postElemento(this.elemento).subscribe(); */
+  this.elementoCrear.emit(this.elemento)
+  this.elemento.maleta = `${this.host}maletas/${this.id}`
+  this.elementoService.postElemento(this.elemento).subscribe();
   }
 
 }

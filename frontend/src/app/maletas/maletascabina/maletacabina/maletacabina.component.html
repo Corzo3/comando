@@ -1,7 +1,7 @@
 <div class="container-fluid col-12">
     <div class="row">
         <div class="col-4">
-          <h1>Maleta de cabina nº {{ maletaCabina.id }}</h1>
+            <h1>Maleta de cabina nº {{ maletaCabina.id }}</h1>
             <div class="card tarjetapeso">
                 <p class="peso" title="El peso máximo permitido es la suma del peso en vacío de su maleta y el peso de todos sus elementos">Peso máximo permitido 8kg</p>
             </div>
@@ -32,36 +32,34 @@
             </div>
         </div>
         <div class="col-4">
-     <app-elementos-cab-form></app-elementos-cab-form>
+            <app-elementos-cab-form (elementoCrear)="onElementoCrear($event)"></app-elementos-cab-form>
             <div *ngIf="elementos.length > 0"></div>
             <div class="list-items">
-              <div class="container-fluid col-12 campos">
-                <div class="col-10">
-                  <div class="seleccionado item" *ngFor="let elemento of elementos">
-                <app-elemento  *ngIf="elemento"
-                [elemento]="elemento"
-                (elementoEliminar)="onElementoEquipoEliminar($event)"></app-elemento>
+                <div class="container-fluid col-12 campos">
+                    <div class="col-10">
+                        <div class="seleccionado item" *ngFor="let elemento of elementos">
+                            <app-elemento *ngIf="elemento" [elemento]="elemento" (elementoEliminar)="onElementoEquipoEliminar($event)"></app-elemento>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="col-4">
-    <div class="modal fade" id="modalPutC" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Maleta de cabina {{maletaCabina.id}}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <app-mcabinamodificar [maletaCabina]="maletaCabina"></app-mcabinamodificar>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <div class="col-4">
+                <div class="modal fade" id="modalPutC" tabindex="-1" aria-labelledby="formularioMaleta" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Maleta de cabina {{maletaCabina.id}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <app-mcabinamodificar [maletaCabina]="maletaCabina"></app-mcabinamodificar>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
 Cerrar
             </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
