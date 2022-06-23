@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
@@ -20,6 +20,7 @@ import { MaletaService } from '../service/maleta.service';
 export class ElementosFormComponent implements OnInit {
   @Input() maletaBarco: Maletabarco = new Maletabarcoimpl(0, '');
   @Input() maletaCabina: Maletacabina = new Maletacabinaimpl(0, 0, 0, 0);
+  @Output() elementoCrear = new EventEmitter<ElementoEquipo>()
   elementos: ElementoEquipo[] = [];
   maletas: Maleta[] = [];
   maletas1: Maletacabina[] = [];
@@ -39,12 +40,12 @@ export class ElementosFormComponent implements OnInit {
     this.maletaService.getMaleta(this.id).subscribe((response) => {
       this.maletaBarco = this.maletaService.mapearMaletaB(response);
     });
-    this.elementoService
+    /* this.elementoService
       .getElementos()
       .subscribe(
         (response) =>
           (this.elementos = this.elementoService.extraerElementos(response))
-      );
+      ); */
   }
 
   cargarMaletaBarco(): string {
@@ -58,8 +59,9 @@ export class ElementosFormComponent implements OnInit {
   }
 
   create(): void {
-  this.elemento.maleta = `${this.host}maletas/${this.id}`
-  this.elementoService.postElemento(this.elemento);
+    this.elementoCrear.emit(this.elemento)
+  /* this.elemento.maleta = `${this.host}maletas/${this.id}`
+  this.elementoService.postElemento(this.elemento).subscribe(); */
   }
 
 }

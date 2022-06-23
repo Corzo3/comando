@@ -8,6 +8,7 @@ import { MaletaService } from '../../service/maleta.service';
 import { ElementoService } from 'src/app/elementosequipo/service/elemento.service';
 import { Maletacabina } from '../../models/maletacabina';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-maletabarco',
@@ -24,6 +25,8 @@ export class MaletabarcoComponent implements OnInit {
   elementos: ElementoEquipo[] = [];
   maletasBarco: Maletabarco[] = [];
   maletasCabina: Maletacabina[] = [];
+  id: string = this.cargarMaletaBarco();
+  host: string = environment.host;
   constructor(
     private activateRoute: ActivatedRoute,
     private maletaService: MaletaService,
@@ -79,5 +82,11 @@ export class MaletabarcoComponent implements OnInit {
       this.elementos = this.elementos.filter((e) => elemento !== e);
       location.reload;
     });
+  }
+
+  onElementoCrear(elemento : ElementoEquipo){
+    this.elemento.maleta = `${this.host}maletas/${this.id}`
+    this.elementoService.postElemento(this.elemento).subscribe();
+    this.elementos.push(elemento)
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, tap } from 'rxjs/operators';
 import { AuxiliarService } from 'src/app/service/auxiliar.service';
 import { environment } from 'src/environments/environment';
 import { ElementoEquipo } from '../models/elementoequipo';
@@ -93,9 +93,8 @@ export class ElementoService {
     return this.http.get<ElementoEquipo>(`${this.urlEndPoint}/${id}`)
   }
 
-  postElemento(elemento: ElementoequipoImpl) {
-    this.http.post(this.urlEndPoint1, elemento).subscribe();
-
+  postElemento(elemento: ElementoequipoImpl) : Observable <any> {
+    return this.http.post(this.urlEndPoint1, elemento).pipe(tap (r => console.log(r)))
   }
   createE(elemento: ElementoequipoImpl) {
     return this.http.post(`${this.urlEndPoint1}`, elemento);
