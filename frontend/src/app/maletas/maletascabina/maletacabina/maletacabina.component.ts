@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ElementoEquipo } from 'src/app/elementosequipo/models/elementoequipo';
@@ -27,6 +28,7 @@ export class MaletacabinaComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private maletaService: MaletaService,
     private elementoService: ElementoService,
+    private http : HttpClient,
     private router: Router
   ) {}
 
@@ -65,5 +67,9 @@ export class MaletacabinaComponent implements OnInit {
     this.elementoService.postElemento(this.elemento).subscribe(); */
     this.elementos.push(elemento);
     location.reload;
+  }
+
+  eliminarMaleta(){
+    this.http.delete(`${this.host}maletas/${this.id}`).subscribe();
   }
 }

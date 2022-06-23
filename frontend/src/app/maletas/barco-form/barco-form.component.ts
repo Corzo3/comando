@@ -44,11 +44,6 @@ export class BarcoFormComponent implements OnInit {
   }
 
   //muestra el mensaje de ayuda al usuario para calcular la fecha que tiene que introducir
-  mostrarAyuda() {
-    alert(
-      'La fecha que debe introducir es aproximadamente un mes antes de la fecha prevista para desplegar'
-    );
-  }
   public guardarMaletaBarco (){
     this.maletasBarco.push({...this.maletaBarco});
   }

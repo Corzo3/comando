@@ -23,8 +23,25 @@
             <div class="col-4">
                 <a class="btn btn-primary contenido" (click)="seleccionarMaletaCabina(maletaCabina
         )">Abrir</a>
-                <button class="btn btn-primary contenido" (click)="eliminar()">Eliminar</button>
+                <button class="btn btn-primary contenido" data-bs-toggle="modal" data-bs-target="#modalEliminarCabina">Eliminar</button>
             </div>
         </div>
+    </div>
+    <div class="modal" tabindex="-1" id="modalEliminarCabina">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Se va a eliminar la maleta {{maletaCabina.id}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminar()">Aceptar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
     </div>
 </div>

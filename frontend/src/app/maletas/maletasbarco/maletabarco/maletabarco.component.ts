@@ -9,6 +9,7 @@ import { ElementoService } from 'src/app/elementosequipo/service/elemento.servic
 import { Maletacabina } from '../../models/maletacabina';
 import { ElementoequipoImpl } from 'src/app/elementosequipo/models/elementoequipo-impl';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-maletabarco',
@@ -31,6 +32,7 @@ export class MaletabarcoComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private maletaService: MaletaService,
     private elementoService: ElementoService,
+    private http : HttpClient,
     private router: Router
   ) {}
 
@@ -63,12 +65,6 @@ export class MaletabarcoComponent implements OnInit {
   verDatos(maletaBarco: Maletabarco): void {
     this.maletaBarcoVerDatos = maletaBarco;
   }
-  avisar() {
-    alert(
-      'Se le va a redirigir al listado de maletas para eliminarla, ¿Desea continuar?'
-    );
-  }
-
   sumarPeso() {
     let pesoTotal = 0;
     for (const elemento of this.elementos) {
@@ -89,5 +85,8 @@ export class MaletabarcoComponent implements OnInit {
     this.elementoService.postElemento(this.elemento).subscribe(); */
     this.elementos.push(elemento)
     location.reload;
+  }
+  eliminarMaleta(){
+    this.http.delete(`${this.host}maletas/${this.id}`).subscribe();
   }
 }

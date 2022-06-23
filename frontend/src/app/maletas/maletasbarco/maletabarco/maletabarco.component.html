@@ -23,7 +23,7 @@
                         <a type="button" routerLink="/maletas" class="btn">Volver</a>
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary contenido eliminar" routerLink="/maletas" (click)="avisar()">
+                        <button class="btn btn-primary contenido eliminar" data-bs-toggle="modal" data-bs-target="#modalMensaje">
               Eliminar Maleta
             </button>
                     </div>
@@ -64,5 +64,22 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="modal" id = "modalMensaje" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¿Confirma la operación?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Se va a eliminar la maleta {{maletaBarco.id}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminarMaleta()" routerLink="">Aceptar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
